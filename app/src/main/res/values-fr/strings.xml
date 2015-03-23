@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Mon application</string>
+    <string name="button_send">Envoyer</string>
+    <string name="edit_message">Entrer un message</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_display_message">Mon Message</string>
+
+    <string name="hello_world">Bonjour!</string>
+    <string name="title_activity_settings">Paramètres!</string>
+    <string name="action_search">Rechercher</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_base_activty">BaseActivty</string>
+</resources>
