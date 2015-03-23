@@ -45,35 +45,43 @@
         </activity>
         <activity
             android:name=".ConnexionActivity"
-            android:label="@string/title_activity_connexion" >
+            android:label="@string/title_activity_connexion"
+            android:launchMode="singleInstance">
         </activity>
         <activity
             android:name=".AccountManagementActivity"
-            android:label="@string/title_activity_account_management" >
+            android:label="@string/title_activity_account_management"
+            android:launchMode="singleInstance">
         </activity>
         <activity
             android:name=".HotspotActivity"
-            android:label="@string/title_activity_hotspot" >
+            android:label="@string/title_activity_hotspot"
+            android:launchMode="singleInstance">
         </activity>
         <activity
             android:name=".MapActivity"
-            android:label="@string/title_activity_map" >
+            android:label="@string/title_activity_map"
+            android:launchMode="singleInstance">
         </activity>
         <activity
             android:name=".UserAgreementActivity"
-            android:label="@string/title_activity_user_agreement" >
+            android:label="@string/title_activity_user_agreement"
+            android:launchMode="singleInstance">
         </activity>
         <activity
             android:name=".AboutActivity"
-            android:label="@string/title_activity_about" >
+            android:label="@string/title_activity_about"
+            android:launchMode="singleInstance">
         </activity>
         <activity
             android:name=".SignUpActivity"
-            android:label="@string/title_activity_sign_up" >
+            android:label="@string/title_activity_sign_up"
+            android:launchMode="singleInstance">
         </activity>
         <activity
             android:name=".LostAccountActivity"
-            android:label="@string/title_activity_lost_account" >
+            android:label="@string/title_activity_lost_account"
+            android:launchMode="singleInstance">
         </activity>
     </application>
 

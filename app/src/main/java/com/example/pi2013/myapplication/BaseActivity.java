@@ -52,19 +52,23 @@ public class BaseActivity extends ActionBarActivity {
 
     private void openLogged()
     {
-
+        Intent intent = new Intent(this, ConnexionActivity.class);
+        startActivity(intent);
     }
 
     private void openMAPS() {
-        Toast.makeText(this, "MAPS", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MapActivity.class);
+        startActivity(intent);
     }
 
     private void openID() {
-        Toast.makeText(this, "ID", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, AccountManagementActivity.class);
+        startActivity(intent);
     }
 
     private void openNavigate() {
-        Toast.makeText(this, "NAVIGATE", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, HotspotActivity.class);
+        startActivity(intent);
     }
 
     private void openSettings() {
