@@ -14,4 +14,12 @@
     <string name="title_activity_launch">Launch</string>
     <string name="title_activity_connexion_screen">Titre</string>
     <string name="action_main">action_main</string>
+    <string name="title_activity_connexion">ConnexionActivity</string>
+    <string name="title_activity_account_management">AccountManagementActivity</string>
+    <string name="title_activity_hotspot">HotspotActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_user_agreement">UserAgreementActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_lost_account">LostAccountActivity</string>
 </resources>

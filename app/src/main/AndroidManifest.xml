@@ -3,17 +3,15 @@
     package="com.example.pi2013.myapplication" >
 
     <application
-        android:uiOptions="splitActionBarWhenNarrow"
         android:allowBackup="true"
         android:icon="@drawable/ic_logo_client"
-        android:label=
-            "@string/app_name"
-        android:theme= "@style/AppTheme" >
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:uiOptions="splitActionBarWhenNarrow" >
         <activity
             android:name=".MyActivity"
             android:label="@string/app_name"
-            android:launchMode="singleInstance">
-
+            android:launchMode="singleInstance" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,20 +21,60 @@
         <activity
             android:name=".DisplayMessageActivity"
             android:label="@string/title_activity_display_message"
-            android:parentActivityName=".MyActivity"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:parentActivityName=".MyActivity" >
         </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
         </activity>
         <activity
             android:name=".BaseActivity"
             android:label="@string/title_activity_base"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
         </activity>
+        <activity
+            android:name=".LaunchActivity"
+            android:label="@string/title_activity_launch" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ConnexionActivity"
+            android:label="@string/title_activity_connexion" >
+        </activity>
+        <activity
+            android:name=".AccountManagementActivity"
+            android:label="@string/title_activity_account_management" >
+        </activity>
+        <activity
+            android:name=".HotspotActivity"
+            android:label="@string/title_activity_hotspot" >
+        </activity>
+        <activity
+            android:name=".MapActivity"
+            android:label="@string/title_activity_map" >
+        </activity>
+        <activity
+            android:name=".UserAgreementActivity"
+            android:label="@string/title_activity_user_agreement" >
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about" >
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_sign_up" >
+        </activity>
+        <activity
+            android:name=".LostAccountActivity"
+            android:label="@string/title_activity_lost_account" >
+        </activity>
     </application>
 
 </manifest>
