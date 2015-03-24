@@ -10,7 +10,6 @@
     <string name="title_activity_settings">Paramètres</string>
     <string name="action_search">Rechercher</string>
     <string name="title_activity_base">BaseActivity</string>
-    <string name="title_activity_base_activty">BaseActivity</string>
     <string name="title_activity_launch">Chargement</string>
     <string name="title_activity_connexion_screen">Connexion</string>
     <string name="action_main">action_main</string>
