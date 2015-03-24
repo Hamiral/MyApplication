@@ -22,4 +22,8 @@
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="title_activity_lost_account">LostAccountActivity</string>
+
+    <string name="button_sign_in">Sign In</string>
+    <string name="button_start_browsing">Start Browsing</string>
+    <string name="button_find_a_hotspot">Find A Hotspot</string>
 </resources>
