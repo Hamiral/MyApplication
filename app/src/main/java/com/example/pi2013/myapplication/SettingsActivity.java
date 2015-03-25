@@ -11,8 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +37,6 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         ChoixLangue.setAdapter(adapter);
-
 
     }
 
@@ -73,7 +74,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         getBaseContext().getResources().updateConfiguration(conf,
         getBaseContext().getResources().getDisplayMetrics());
         Intent refresh = new Intent(this, SettingsActivity.class);
-
+        setLanguageChanged(true);
         finish();
         startActivity(refresh);
 

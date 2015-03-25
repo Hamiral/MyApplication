@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pi2013.myapplication">
+    package="com.example.pi2013.myapplication" >
 
     <application
-        android:configChanges="locale"
         android:allowBackup="true"
+        android:configChanges="locale"
         android:icon="@drawable/ic_logo_client"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
@@ -42,42 +42,42 @@
         <activity
             android:name=".ConnexionActivity"
             android:label="@string/title_activity_connexion"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
         </activity>
         <activity
             android:name=".AccountManagementActivity"
             android:label="@string/title_activity_account_management"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
         </activity>
         <activity
             android:name=".HotspotActivity"
             android:label="@string/title_activity_hotspot"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
         </activity>
         <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
         </activity>
         <activity
             android:name=".UserAgreementActivity"
             android:label="@string/title_activity_user_agreement"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
         </activity>
         <activity
             android:name=".AboutActivity"
             android:label="@string/title_activity_about"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
         </activity>
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
         </activity>
         <activity
             android:name=".LostAccountActivity"
             android:label="@string/title_activity_lost_account"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
         </activity>
     </application>
 

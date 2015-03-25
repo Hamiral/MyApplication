@@ -10,8 +10,6 @@ import android.view.View;
 
 
 public class HotspotActivity extends BaseActivity {
-    public boolean hotspot_found =false;
-    public boolean connecte = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
