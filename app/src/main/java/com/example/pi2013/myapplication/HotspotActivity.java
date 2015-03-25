@@ -7,11 +7,16 @@ import android.view.MenuItem;
 
 
 public class HotspotActivity extends BaseActivity {
+    public boolean hotspot_found =false;
+    public boolean connecte = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotspot);
+
+
+
     }
 
 }
