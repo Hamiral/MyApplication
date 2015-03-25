@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         ChoixLangue.setAdapter(adapter);
+
 
     }
 
@@ -77,4 +79,14 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
     }
 
+    public void start_user_agreement_activity(View view)
+    {
+        Intent intent = new Intent(this, UserAgreementActivity.class);
+        startActivity(intent);
+    }
+    public void start_about_activity(View view)
+    {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
 }
