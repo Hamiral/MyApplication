@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class SettingsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
-    Locale myLocale;
+
     Spinner ChoixLangue;
 
     @Override
@@ -59,15 +60,21 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
     }
 
     public void setLocale(String lang) {
+        Locale myLocale;
         myLocale = new Locale(lang);
+        setLanguageChanged(true);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
+        getBaseContext().getResources().updateConfiguration(conf,
+        getBaseContext().getResources().getDisplayMetrics());
         Intent refresh = new Intent(this, SettingsActivity.class);
+
         finish();
         startActivity(refresh);
+
     }
 
 }

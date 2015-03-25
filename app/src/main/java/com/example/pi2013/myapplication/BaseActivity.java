@@ -9,7 +9,10 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 
-public class BaseActivity extends ActionBarActivity {
+public class  BaseActivity extends ActionBarActivity {
+
+    private boolean LanguageChanged=false;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -77,4 +80,13 @@ public class BaseActivity extends ActionBarActivity {
     }
 
 
+    public boolean getLanguageChanged() {
+        return LanguageChanged;
+    }
+
+    public void setLanguageChanged(boolean languageChanged) {
+        LanguageChanged = languageChanged;
+    }
 }
+
+
