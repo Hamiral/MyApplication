@@ -1,6 +1,8 @@
 package com.example.pi2013.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -11,7 +13,9 @@ public class MyActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_my);
+
     }
 
     public void sendMessage(View view)
@@ -23,4 +27,6 @@ public class MyActivity extends BaseActivity{
         startActivity(intent);
 
     }
+
+
 }

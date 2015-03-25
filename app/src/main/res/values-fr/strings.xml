@@ -1,17 +1,30 @@
 <resources>
-    <string name="app_name">NoHablaEspanol</string>
-    <string name="button_send">No Soy Frances</string>
+    <string name="app_name">Mon Application</string>
+    <string name="button_send">Envoyer</string>
     <string name="edit_message">Entrer un message</string>
     <string name="action_settings">Paramètres</string>
-    <string name="title_activity_main">MonActivity</string>
-    <string name="title_activity_display_message">Mon Message</string>
+    <string name="title_activity_main">MenuPrincipal</string>
+    <string name="title_activity_display_message">MonMessage</string>
 
     <string name="hello_world">Bonjour!</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Paramètres</string>
     <string name="action_search">Rechercher</string>
     <string name="title_activity_base">BaseActivity</string>
-    <string name="title_activity_base_activty">BaseActivity</string>
-    <string name="title_activity_launch">Launch</string>
-    <string name="title_activity_connexion_screen">Titre</string>
+    <string name="title_activity_launch">Chargement</string>
+    <string name="title_activity_connexion_screen">Connexion</string>
     <string name="action_main">action_main</string>
+    <string name="title_activity_connexion">Connexion</string>
+    <string name="title_activity_account_management">Gestion du Compte</string>
+    <string name="title_activity_hotspot">Recherche de Hotspot</string>
+    <string name="title_activity_map">MAPS</string>
+    <string name="title_activity_user_agreement">Condition d utilisateurs</string>
+    <string name="title_activity_about">a propos</string>
+    <string name="title_activity_sign_up">S inscrire</string>
+    <string name="title_activity_lost_account">Compte perdu</string>
+
+    <string-array name="language_choice">
+        <item></item>
+        <item>English</item>
+        <item>Français</item>
+    </string-array>
 </resources>
