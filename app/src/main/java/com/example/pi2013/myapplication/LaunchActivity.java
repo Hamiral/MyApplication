@@ -14,12 +14,13 @@ public class LaunchActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_launch);
 
         layout = (RelativeLayout) RelativeLayout.inflate(this, R.layout.activity_launch, null);
         image_client = (ImageView) layout.findViewById(R.id.image_client);
         image_client.setImageResource(R.drawable.ic_launch_client_random);
 
-        setContentView(R.layout.activity_launch);
+
 
 
     }

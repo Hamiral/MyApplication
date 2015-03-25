@@ -11,6 +11,8 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+
         android:id="@+id/pub"
         />
 
@@ -18,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/hotspot_found"
+        android:layout_weight="1"
         />
 
     <Button
@@ -25,20 +28,24 @@
         android:layout_height="wrap_content"
         android:id="@+id/sign_in"
         android:text="@string/button_sign_in"
-        />
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/find_a_hotspot"
         android:text="@string/button_find_a_hotspot"
-
-        />
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/start_browsing"
         android:text="@string/button_start_browsing"
-        />
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:enabled=""/>
+
 </LinearLayout>
