@@ -6,8 +6,8 @@ import android.widget.RelativeLayout;
 
 
 public class LaunchActivity extends BaseActivity {
-    RelativeLayout layout = null;
-    ImageView image_client = null;
+    public RelativeLayout layout = null;
+    public ImageView image_client = null;
 
 
     @Override
