@@ -1,17 +1,28 @@
 package com.example.pi2013.myapplication;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 
 public class LaunchActivity extends BaseActivity {
+    RelativeLayout layout = null;
+    ImageView image_client = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_launch);
+
+        layout = (RelativeLayout) RelativeLayout.inflate(this, R.layout.activity_launch, null);
+        image_client = (ImageView) layout.findViewById(R.id.image_client);
+        image_client.setImageResource(R.drawable.ic_launch_client_random);
+
+
+
+
     }
 
 
