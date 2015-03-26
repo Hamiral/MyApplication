@@ -2,16 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:yourapp="http://schemas.android.com/apk/res-auto">
 
-
-
     <item android:id="@+id/action_logged"
         android:icon="@drawable/ic_action_logged"
         android:title="Logged"
-        yourapp:showAsAction="always" />
-
-    <item android:id="@+id/action_ID"
-        android:title="ID"
-        android:icon="@drawable/ic_action_id"
         yourapp:showAsAction="always" />
 
     <item android:id="@+id/action_navigate"

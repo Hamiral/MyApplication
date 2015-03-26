@@ -22,13 +22,16 @@ public class ConnexionActivity extends BaseActivity {
     public void login(View view) {
         EditText username = (EditText)findViewById(R.id.editText1);
         EditText password = (EditText)findViewById(R.id.editText2);
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         if (username.getText().toString().equals("admin") &&
                 password.getText().toString().equals("admin")) {
-//correcct password
-            Intent intent = new Intent(this, HotspotActivity.class);
+            //correcct password
+            appState.setLogged(true);
+            Intent intent = new Intent(this, MyActivity.class);
             startActivity(intent);
         } else {
-//wrong password
+            //wrong password
+            appState.setLogged(false);
         Toast.makeText(getApplicationContext(),
             "WrongPassword", Toast.LENGTH_SHORT)
             .show();

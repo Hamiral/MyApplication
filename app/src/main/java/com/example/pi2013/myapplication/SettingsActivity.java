@@ -21,12 +21,14 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class SettingsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
-
-    Spinner ChoixLangue;
+    public static final String WIFI ="com.example.pi2013.myapplication.WIFI";
+    public static final String HOTSPOT ="com.Example.pi2013.myapplication.HOTSPOT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_settings);
         Spinner ChoixLangue = (Spinner) findViewById(R.id.language_choice);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -37,6 +39,45 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         ChoixLangue.setAdapter(adapter);
+
+        Switch WifiSwitch = (Switch)  findViewById(R.id.state_wifi);
+        WifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+                if(isChecked)
+                {
+                   appState.setWifi(true);
+                    Toast.makeText(getApplicationContext(), "You have enabled the Wifi", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    appState.setWifi(false);
+                    Toast.makeText(getApplicationContext(), "You have disable the Wifi", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+        Switch HotSpotSwitch = (Switch)  findViewById(R.id.Hotspot_switch);
+        HotSpotSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+                if(isChecked)
+                {
+                   appState.setHotspot(true);
+
+                    Toast.makeText(getApplicationContext(), "You have found a HotSpot", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                   appState.setHotspot(false);
+                    Toast.makeText(getApplicationContext(), "You have not found a HotSpot :(", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 
@@ -63,9 +104,11 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
     }
 
     public void setLocale(String lang) {
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         Locale myLocale;
+
         myLocale = new Locale(lang);
-        setLanguageChanged(true);
+        appState.setLanguageChanged(true);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
@@ -74,7 +117,6 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         getBaseContext().getResources().updateConfiguration(conf,
         getBaseContext().getResources().getDisplayMetrics());
         Intent refresh = new Intent(this, SettingsActivity.class);
-        setLanguageChanged(true);
         finish();
         startActivity(refresh);
 

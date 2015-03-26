@@ -43,5 +43,9 @@
     <string name="Login">Login</string>
     <string name="textview_login">Login :</string>
     <string name="textview_password">Password :</string>
+    <string name="title_activity_debug">DebugActivity</string>
+    <string name="button_dynamic">StartBrowsing</string>
+    <string name="Hotspot_state">Debug Hotspot</string>
+    <string name="button_disconnect">Disconnect</string>
 
 </resources>

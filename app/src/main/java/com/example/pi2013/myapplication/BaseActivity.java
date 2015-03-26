@@ -10,14 +10,20 @@ import android.widget.Toast;
 
 
 public class  BaseActivity extends ActionBarActivity {
-    private boolean wifi;
-    private boolean LanguageChanged=false;
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_activity_actions, menu);
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        if(appState.getLogged())
+        {
+            inflater.inflate(R.menu.main_activity_actions_logged, menu);
+        }
+        else
+        {
+            inflater.inflate(R.menu.main_activity_actions_unlogged, menu);
+        }
         return true;
 
     }
@@ -30,10 +36,9 @@ public class  BaseActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        switch(id)
-        {
-            case R.id.action_logged:
+        switch (id) {
 
+            case R.id.action_logged:
                 openLogged();
                 return true;
             case R.id.action_ID:
@@ -53,8 +58,7 @@ public class  BaseActivity extends ActionBarActivity {
         }
     }
 
-    private void openLogged()
-    {
+    private void openLogged() {
         Intent intent = new Intent(this, ConnexionActivity.class);
         startActivity(intent);
     }
@@ -70,7 +74,7 @@ public class  BaseActivity extends ActionBarActivity {
     }
 
     private void openNavigate() {
-        Intent intent = new Intent(this, HotspotActivity.class);
+        Intent intent = new Intent(this, MyActivity.class);
         startActivity(intent);
     }
 
@@ -79,22 +83,7 @@ public class  BaseActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-
-    public boolean getLanguageChanged() {
-        return LanguageChanged;
-    }
-
-    public void setLanguageChanged(boolean languageChanged) {
-        LanguageChanged = languageChanged;
-    }
-
-    public boolean getWifi() {
-        return wifi;
-    }
-
-    public void setWifi(boolean wifi) {
-        this.wifi = wifi;
-    }
 }
+
 
 
