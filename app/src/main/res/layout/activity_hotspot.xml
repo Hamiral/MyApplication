@@ -45,6 +45,7 @@
         android:id="@+id/start_browsing"
         android:text="@string/button_start_browsing"
         android:layout_weight="1"
-        android:layout_gravity="center_vertical"/>
+        android:layout_gravity="center_vertical"
+        android:onClick="start_browsing"/>
 
 </LinearLayout>

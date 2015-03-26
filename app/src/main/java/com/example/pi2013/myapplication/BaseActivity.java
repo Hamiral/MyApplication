@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 
 public class  BaseActivity extends ActionBarActivity {
-
+    private boolean wifi;
     private boolean LanguageChanged=false;
 
 
@@ -86,6 +86,14 @@ public class  BaseActivity extends ActionBarActivity {
 
     public void setLanguageChanged(boolean languageChanged) {
         LanguageChanged = languageChanged;
+    }
+
+    public boolean getWifi() {
+        return wifi;
+    }
+
+    public void setWifi(boolean wifi) {
+        this.wifi = wifi;
     }
 }
 

@@ -11,7 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,10 +74,20 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         getBaseContext().getResources().updateConfiguration(conf,
         getBaseContext().getResources().getDisplayMetrics());
         Intent refresh = new Intent(this, SettingsActivity.class);
-
+        setLanguageChanged(true);
         finish();
         startActivity(refresh);
 
     }
 
+    public void start_user_agreement_activity(View view)
+    {
+        Intent intent = new Intent(this, UserAgreementActivity.class);
+        startActivity(intent);
+    }
+    public void start_about_activity(View view)
+    {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
 }
