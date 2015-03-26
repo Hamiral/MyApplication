@@ -5,19 +5,14 @@
     android:orientation="horizontal"
     style="@style/AppTheme">
 
-    <EditText   android:id="@+id/edit_message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_message"
-        android:layout_weight="1"/>
-
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_send"
-        android:id="@+id/button"
-        android:onClick="sendMessage"
-        />
+        android:id="@+id/button_dynamic"
+        android:layout_weight="0.85"
+        android:onClick="onClickButton"
+        android:layout_gravity="center_vertical" />
+
 
 </LinearLayout>

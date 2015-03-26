@@ -28,6 +28,13 @@
         android:id="@+id/notifications"
         android:checked="false" />
 
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Hotspot_state"
+        android:id="@+id/Hotspot_switch"
+        android:checked="false" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

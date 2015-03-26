@@ -3,6 +3,7 @@
     package="com.example.pi2013.myapplication" >
 
     <application
+        android:name="com.example.pi2013.myapplication.GlobalVariable"
         android:allowBackup="true"
         android:configChanges="locale"
         android:icon="@drawable/ic_logo_client"
@@ -50,11 +51,6 @@
             android:launchMode="singleInstance" >
         </activity>
         <activity
-            android:name=".HotspotActivity"
-            android:label="@string/title_activity_hotspot"
-            android:launchMode="singleInstance" >
-        </activity>
-        <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map"
             android:launchMode="singleInstance" >
@@ -68,6 +64,9 @@
             android:name=".AboutActivity"
             android:label="@string/title_activity_about"
             android:launchMode="singleInstance" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pi2013.myapplication.SettingsActivity" />
         </activity>
         <activity
             android:name=".SignUpActivity"
@@ -79,6 +78,7 @@
             android:label="@string/title_activity_lost_account"
             android:launchMode="singleInstance" >
         </activity>
+
     </application>
 
 </manifest>
