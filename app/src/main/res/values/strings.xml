@@ -1,16 +1,17 @@
 <resources>
+
+    <!-- Inutile-->
     <string name="app_name">My Application</string>
     <string name="button_send">Send</string>
     <string name="edit_message">Enter a message</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_display_message">My Message</string>
-
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_settings">Settings</string>
     <string name="action_search">action_search</string>
+
+    <!-- A ranger-->
     <string name="title_activity_base">BaseActivity</string>
-    <string name="title_activity_launch">Launch</string>
     <string name="title_activity_connexion_screen">Connection</string>
     <string name="action_main">action_main</string>
     <string name="title_activity_connexion">Connection</string>
@@ -18,9 +19,50 @@
     <string name="title_activity_hotspot">Hotspot</string>
     <string name="title_activity_map">Map</string>
     <string name="title_activity_user_agreement">UserAgreement</string>
-    <string name="title_activity_about">About</string>
     <string name="title_activity_sign_up">SignUp</string>
     <string name="title_activity_lost_account">LostAccount</string>
+    <string name="button_sign_in">Sign In</string>
+    <string name="button_start_browsing">Start Browsing</string>
+    <string name="button_find_a_hotspot">Find A Hotspot</string>
+    <string name="Notifications">Notifications</string>
+    <string name="wifi_state">Wifi</string>
+    <string name="debug_languagestate">Language State</string>
+    <string name="debug_wifistate">Wifi State</string>
+    <string name="title_activity_debug">DebugActivity</string>
+    <string name="button_dynamic">StartBrowsing</string>
+    <string name="Hotspot_state">Debug Hotspot</string>
+
+
+    <!-- Page About-->
+    <string name="about_text">WHO DID THIS ? ITS SHIT</string>
+    <string name="title_activity_about">About</string>
+
+    <!-- Page Account Management-->
+    <string name="button_disconnect">Disconnect</string>
+    <string name="textview_modify_password">Change Your Password</string>
+    <string name="textview_id">UserName: </string>
+
+    <!-- Page Connexion-->
+    <string name="textview_login">Login :</string>
+    <string name="textview_password">Password :</string>
+    <string name="textcheckbox_Remember_Me">Remember Me</string>
+    <string name="Login">Login</string>
+    <string name="I_ve_Lost_My_Pswd">I have lost my password</string>
+    <string name="Sign_Up">Sign Up</string>
+
+    <!-- Page Launch-->
+    <string name="title_activity_launch">Launch</string>
+    <string name="description_launch_image_client">Image Client</string>
+
+    <!-- Page Lost Account-->
+
+    <!-- Page Map-->
+
+    <!-- Page My Activity-->
+
+    <!-- Page Settings-->
+
+    <string name="title_activity_settings">Settings</string>
 
     <string-array name="language_choice">
         <item>Language choice</item>
@@ -28,24 +70,14 @@
         <item>Français</item>
     </string-array>
 
-    <string name="description_launch_image_client">Image Client</string>
-    <string name="button_sign_in">Sign In</string>
-    <string name="button_start_browsing">Start Browsing</string>
-    <string name="button_find_a_hotspot">Find A Hotspot</string>
-    <string name="Notifications">Notifications</string>
-    <string name="wifi_state">Wifi</string>
     <string name="bt_user_agreement">CGU</string>
     <string name="bt_about">About</string>
+
+
+    <!-- Page Sign Up-->
+
+    <!-- Page User Agreement-->
     <string name="user_agreement_text">User Agreement Blablabla HODOR</string>
-    <string name="about_text">WHO DID THIS ? ITS SHIT</string>
-    <string name="debug_languagestate">Language State</string>
-    <string name="debug_wifistate">Wifi State</string>
-    <string name="Login">Login</string>
-    <string name="textview_login">Login :</string>
-    <string name="textview_password">Password :</string>
-    <string name="title_activity_debug">DebugActivity</string>
-    <string name="button_dynamic">StartBrowsing</string>
-    <string name="Hotspot_state">Debug Hotspot</string>
-    <string name="button_disconnect">Disconnect</string>
+
 
 </resources>
