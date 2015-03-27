@@ -46,5 +46,9 @@
     <string name="button_dynamic">StartBrowsing</string>
     <string name="Hotspot_state">Debug Hotspot</string>
     <string name="button_disconnect">Disconnect</string>
+    <string name="signup_email">e-mail address</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_password_confirm">Confirm Password</string>
+    <string name="signup_useragreement">I have read and accept the user license and service agreement</string>
 
 </resources>

@@ -78,6 +78,9 @@
 
     <!-- Page User Agreement-->
     <string name="user_agreement_text">User Agreement Blablabla HODOR</string>
-
+    <string name="signup_email">e-mail address</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_password_confirm">Confirm Password</string>
+    <string name="signup_useragreement">I have read and accept the user license and service agreement</string>
 
 </resources>
