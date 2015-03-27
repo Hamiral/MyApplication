@@ -2,11 +2,13 @@ package com.example.pi2013.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class MyActivity extends BaseActivity{
@@ -44,16 +46,23 @@ public class MyActivity extends BaseActivity{
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         Button button_dynamic = (Button) findViewById(R.id.button_dynamic);
+        TextView textView=(TextView) findViewById(R.id.main_state);
         if(appState.getLogged() && appState.getHotspot()) {
             button_dynamic.setText("Start Browsing");
+            textView.setText("Hotspot found !");
+            textView.setTextColor(Color.GREEN);
         }
         else if (appState.getLogged() && !appState.getHotspot())
         {
             button_dynamic.setText("Find a Hotspot");
+            textView.setText("No Hotspot found.");
+            textView.setTextColor(Color.RED);
         }
         else
         {
             button_dynamic.setText("Sign In");
+            textView.setText("No Hotspot found.");
+            textView.setTextColor(Color.RED);
         }
 
     }

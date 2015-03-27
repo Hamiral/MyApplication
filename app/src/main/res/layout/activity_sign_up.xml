@@ -4,9 +4,58 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.pi2013.myapplication.SignUpActivity">
+    tools:context="com.example.pi2013.myapplication.SignUpActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerVertical="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_email"
+        android:id="@+id/Textview_signup" />
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/signup_edit_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_password"
+        android:id="@+id/signup_password" />
+
+    <EditText
+        android:id="@+id/signup_edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_password_confirm"
+        android:id="@+id/signup_password_confirm" />
+
+    <EditText
+        android:id="@+id/signup_edit_password_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword" />
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_useragreement"
+        android:id="@+id/signup_useragreement"
+        android:checked="false" />
+</LinearLayout>
 </RelativeLayout>
+
