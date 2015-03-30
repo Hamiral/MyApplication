@@ -79,5 +79,8 @@
     <!-- Page User Agreement-->
     <string name="user_agreement_text">User Agreement Blablabla HODOR</string>
 
+    <!-- Nouvelle Version Main-->
+    <string name="TextHotspot">Bienvenue! \nVeuillez rentrer vos identifiants, afin de vous connecter à votre compte Nomosphère.</string>
+
 
 </resources>
