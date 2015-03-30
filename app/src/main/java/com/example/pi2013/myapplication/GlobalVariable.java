@@ -11,6 +11,7 @@ public class GlobalVariable extends Application {
     private boolean LanguageChanged=false;
     private boolean Hotspot=false;
     private boolean Logged=false;
+    private MyActivity myActivity;
 
 
     public boolean getLanguageChanged() {
@@ -44,4 +45,5 @@ public class GlobalVariable extends Application {
     public void setLogged(boolean logged) {
         Logged = logged;
     }
+
 }

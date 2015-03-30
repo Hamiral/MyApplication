@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textcheckbox_Remember_Me"
-        android:onClick="onClickRemeberMe"
+        android:onClick="onClickRememberMe"
         android:layout_gravity="center_horizontal" />
 
     <LinearLayout
@@ -82,6 +82,7 @@
         android:textColor="@color/blue"
         android:textColorLink="@color/blue"
         android:onClick="lostMyPswd"
+        android:clickable="true"
         android:layout_gravity="center_horizontal"
          />
 
