@@ -2,11 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pi2013.myapplication" >
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+
     <application
         android:name="com.example.pi2013.myapplication.GlobalVariable"
         android:allowBackup="true"
         android:configChanges="locale"
-        android:icon="@drawable/ic_logo_client"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         android:uiOptions="splitActionBarWhenNarrow" >
@@ -53,6 +55,7 @@
             android:name=".UserAgreementActivity"
             android:label="@string/title_activity_user_agreement"
             android:launchMode="singleInstance" >
+
         </activity>
         <activity
             android:name=".AboutActivity"
@@ -66,11 +69,17 @@
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"
             android:launchMode="singleInstance" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pi2013.myapplication.ConnexionActivity" />
         </activity>
         <activity
             android:name=".LostAccountActivity"
             android:label="@string/title_activity_lost_account"
-            android:launchMode="singleInstance" >
+            android:launchMode="singleInstance">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pi2013.myapplication.ConnexionActivity" />
         </activity>
 
     </application>

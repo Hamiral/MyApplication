@@ -37,4 +37,26 @@ public class ConnexionActivity extends BaseActivity {
             .show();
         }
     }
+
+    public void onClickRememberMe(View view)
+    {
+
+    }
+    public void signUp(View view)
+    {
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
+    }
+    public void lostMyPswd(View view)
+    {
+        Intent intent = new Intent(this, LostAccountActivity.class);
+        startActivity(intent);
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        if(appState.getLogged())
+        {
+            Intent refresh = new Intent(this, SettingsActivity.class);
+            finish();
+            startActivity(refresh);
+        }
+    }
 }

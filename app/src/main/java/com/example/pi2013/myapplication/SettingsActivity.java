@@ -1,8 +1,10 @@
 package com.example.pi2013.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.util.DisplayMetrics;
@@ -23,6 +25,10 @@ import java.util.Locale;
 public class SettingsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
     public static final String WIFI ="com.example.pi2013.myapplication.WIFI";
     public static final String HOTSPOT ="com.Example.pi2013.myapplication.HOTSPOT";
+    private Switch WifiSwitch;
+    private Switch HotSpotSwitch;
+    private Switch NotifSwitch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +46,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         // Apply the adapter to the spinner
         ChoixLangue.setAdapter(adapter);
 
-        Switch WifiSwitch = (Switch)  findViewById(R.id.state_wifi);
+        WifiSwitch = (Switch)  findViewById(R.id.state_wifi);
         WifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -48,11 +54,13 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
                 if(isChecked)
                 {
                    appState.setWifi(true);
+                    toggleWiFi(true);
                     Toast.makeText(getApplicationContext(), "You have enabled the Wifi", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     appState.setWifi(false);
+                    toggleWiFi(false);
                     Toast.makeText(getApplicationContext(), "You have disable the Wifi", Toast.LENGTH_SHORT).show();
                 }
 
@@ -60,7 +68,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
             }
         });
 
-        Switch HotSpotSwitch = (Switch)  findViewById(R.id.Hotspot_switch);
+        HotSpotSwitch = (Switch)  findViewById(R.id.Hotspot_switch);
         HotSpotSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -68,7 +76,6 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
                 if(isChecked)
                 {
                    appState.setHotspot(true);
-
                     Toast.makeText(getApplicationContext(), "You have found a HotSpot", Toast.LENGTH_SHORT).show();
                 }
                 else
@@ -78,7 +85,9 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
                 }
             }
         });
-
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        WifiSwitch.setChecked(appState.getWifi());
+        HotSpotSwitch.setChecked(appState.getHotspot());
     }
 
     public void onItemSelected(AdapterView<?> parent, View view,
@@ -132,4 +141,14 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
+
+    public void toggleWiFi(boolean status) {
+        WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
+        if (status == true && !wifiManager.isWifiEnabled()) {
+            wifiManager.setWifiEnabled(true);
+        } else if (status == false && wifiManager.isWifiEnabled()) {
+            wifiManager.setWifiEnabled(false);
+        }
+    }
+
 }

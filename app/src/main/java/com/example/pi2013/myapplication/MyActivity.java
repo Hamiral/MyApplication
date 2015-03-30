@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,6 +59,12 @@ public class MyActivity extends BaseActivity{
             textView.setText("No Hotspot found.");
             textView.setTextColor(Color.RED);
         }
+        else if (!appState.getLogged() && appState.getHotspot())
+        {
+            button_dynamic.setText("Sign In");
+            textView.setText("Hotspot found !");
+            textView.setTextColor(Color.GREEN);
+        }
         else
         {
             button_dynamic.setText("Sign In");
@@ -67,10 +74,13 @@ public class MyActivity extends BaseActivity{
 
     }
 
+    @Override
     public void onRestart()
     {
         super.onRestart();
         update();
+        invalidateOptionsMenu();
+
     }
 
 }
