@@ -83,4 +83,8 @@
     <string name="signup_password_confirm">Confirm Password</string>
     <string name="signup_useragreement">I have read and accept the user license and service agreement</string>
 
+    <!-- Nouvelle Version Main-->
+    <string name="TextHotspot">Bienvenue! \nVeuillez rentrer vos identifiants, afin de vous connecter à votre compte Nomosphère.</string>
+
+
 </resources>
