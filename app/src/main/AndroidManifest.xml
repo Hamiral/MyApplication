@@ -10,6 +10,7 @@
         android:allowBackup="true"
         android:configChanges="locale"
         android:label="@string/app_name"
+        android:icon="@drawable/ic_logo_client"
         android:theme="@style/AppTheme"
         android:uiOptions="splitActionBarWhenNarrow" >
         <activity
@@ -35,11 +36,6 @@
         <activity
             android:name=".LaunchActivity"
             android:label="@string/title_activity_launch" >
-        </activity>
-        <activity
-            android:name=".ConnexionActivity"
-            android:label="@string/title_activity_connexion"
-            android:launchMode="singleInstance" >
         </activity>
         <activity
             android:name=".AccountManagementActivity"
@@ -71,7 +67,7 @@
             android:launchMode="singleInstance" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.pi2013.myapplication.ConnexionActivity" />
+                android:value="com.example.pi2013.myapplication.MyActivity" />
         </activity>
         <activity
             android:name=".LostAccountActivity"
@@ -79,7 +75,7 @@
             android:launchMode="singleInstance">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.pi2013.myapplication.ConnexionActivity" />
+                android:value="com.example.pi2013.myapplication.MyActivity" />
         </activity>
 
     </application>

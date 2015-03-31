@@ -21,7 +21,7 @@ public class AccountManagementActivity extends BaseActivity {
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         appState.setLogged(false);
-        Intent intent = new Intent(this,ConnexionActivity.class);
+        Intent intent = new Intent(this,MyActivity.class);
         startActivity(intent);
     }
 

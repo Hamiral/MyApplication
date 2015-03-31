@@ -84,7 +84,8 @@
     <string name="signup_useragreement">I have read and accept the user license and service agreement</string>
 
     <!-- Nouvelle Version Main-->
-    <string name="TextHotspot">Bienvenue! \nVeuillez rentrer vos identifiants, afin de vous connecter à votre compte Nomosphère.</string>
-
+    <string name="HotSpotFound">Bienvenue! \nVous êtes dans une zone Wi-Fi</string>
+    <string name="NotSignedIn">Bienvenue! \nVeuillez rentrer vos identifiants, afin de vous connecter à votre compte Nomosphère.</string>
+    <string name="NoHotSpotFound">Bienvenue! \nVeuillez vous rendre dans une zone de couverture Wi-Fi pour bénéficier d *un accès internet gratuit</string>
 
 </resources>
