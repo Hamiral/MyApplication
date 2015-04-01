@@ -4,11 +4,9 @@
     android:layout_height="fill_parent"
     tools:context="com.example.pi2013.myapplication.MyActivity"
     android:orientation="vertical"
-<<<<<<< HEAD
-    style="@style/StyleNomosphere">
-=======
+    style="@style/StyleNomosphere"
     android:id="@+id/activity_my">
->>>>>>> origin/Alex2
+
     <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
@@ -116,13 +114,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="login"
-<<<<<<< HEAD
-                android:text="@string/Login"
-                android:gravity="center" />
-=======
+                android:gravity="center"
                 android:text="@string/button_main_login"
                 />
->>>>>>> origin/Alex2
 
             <Button
                 android:id="@+id/button_Sign_Up"
@@ -154,14 +148,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button_dynamic"
-<<<<<<< HEAD
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:onClick="onClickButton"
-=======
             android:layout_weight="0.85"
             android:onClick="onClickButtonDynamic"
->>>>>>> origin/Alex2
             android:layout_gravity="center_vertical"
             android:visibility="gone" />
 
