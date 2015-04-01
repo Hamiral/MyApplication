@@ -8,19 +8,9 @@ import android.app.Application;
  */
 public class GlobalVariable extends Application {
     private boolean wifi=false;
-    private boolean LanguageChanged=false;
     private boolean Hotspot=false;
     private boolean Logged=false;
-    private MyActivity myActivity;
 
-
-    public boolean getLanguageChanged() {
-        return LanguageChanged;
-    }
-
-    public void setLanguageChanged(boolean languageChanged) {
-        LanguageChanged = languageChanged;
-    }
 
     public boolean getWifi() {
         return wifi;

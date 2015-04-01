@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/signup_email"
+        android:text="@string/textview_signup_email"
         android:id="@+id/Textview_signup" />
 
     <EditText
@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/signup_password"
+        android:text="@string/textview_signup_password"
         android:id="@+id/signup_password" />
 
     <EditText
@@ -41,7 +41,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/signup_password_confirm"
+        android:text="@string/textview_signup_password_confirm"
         android:id="@+id/signup_password_confirm" />
 
     <EditText
@@ -53,7 +53,7 @@
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/signup_useragreement"
+        android:text="@string/checkbox_signup_useragreement"
         android:id="@+id/signup_useragreement"
         android:checked="false" />
 </LinearLayout>

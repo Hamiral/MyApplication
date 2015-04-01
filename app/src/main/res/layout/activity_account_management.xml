@@ -10,26 +10,16 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/textview_id"
+        android:text="@string/textview_accountManagement_id"
         android:id="@+id/Textview_id" />
-
-    <!--TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/textview_modify_password"
-        android:textColor="@color/blue"
-        android:id="@+id/textview_modify_password" /-->
-
-
-
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_disconnect"
+        android:text="@string/button_accountManagement_disconnect"
         android:id="@+id/button_disconnect"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="155dp"
-        android:onClick="Disconnect"/>
+        android:onClick="onClickDisconnect"/>
 </RelativeLayout>
