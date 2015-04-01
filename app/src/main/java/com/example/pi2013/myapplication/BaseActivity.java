@@ -37,10 +37,6 @@ public class  BaseActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         switch (id) {
-
-          /*  case R.id.action_logged:
-                openLogged();
-                return true;*/
             case R.id.action_ID:
                 openID();
                 return true;
@@ -58,10 +54,6 @@ public class  BaseActivity extends ActionBarActivity {
         }
     }
 
-    private void openLogged() {
-        Intent intent = new Intent(this, ConnexionActivity.class);
-        startActivity(intent);
-    }
 
     private void openMAPS() {
         Intent intent = new Intent(this, MapActivity.class);
