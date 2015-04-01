@@ -7,4 +7,10 @@
         <item name="android:icon">@drawable/ic_logo_client</item>
     </style>
 
+    <style name="StyleNomosphere">
+        <item name="android:icon">@drawable/ic_logo_nomosphere</item>
+        <item name="android:background">@drawable/fond_nomosphere</item>
+        <item name="android:textColor">@color/bleuNomosphere</item>
+    </style>
+
 </resources>
