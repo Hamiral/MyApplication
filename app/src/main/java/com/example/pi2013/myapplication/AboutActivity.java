@@ -13,6 +13,7 @@ public class AboutActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        getActionBar().setTitle(getResources().getString(R.string.title_activity_about));
     }
 
 

@@ -4,7 +4,11 @@
     android:layout_height="fill_parent"
     tools:context="com.example.pi2013.myapplication.MyActivity"
     android:orientation="vertical"
+<<<<<<< HEAD
     style="@style/StyleNomosphere">
+=======
+    android:id="@+id/activity_my">
+>>>>>>> origin/Alex2
     <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
@@ -50,7 +54,7 @@
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="WiFi activé"
+                android:text="@string/switch_main_Wifi"
                 android:id="@+id/switchWiFi"
                 android:checked="false"
                 android:layout_above="@+id/linearLayout"
@@ -69,7 +73,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/textview_login"
+            android:text="@string/textview_main_login"
             android:id="@+id/Textview_login" />
 
         <EditText
@@ -82,7 +86,7 @@
             android:id="@+id/textview_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/textview_password"
+            android:text="@string/textview_main_password"
             />
 
         <EditText
@@ -96,7 +100,7 @@
             android:id="@+id/checkbox_Remember_Me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/textcheckbox_Remember_Me"
+            android:text="@string/checkbox_main_Remember_Me"
             android:onClick="onClickRememberMe"
             android:layout_gravity="center_horizontal" />
 
@@ -112,15 +116,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="login"
+<<<<<<< HEAD
                 android:text="@string/Login"
                 android:gravity="center" />
+=======
+                android:text="@string/button_main_login"
+                />
+>>>>>>> origin/Alex2
 
             <Button
                 android:id="@+id/button_Sign_Up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="signUp"
-                android:text="@string/Sign_Up"
+                android:onClick="onClickSignUp"
+                android:text="@string/button_main_sign_up"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -132,10 +141,10 @@
                 android:id="@+id/I_ve_lost_my_pswd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/I_ve_Lost_My_Pswd"
+                android:text="@string/textview_main_password_lost"
                 android:textColor="@color/blue"
                 android:textColorLink="@color/blue"
-                android:onClick="lostMyPswd"
+                android:onClick="onClickLostMyPswd"
                 android:clickable="true"
                 android:layout_gravity="center_horizontal"
                 />
@@ -145,9 +154,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button_dynamic"
+<<<<<<< HEAD
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:onClick="onClickButton"
+=======
+            android:layout_weight="0.85"
+            android:onClick="onClickButtonDynamic"
+>>>>>>> origin/Alex2
             android:layout_gravity="center_vertical"
             android:visibility="gone" />
 

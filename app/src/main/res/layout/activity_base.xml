@@ -7,7 +7,4 @@
     tools:context="com.example.pi2013.myapplication.BaseActivity"
     style="@style/StyleNomosphere">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
 </RelativeLayout>

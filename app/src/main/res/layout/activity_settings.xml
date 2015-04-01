@@ -17,28 +17,28 @@
     <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/wifi_state"
+        android:text="@string/switch_settings_wifi"
         android:id="@+id/state_wifi"
         android:checked="false" />
 
     <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Notifications"
+        android:text="@string/switch_settings_notifications"
         android:id="@+id/notifications"
         android:checked="false" />
 
     <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Hotspot_state"
+        android:text="@string/switch_settings_hotspot"
         android:id="@+id/Hotspot_switch"
         android:checked="false" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/bt_user_agreement"
+        android:text="@string/button_settings_user_agreement"
         android:id="@+id/user_agreement"
         android:layout_weight="0.07"
         android:onClick="start_user_agreement_activity"/>
@@ -46,7 +46,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/bt_about"
+        android:text="@string/button_settings_about"
         android:id="@+id/about"
         android:layout_weight="0.07"
         android:onClick="start_about_activity"/>

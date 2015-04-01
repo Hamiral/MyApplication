@@ -11,8 +11,10 @@
         android:configChanges="locale"
         android:label="@string/app_name"
         android:icon="@drawable/ic_logo_client"
+
         android:theme="@style/StyleNomosphere"
         android:uiOptions="splitActionBarWhenNarrow" >
+
         <activity
             android:name=".MyActivity"
             android:label="@string/app_name"

@@ -1,5 +1,6 @@
 package com.example.pi2013.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,10 +22,14 @@ import android.widget.Toast;
 public class MyActivity extends BaseActivity{
     public final static String EXTRA_MESSAGE = "com.example.pi2013.myapplication.MESSAGE";
     private Switch WifiSwitch;
+    public static Activity MyActivity=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+        MyActivity=this;
+
         WifiSwitch = (Switch)  findViewById(R.id.switchWiFi);
         WifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -48,14 +53,19 @@ public class MyActivity extends BaseActivity{
         updateAll();
     }
     @Override
-         public void onRestart()
+    public void onRestart()
     {
         super.onRestart();
         updateAll();
-
+    }
+    @Override
+    public void finish()
+    {
+        super.finish();
+        MyActivity=null;
     }
 
-    public void onClickButton(View view)
+    public void onClickButtonDynamic(View view)
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         if(appState.getLogged() && appState.getHotspot()) {
@@ -98,27 +108,19 @@ public class MyActivity extends BaseActivity{
     public void onClickRememberMe(View view)
     {
     }
-    public void signUp(View view)
+    public void onClickSignUp(View view)
     {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
-    public void lostMyPswd(View view)
+    public void onClickLostMyPswd(View view)
     {
         Intent intent = new Intent(this, LostAccountActivity.class);
         startActivity(intent);
-        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        if(appState.getLogged())
-        {
-            Intent refresh = new Intent(this, SettingsActivity.class);
-            finish();
-            startActivity(refresh);
-        }
     }
 
     public void updateWifiState()
     {
-        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
         WifiSwitch = (Switch)  findViewById(R.id.switchWiFi);
         if (wifiManager.isWifiEnabled())
@@ -131,7 +133,7 @@ public class MyActivity extends BaseActivity{
         }
     }
 
-    public void updateLayout()
+    public void updateLayoutVisibility()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         LinearLayout layout = (LinearLayout) findViewById(R.id.Login_Layout);
@@ -159,26 +161,26 @@ public class MyActivity extends BaseActivity{
 
     }
 
-    public void update()
+    public void updateComponents()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         Button button_dynamic = (Button) findViewById(R.id.button_dynamic);
         TextView textView=(TextView) findViewById(R.id.text_accueil);
         if(appState.getLogged() && appState.getHotspot()) {
-            button_dynamic.setText("Start Browsing");
-            textView.setText(R.string.HotSpotFound);
+            button_dynamic.setText(R.string.button_main_dynamic_startBrowsing);
+            textView.setText(R.string.textview_main_HotSpotFound);
             textView.setTextColor(Color.GREEN);
         }
         else if (appState.getLogged() && !appState.getHotspot())
         {
-            button_dynamic.setText("Find a Hotspot");
-            textView.setText(R.string.NoHotSpotFound);
+            button_dynamic.setText(R.string.button_main_dynamic_FindHotspot);
+            textView.setText(R.string.textview_main_NoHotSpotFound);
             textView.setTextColor(Color.RED);
         }
         else
         {
-            button_dynamic.setText("Sign In");
-            textView.setText(R.string.NotSignedIn);
+            button_dynamic.setText(R.string.button_main_dynamic_Signin);
+            textView.setText(R.string.textview_main_NotSignedIn);
             textView.setTextColor(Color.RED);
         }
 
@@ -186,9 +188,9 @@ public class MyActivity extends BaseActivity{
 
     public void updateAll()
     {
-        update();
+        updateComponents();
         updateWifiState();
-        updateLayout();
+        updateLayoutVisibility();
         invalidateOptionsMenu();
     }
 }

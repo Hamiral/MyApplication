@@ -1,54 +1,91 @@
 <resources>
-    <string name="app_name">Mon Application</string>
-    <string name="button_send">Envoyer</string>
-    <string name="edit_message">Entrer un message</string>
-    <string name="action_settings">Paramètres</string>
-    <string name="title_activity_main">MenuPrincipal</string>
-    <string name="title_activity_display_message">MonMessage</string>
 
-    <string name="hello_world">Bonjour!</string>
-    <string name="title_activity_settings">Paramètres</string>
-    <string name="action_search">Rechercher</string>
+    <string name="app_name">Nomosphère</string>
     <string name="title_activity_base">BaseActivity</string>
-    <string name="title_activity_launch">Chargement</string>
-    <string name="title_activity_connexion_screen">Connexion</string>
-    <string name="action_main">action_main</string>
-    <string name="title_activity_connexion">Connexion</string>
-    <string name="title_activity_account_management">Gestion du Compte</string>
-    <string name="title_activity_hotspot">Recherche de Hotspot</string>
-    <string name="title_activity_map">MAPS</string>
-    <string name="title_activity_user_agreement">Condition d utilisateurs</string>
+
+    <!-- Actionbar-->
+    <string name="actionbar_Navigate">Naviguer</string>
+    <string name="actionbar_Maps">Maps</string>
+    <string name="actionbar_Account_management">Gestion du compte</string>
+    <string name="actionbar_Settings">Paramètres</string>
+
+    <!-- Page About-->
+    <string name="textview_about">Qui a fait cette application ? C\&apos;est de la merde !</string>
     <string name="title_activity_about">A propos</string>
-    <string name="title_activity_sign_up">S inscrire</string>
+
+    <!-- Page Account Management-->
+    <string name="title_activity_account_management">Gestion du compte</string>
+    <string name="button_accountManagement_disconnect">Déconnexion</string>
+    <string name="textview_accountManagement_modify_password">Changer votre mot de passe</string>
+    <string name="textview_accountManagement_id">Utilisateur : </string>
+
+    <!-- Page Launch-->
+    <string name="title_activity_launch">Launch</string>
+    <string name="description_launch_image_client">Image Client</string>
+
+    <!-- Page Lost Account-->
     <string name="title_activity_lost_account">Compte perdu</string>
 
+    <!-- Page Map-->
+    <string name="title_activity_map">Map</string>
+
+    <!-- Page My Activity-->
+
+    <string name="textview_main_HotSpotFound">Bienvenue! \nVous êtes dans une zone Wi-Fi</string>
+    <string name="textview_main_NotSignedIn">Bienvenue! \nVeuillez rentrer vos identifiants, afin de vous connecter à votre compte Nomosphère.</string>
+    <string name="textview_main_NoHotSpotFound">Bienvenue! \nVeuillez vous rendre dans une zone de couverture Wi-Fi pour bénéficier d\&apos;un accès internet gratuit</string>
+    <string name="switch_main_Wifi">Wifi</string>
+
+    <string name="button_main_dynamic_startBrowsing">Commencer la navigation</string>
+    <string name="button_main_dynamic_FindHotspot">Trouver un hotspot</string>
+    <string name="button_main_dynamic_Signin">Se connecter</string>
+
+    <string name="textview_main_login">Adresse e-mail :</string>
+    <string name="textview_main_password">Mot de passe :</string>
+    <string name="checkbox_main_Remember_Me">Se souvenir de moi</string>
+    <string name="textview_main_password_lost">J\&apos;ai oublié mon mot de passe</string>
+    <string name="button_main_sign_up">Créer un compte</string>
+    <string name="button_main_login">Se connecter</string>
+    <string name="toast_main_wrongpassword">Mauvais mot de passe</string>
+
+    <!-- Page Settings-->
+
+    <string name="title_activity_settings">Paramètres</string>
+
     <string-array name="language_choice">
-        <item>Choix du Langage</item>
+        <item>Choix du language</item>
         <item>English</item>
         <item>Français</item>
     </string-array>
 
-    <string name="description_launch_image_client">Image Client</string>
-    <string name="button_sign_in">Sign In</string>
-    <string name="button_start_browsing">Start Browsing</string>
-    <string name="button_find_a_hotspot">Find A Hotspot</string>
-    <string name="Notifications">Notifications</string>
-    <string name="wifi_state">Wifi</string>
-    <string name="bt_user_agreement">CGU</string>
-    <string name="bt_about">A propos</string>
-    <string name="user_agreement_text">User Agreement Blablabla HODOR</string>
-    <string name="about_text">WHO DID THIS ? ITS SHIT</string>
-    <string name="debug_languagestate">Language State</string>
-    <string name="debug_wifistate">Wifi State</string>
-    <string name="Login">Login</string>
-    <string name="textview_login">Login :</string>
-    <string name="textview_password">Password :</string>
-    <string name="button_dynamic">StartBrowsing</string>
-    <string name="Hotspot_state">Debug Hotspot</string>
-    <string name="button_disconnect">Disconnect</string>
-    <string name="signup_email">e-mail address</string>
-    <string name="signup_password">Password</string>
-    <string name="signup_password_confirm">Confirm Password</string>
-    <string name="signup_useragreement">I have read and accept the user license and service agreement</string>
+    <string name="button_settings_user_agreement">CGU</string>
+    <string name="button_settings_about">A propos</string>
+    <string name="switch_settings_notifications">Notifications</string>
+    <string name="switch_settings_wifi">Wifi</string>
+    <string name="switch_settings_hotspot">Debug Hotspot</string>
+
+    <string name="toast_settings_wifi_enabled">Vous avez activé le Wifi</string>
+    <string name="toast_settings_wifi_disabled">Vous avez désactivé le Wifi</string>
+    <string name="toast_settings_notification_enabled"></string>
+    <string name="toast_settings_notification_disabled"></string>
+    <string name="toast_settings_hotspot_enabled">Vous avez trouvé un Hotspot</string>
+    <string name="toast_settings_hotspot_disabled">Vous n\&apos;avez pas trouvé de Hotspot :(</string>
+
+    <string name="toast_settings_spinner_french">Vous avez choisi le français</string>
+    <string name="toast_settings_spinner_english">You have selected English</string>
+
+
+
+    <!-- Page Sign Up-->
+    <string name="title_activity_sign_up">Créer un compte</string>
+    <string name="textview_signup_email">Adresse e-mail</string>
+    <string name="textview_signup_password">Mot de passe</string>
+    <string name="textview_signup_password_confirm">Confirmer le mot de passe</string>
+    <string name="checkbox_signup_useragreement">J\&apos;ai lu et j\&apos;accepte les conditions d\&apos;utilisateur</string>
+
+    <!-- Page User Agreement-->
+    <string name="title_activity_user_agreement">Conditions d\&apos;utilisateur</string>
+    <string name="textview_user_agreement">CGU Blablabla HODOR</string>
+
 
 </resources>

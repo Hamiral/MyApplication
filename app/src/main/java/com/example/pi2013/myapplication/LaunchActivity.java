@@ -9,7 +9,6 @@ public class LaunchActivity extends BaseActivity {
     RelativeLayout layout = null;
     ImageView image_client = null;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,9 +18,6 @@ public class LaunchActivity extends BaseActivity {
         layout = (RelativeLayout) RelativeLayout.inflate(this, R.layout.activity_launch, null);
         image_client = (ImageView) layout.findViewById(R.id.image_client);
         image_client.setImageResource(R.drawable.ic_launch_client_random);
-
-
-
 
     }
 
