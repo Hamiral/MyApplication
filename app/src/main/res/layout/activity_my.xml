@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context="com.example.pi2013.myapplication.MyActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    style="@style/StyleNomosphere">
     <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
@@ -29,7 +30,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="top">
+            android:gravity="top"
+            android:backgroundTintMode="add">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -62,7 +64,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/Login_Layout"
-            android:gravity="bottom">
+            android:gravity="bottom"
+            android:backgroundTintMode="multiply">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="login"
                 android:text="@string/Login"
-                />
+                android:gravity="center" />
 
             <Button
                 android:id="@+id/button_Sign_Up"
@@ -121,7 +124,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                />
+                android:gravity="center" />
 
         </LinearLayout>
 
@@ -142,7 +145,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button_dynamic"
-            android:layout_weight="0.85"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:onClick="onClickButton"
             android:layout_gravity="center_vertical"
             android:visibility="gone" />

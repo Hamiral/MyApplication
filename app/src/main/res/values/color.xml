@@ -3,4 +3,10 @@
 
     <color name="blue">#00F</color>
     <color name="bleuNomosphere">#22a6d6</color>
+    <color name="grisNomosphereLogo">#575656</color>
+    <color name="grisNomosphereFond">#9f9f9e</color>
+    <color name="bleuAzurin">#a9fefe</color>
+    <color name="bleuCiel">#77b6fe</color>
+    <color name="bleuMaya">#73c2fb</color>
+    <color name="grisPinchard">#cccccc</color>
 </resources>
