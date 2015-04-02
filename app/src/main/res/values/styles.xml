@@ -16,22 +16,16 @@
 
 
     <!-- Bouttons Personnalisés Nomosphere-->
-    <style name="BoutonNomosphere">
+    <style name="BoutonNomosphere" parent="@android:style/Widget.Button">
         <item name="android:textColor">@color/grisNomosphereLogo</item>
-        <item name="android:background">@android:drawable/btn_default</item>
-        <item name="android:backgroundTint">@color/bleuNomosphere</item>
-        <item name="android:backgroundTintMode">src_atop</item>
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="BoutonNormal">
+    <style name="BoutonNormal" parent="@android:style/Widget.Button">
         <item name="android:textColor">@color/grisNomosphereLogo</item>
-        <item name="android:background">@android:drawable/btn_default</item>
-        <item name="android:backgroundTint">@color/grisPinchard</item>
-        <item name="android:backgroundTintMode">src_atop</item>
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_height">50dp</item>

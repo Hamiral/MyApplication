@@ -4,7 +4,6 @@
     android:layout_height="fill_parent"
     tools:context="com.example.pi2013.myapplication.MyActivity"
     android:orientation="vertical"
-    style="@style/StyleNomosphere"
     android:id="@+id/activity_my">
 
     <ScrollView android:layout_width="match_parent"
