@@ -169,19 +169,19 @@ public class MyActivity extends BaseActivity{
         if(appState.getLogged() && appState.getHotspot()) {
             button_dynamic.setText(R.string.button_main_dynamic_startBrowsing);
             textView.setText(R.string.textview_main_HotSpotFound);
-            textView.setTextColor(Color.GREEN);
+//            textView.setTextColor(Color.GREEN);
         }
         else if (appState.getLogged() && !appState.getHotspot())
         {
             button_dynamic.setText(R.string.button_main_dynamic_FindHotspot);
             textView.setText(R.string.textview_main_NoHotSpotFound);
-            textView.setTextColor(Color.RED);
+//            textView.setTextColor(Color.RED);
         }
         else
         {
             button_dynamic.setText(R.string.button_main_dynamic_Signin);
             textView.setText(R.string.textview_main_NotSignedIn);
-            textView.setTextColor(Color.RED);
+//            textView.setTextColor(Color.RED);
         }
 
     }

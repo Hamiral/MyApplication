@@ -14,7 +14,7 @@
         android:longClickable="true"
         android:contentDescription="@string/description_launch_image_client"
         android:baselineAlignBottom="false"
-        android:src="@drawable/ic_launch_client_random" />
+        android:src="@drawable/ic_logo_nomosphere" />
 
 
 </LinearLayout>

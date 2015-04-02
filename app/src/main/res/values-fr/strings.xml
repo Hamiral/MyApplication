@@ -20,7 +20,7 @@
     <string name="textview_accountManagement_id">Utilisateur : </string>
 
     <!-- Page Launch-->
-    <string name="title_activity_launch">Launch</string>
+    <string name="title_activity_launch">Nomosphère</string>
     <string name="description_launch_image_client">Image Client</string>
 
     <!-- Page Lost Account-->

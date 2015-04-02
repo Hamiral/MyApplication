@@ -10,8 +10,8 @@
         android:allowBackup="true"
         android:configChanges="locale"
         android:label="@string/app_name"
-        android:icon="@drawable/ic_logo_client"
-
+        android:logo="@drawable/ic_logo_nomosphere"
+        android:icon="@drawable/ic_logo_nomosphere"
         android:theme="@style/StyleNomosphere"
         android:uiOptions="splitActionBarWhenNarrow" >
 
@@ -19,11 +19,7 @@
             android:name=".MyActivity"
             android:label="@string/app_name"
             android:launchMode="singleInstance" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".SettingsActivity"
@@ -38,6 +34,11 @@
         <activity
             android:name=".LaunchActivity"
             android:label="@string/title_activity_launch" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".AccountManagementActivity"
