@@ -180,6 +180,20 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
        startActivity(intent);
        super.onConfigurationChanged(newConfig);
     }
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
 
-
+            WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
+            WifiSwitch = (Switch)  findViewById(R.id.state_wifi);
+            GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+            if (wifiManager.isWifiEnabled() || appState.getWifi())
+            {
+                WifiSwitch.setChecked(true);
+            }
+            else {
+                WifiSwitch.setChecked(false);
+            }
+    }
 }

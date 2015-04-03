@@ -85,6 +85,7 @@ public class MyActivity extends BaseActivity{
         }
     }
 
+
     public void login(View view) {
         EditText username = (EditText)findViewById(R.id.editText1);
         EditText password = (EditText)findViewById(R.id.editText2);
@@ -120,7 +121,8 @@ public class MyActivity extends BaseActivity{
     {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
         WifiSwitch = (Switch)  findViewById(R.id.switchWiFi);
-        if (wifiManager.isWifiEnabled())
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        if (wifiManager.isWifiEnabled() )
         {
             WifiSwitch.setChecked(true);
         }
