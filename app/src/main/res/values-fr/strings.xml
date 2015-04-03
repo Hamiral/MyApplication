@@ -53,7 +53,7 @@
     <string name="title_activity_settings">Paramètres</string>
 
     <string-array name="language_choice">
-        <item>Choix du language</item>
+        <item>Choix de la langue</item>
         <item>English</item>
         <item>Français</item>
     </string-array>

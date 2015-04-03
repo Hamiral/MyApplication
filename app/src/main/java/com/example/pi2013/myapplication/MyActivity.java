@@ -122,7 +122,7 @@ public class MyActivity extends BaseActivity{
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
         WifiSwitch = (Switch)  findViewById(R.id.switchWiFi);
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        if (wifiManager.isWifiEnabled() )
+        if (wifiManager.isWifiEnabled() ||appState.getWifi())
         {
             WifiSwitch.setChecked(true);
         }

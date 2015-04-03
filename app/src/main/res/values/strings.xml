@@ -42,10 +42,10 @@
     <string name="button_main_dynamic_FindHotspot">Find a Hotspot</string>
     <string name="button_main_dynamic_Signin">Sign In</string>
 
-    <string name="textview_main_login">Login :</string>
+    <string name="textview_main_login">E-mail address :</string>
     <string name="textview_main_password">Password :</string>
     <string name="checkbox_main_Remember_Me">Remember Me</string>
-    <string name="button_main_login">Login</string>
+    <string name="button_main_login">Log In</string>
     <string name="textview_main_password_lost">I have lost my password</string>
     <string name="button_main_sign_up">Sign Up</string>
     <string name="toast_main_wrongpassword">Wrong password</string>
