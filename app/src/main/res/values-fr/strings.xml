@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Nomosphère</string>
+    <string name="app_name">Nomosphere</string>
     <string name="title_activity_base">BaseActivity</string>
 
     <!-- Actionbar-->
@@ -10,7 +10,7 @@
     <string name="actionbar_Settings">Paramètres</string>
 
     <!-- Page About-->
-    <string name="textview_about">Qui a fait cette application ? C\&apos;est de la merde !</string>
+    <string name="textview_about">Qui a fait cette application ?</string>
     <string name="title_activity_about">A propos</string>
 
     <!-- Page Account Management-->
@@ -20,7 +20,7 @@
     <string name="textview_accountManagement_id">Utilisateur : </string>
 
     <!-- Page Launch-->
-    <string name="title_activity_launch">Nomosphère</string>
+    <string name="title_activity_launch">Nomosphere</string>
     <string name="description_launch_image_client">Image Client</string>
 
     <!-- Page Lost Account-->
@@ -58,7 +58,7 @@
         <item>Français</item>
     </string-array>
 
-    <string name="button_settings_user_agreement">CGU</string>
+    <string name="button_settings_user_agreement">Conditions Générales d\&apos;Utilisation</string>
     <string name="button_settings_about">A propos</string>
     <string name="switch_settings_notifications">Notifications</string>
     <string name="switch_settings_wifi">Wifi</string>
@@ -69,7 +69,7 @@
     <string name="toast_settings_notification_enabled"></string>
     <string name="toast_settings_notification_disabled"></string>
     <string name="toast_settings_hotspot_enabled">Vous avez trouvé un Hotspot</string>
-    <string name="toast_settings_hotspot_disabled">Vous n\&apos;avez pas trouvé de Hotspot :(</string>
+    <string name="toast_settings_hotspot_disabled">Vous n\&apos;avez pas trouvé de Hotspot </string>
 
     <string name="toast_settings_spinner_french">Vous avez choisi le français</string>
     <string name="toast_settings_spinner_english">You have selected English</string>
@@ -81,11 +81,11 @@
     <string name="textview_signup_email">Adresse e-mail</string>
     <string name="textview_signup_password">Mot de passe</string>
     <string name="textview_signup_password_confirm">Confirmer le mot de passe</string>
-    <string name="checkbox_signup_useragreement">J\&apos;ai lu et j\&apos;accepte les conditions d\&apos;utilisateur</string>
+    <string name="checkbox_signup_useragreement">J\&apos;ai lu et j\&apos;accepte les conditions d\&apos;utilisation</string>
 
     <!-- Page User Agreement-->
-    <string name="title_activity_user_agreement">Conditions d\&apos;utilisateur</string>
-    <string name="textview_user_agreement">CGU Blablabla HODOR</string>
+    <string name="title_activity_user_agreement">Conditions d\&apos;Utilisation</string>
+    <string name="textview_user_agreement">CGU</string>
 
 
 </resources>
