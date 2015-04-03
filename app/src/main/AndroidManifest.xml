@@ -54,6 +54,9 @@
             android:name=".UserAgreementActivity"
             android:label="@string/title_activity_user_agreement"
             android:launchMode="singleInstance" >
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.pi2013.myapplication.SettingsActivity" />
 
         </activity>
         <activity

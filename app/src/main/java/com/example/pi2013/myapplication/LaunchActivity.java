@@ -40,7 +40,6 @@ public class LaunchActivity extends Activity {
             res.updateConfiguration(conf, dm);
             getBaseContext().getResources().updateConfiguration(conf,
             getBaseContext().getResources().getDisplayMetrics());
-            onConfigurationChanged(conf);
 
 
         }
