@@ -7,6 +7,17 @@
     tools:context="com.example.pi2013.myapplication.SignUpActivity"
     android:orientation="vertical"
     android:weightSum="1">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/image_client"
+        android:contentDescription="@string/description_launch_image_client"
+        android:baselineAlignBottom="false"
+        android:src="@drawable/ic_logo_client"
+        android:alpha=".25"
+        />
+
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
