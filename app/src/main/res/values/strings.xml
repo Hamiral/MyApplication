@@ -1,5 +1,7 @@
 <resources>
 
+    <!--SharedPreferenced-->
+
     <string name="app_name">Nomosphère</string>
     <string name="title_activity_base">BaseActivity</string>
 

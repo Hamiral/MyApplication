@@ -2,10 +2,12 @@ package com.example.pi2013.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +23,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
     private Switch WifiSwitch;
     private Switch HotSpotSwitch;
     private Switch NotifSwitch;
+    public static final String PREFS_NAME = "com.example.pi2013.myapplication.PREFERENCE_FILE_KEY";
 
 
     @Override
@@ -114,6 +117,11 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         getBaseContext().getResources().updateConfiguration(conf,
         getBaseContext().getResources().getDisplayMetrics());
         onConfigurationChanged(conf);
+
+        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("language", lang);
+        editor.commit();
     }
 
     public void start_user_agreement_activity(View view)
@@ -172,4 +180,6 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
        startActivity(intent);
        super.onConfigurationChanged(newConfig);
     }
+
+
 }

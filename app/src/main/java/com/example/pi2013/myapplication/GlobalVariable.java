@@ -9,7 +9,7 @@ public class GlobalVariable extends Application {
     private boolean wifi=false;
     private boolean Hotspot=false;
     private boolean Logged=false;
-
+    public static final String PREFS_NAME = "com.example.pi2013.myapplication.PREFERENCE_FILE_KEY";
 
     public boolean getWifi() {
         return wifi;

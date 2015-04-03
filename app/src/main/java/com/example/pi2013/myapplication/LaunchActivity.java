@@ -1,9 +1,16 @@
 package com.example.pi2013.myapplication;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+
+import java.util.Locale;
 
 
 public class LaunchActivity extends Activity {
@@ -21,6 +28,21 @@ public class LaunchActivity extends Activity {
         @Override
         protected void onPreExecute() {
             setContentView(R.layout.activity_launch);
+            SharedPreferences settings = getSharedPreferences(SettingsActivity.PREFS_NAME, 0);
+            String lang=settings.getString("language", Locale.getDefault().getLanguage() );
+
+            Locale myLocale;
+            myLocale = new Locale(lang);
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = myLocale;
+            res.updateConfiguration(conf, dm);
+            getBaseContext().getResources().updateConfiguration(conf,
+            getBaseContext().getResources().getDisplayMetrics());
+            onConfigurationChanged(conf);
+
+
         }
 
         //The code to be executed in a background thread.
