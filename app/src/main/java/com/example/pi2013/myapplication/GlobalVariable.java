@@ -1,6 +1,5 @@
 package com.example.pi2013.myapplication;
 
-import android.app.Activity;
 import android.app.Application;
 
 /**

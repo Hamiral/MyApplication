@@ -1,14 +1,10 @@
 package com.example.pi2013.myapplication;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 
 public class  BaseActivity extends ActionBarActivity {

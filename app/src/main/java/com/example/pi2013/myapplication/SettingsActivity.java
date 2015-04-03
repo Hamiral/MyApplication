@@ -6,26 +6,18 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.util.DisplayMetrics;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
-import java.util.Map;
 
 public class SettingsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
-    public static final String WIFI ="com.example.pi2013.myapplication.WIFI";
-    public static final String HOTSPOT ="com.Example.pi2013.myapplication.HOTSPOT";
     private Switch WifiSwitch;
     private Switch HotSpotSwitch;
     private Switch NotifSwitch;
@@ -137,10 +129,10 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
     public void toggleWiFi(boolean status) {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
-        if (status == true && !wifiManager.isWifiEnabled()) {
+        if (status && !wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(true);
         }
-        else if (status == false && wifiManager.isWifiEnabled()) {
+        else if (!status && wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(false);
         }
     }

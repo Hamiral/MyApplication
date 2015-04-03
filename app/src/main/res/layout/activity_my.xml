@@ -127,7 +127,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:gravity="center" />
+                android:gravity="center"
+                android:elegantTextHeight="false" />
 
         </LinearLayout>
 

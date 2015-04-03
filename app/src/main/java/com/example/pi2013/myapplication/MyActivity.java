@@ -3,12 +3,9 @@ package com.example.pi2013.myapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -81,9 +78,9 @@ public class MyActivity extends BaseActivity{
 
     public void toggleWiFi(boolean status) {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
-        if (status == true && !wifiManager.isWifiEnabled()) {
+        if (status && !wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(true);
-        } else if (status == false && wifiManager.isWifiEnabled()) {
+        } else if (!status && wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(false);
         }
     }
