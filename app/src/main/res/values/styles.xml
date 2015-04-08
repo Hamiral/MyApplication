@@ -6,6 +6,8 @@
         <item name="android:windowAnimationStyle">@null</item>
     </style>
 
+
+    <!--Création d'un style personnalisé aux couleurs de Nomosphere-->
     <style name="StyleNomosphere" parent="@style/AppTheme">
 
         <item name="android:actionMenuTextColor">@color/bleuNomosphere</item>
@@ -14,7 +16,7 @@
 
     </style>
 
-    <!-- Bouttons Personnalisés Nomosphere-->
+    <!-- Boutton Personnalisé aux couleurs de Nomosphere-->
     <style name="BoutonNomosphere" parent="@android:style/Widget.Button">
         <item name="android:textColor">@color/grisNomosphereLogo</item>
         <item name="android:color">#22a6d6</item>
@@ -34,9 +36,8 @@
     </style>
 
 
-    <!-- ActionBar styles -->
-    <style name="MyActionBar"
-        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+    <!-- ActionBar style -->
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/bleuNomosphere</item>
         <item name="android:backgroundSplit">@color/bleuNomosphere</item>
         <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
