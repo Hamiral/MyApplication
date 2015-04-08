@@ -30,15 +30,83 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_settings);
+        getActionBar().setTitle(getResources().getString(R.string.title_activity_settings));
+
+        initSpinner_ChoixLangue();
+        initSwitch_HotSpotSwitch();
+        initSwitch_WifiSwitch();
+
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        WifiSwitch.setChecked(appState.getWifi());
+        HotSpotSwitch.setChecked(appState.getHotspot());
+
+    }
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+
+        WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
+        WifiSwitch = (Switch)  findViewById(R.id.state_wifi);
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        if (wifiManager.isWifiEnabled() || appState.getWifi())
+        {
+            WifiSwitch.setChecked(true);
+        }
+        else {
+            WifiSwitch.setChecked(false);
+        }
+    }
+
+    /**
+     * Initialize the Spinner to get all the possible language from the string.xml
+     * See the onItemSelected() function below
+     */
+    public void initSpinner_ChoixLangue()
+    {
         Spinner ChoixLangue = (Spinner) findViewById(R.id.language_choice);
         ChoixLangue.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.language_choice, android.R.layout.simple_spinner_item);
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ChoixLangue.setAdapter(adapter);
+    }
 
+    /**
+     * Listener to the language change spinner
+     * @param parent
+     * @param view
+     * @param pos
+     * @param id
+     */
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        switch(pos)
+        {
+            case 1 :
+            {
+                Toast.makeText(parent.getContext(),
+                        R.string.toast_settings_spinner_english, Toast.LENGTH_SHORT)
+                        .show();
+                setLocale("en");
+            }
+            case 2 :
+            {
+                Toast.makeText(parent.getContext(),
+                        R.string.toast_settings_spinner_french, Toast.LENGTH_SHORT)
+                        .show();
+                setLocale("fr");
+            }
+        }
+
+    }
+
+    /**
+     * Initialize the listener for the Wifi Switch
+     */
+    public void initSwitch_WifiSwitch()
+    {
         WifiSwitch = (Switch)  findViewById(R.id.state_wifi);
         WifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -60,6 +128,13 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
             }
         });
+    }
+
+    /**
+     * Initialize the listener for the HotSpot Switch
+     */
+    public void initSwitch_HotSpotSwitch()
+    {
 
         HotSpotSwitch = (Switch)  findViewById(R.id.Hotspot_switch);
         HotSpotSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -68,44 +143,27 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
                 GlobalVariable appState = ((GlobalVariable)getApplicationContext());
                 if(isChecked)
                 {
-                   appState.setHotspot(true);
+                    appState.setHotspot(true);
                     Toast.makeText(getApplicationContext(), R.string.toast_settings_hotspot_enabled, Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                   appState.setHotspot(false);
+                    appState.setHotspot(false);
                     Toast.makeText(getApplicationContext(), R.string.toast_settings_hotspot_disabled, Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        WifiSwitch.setChecked(appState.getWifi());
-        HotSpotSwitch.setChecked(appState.getHotspot());
-        getActionBar().setTitle(getResources().getString(R.string.title_activity_settings));
-    }
-
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
-        if (pos==1)
-        {
-            Toast.makeText(parent.getContext(),
-                    R.string.toast_settings_spinner_english, Toast.LENGTH_SHORT)
-                .show();
-            setLocale("en");
-        }
-        if (pos==2)
-        {
-            Toast.makeText(parent.getContext(),
-                    R.string.toast_settings_spinner_french, Toast.LENGTH_SHORT)
-                    .show();
-            setLocale("fr");
-        }
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
 
+    /**
+     * Change the language of the application and register it in the SharedPreferences for the future
+     * uses of the application
+     * @param lang
+     */
     public void setLocale(String lang) {
         Locale myLocale;
         myLocale = new Locale(lang);
@@ -135,6 +193,10 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         startActivity(intent);
     }
 
+    /**
+     * Enable or Disable the wifi state of the device
+     * @param status
+     */
     public void toggleWiFi(boolean status) {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
         if (status && !wifiManager.isWifiEnabled()) {
@@ -144,6 +206,11 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
             wifiManager.setWifiEnabled(false);
         }
     }
+
+    /**
+     * End all activities if the language has changed
+     * @param newConfig
+     */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
        if(AccountManagementActivity.AccountManagementActivity!=null)
@@ -180,20 +247,6 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
        startActivity(intent);
        super.onConfigurationChanged(newConfig);
     }
-    @Override
-    public void onRestart()
-    {
-        super.onRestart();
 
-            WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
-            WifiSwitch = (Switch)  findViewById(R.id.state_wifi);
-            GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-            if (wifiManager.isWifiEnabled() || appState.getWifi())
-            {
-                WifiSwitch.setChecked(true);
-            }
-            else {
-                WifiSwitch.setChecked(false);
-            }
-    }
+
 }

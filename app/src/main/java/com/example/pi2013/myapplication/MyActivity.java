@@ -15,53 +15,86 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-public class MyActivity extends BaseActivity{
+/**
+ * Main activity
+ * The layout is changed dynamically according to the different states possible of the application
+ * To get more information about the layout display, please check the updatelayout() function or the document
+ */
+public class MyActivity extends BaseActivity {
     public final static String EXTRA_MESSAGE = "com.example.pi2013.myapplication.MESSAGE";
     private Switch WifiSwitch;
-    public static Activity MyActivity=null;
+    public static Activity MyActivity = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
-        MyActivity=this;
+        MyActivity = this;
+        createListenerforWifiSwitch();
 
-        WifiSwitch = (Switch)  findViewById(R.id.switchWiFi);
-        WifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-                if(isChecked)
-                {
-                    appState.setWifi(true);
-                    toggleWiFi(true);
-                    updateAll();
-                }
-                else
-                {
-                    appState.setWifi(false);
-                    toggleWiFi(false);
-                    updateAll();
-                }
-
-            }
-        });
         updateAll();
     }
+
     @Override
-    public void onRestart()
-    {
+    public void onRestart() {
         super.onRestart();
         updateAll();
     }
+
     @Override
-    public void finish()
-    {
+    public void finish() {
         super.finish();
-        MyActivity=null;
+        MyActivity = null;
     }
 
+    public void createListenerforWifiSwitch() {
+    WifiSwitch=(Switch) findViewById(R.id.switchWiFi);
+    WifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+
+    {
+       /**
+       *
+       * if the state of the switch change, toggleWifi will be called to change the wifi of the device
+        * and update the layout activity according to the changes
+       * @param buttonView
+       * @param isChecked
+       */
+        public void onCheckedChanged (CompoundButton buttonView,boolean isChecked){
+
+        GlobalVariable appState = ((GlobalVariable) getApplicationContext());
+        if (isChecked) {
+            appState.setWifi(true);
+            toggleWiFi(true);
+            updateAll();
+        } else {
+            appState.setWifi(false);
+            toggleWiFi(false);
+            updateAll();
+        }
+
+    }
+    }
+
+    );
+}
+
+    /**
+     * Change the Wifi state of the device
+     * @param status
+     */
+    public void toggleWiFi(boolean status) {
+        WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
+        if (status && !wifiManager.isWifiEnabled()) {
+            wifiManager.setWifiEnabled(true);
+        } else if (!status && wifiManager.isWifiEnabled()) {
+            wifiManager.setWifiEnabled(false);
+        }
+    }
+
+    /**
+     * The button will either open the default browser of the device or call MapActivity to find a Hotspot
+     * @param view
+     */
     public void onClickButtonDynamic(View view)
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
@@ -76,15 +109,11 @@ public class MyActivity extends BaseActivity{
         }
     }
 
-    public void toggleWiFi(boolean status) {
-        WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
-        if (status && !wifiManager.isWifiEnabled()) {
-            wifiManager.setWifiEnabled(true);
-        } else if (!status && wifiManager.isWifiEnabled()) {
-            wifiManager.setWifiEnabled(false);
-        }
-    }
 
+    /**
+     * Login function
+     * @param view
+     */
 
     public void login(View view) {
         EditText username = (EditText)findViewById(R.id.editText1);
@@ -106,6 +135,8 @@ public class MyActivity extends BaseActivity{
     public void onClickRememberMe(View view)
     {
     }
+
+
     public void onClickSignUp(View view)
     {
         Intent intent = new Intent(this, SignUpActivity.class);
@@ -117,6 +148,9 @@ public class MyActivity extends BaseActivity{
         startActivity(intent);
     }
 
+    /**
+     * update the WifiSwitch state if changes has been made outside of the activity
+     */
     public void updateWifiState()
     {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
@@ -124,67 +158,76 @@ public class MyActivity extends BaseActivity{
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         if (wifiManager.isWifiEnabled() ||appState.getWifi())
         {
+            appState.setWifi(true);
             WifiSwitch.setChecked(true);
         }
         else
         {
+            appState.setWifi(false);
             WifiSwitch.setChecked(false);
         }
     }
 
+    /**
+     * Update the layout
+     * What is updated is the layout for the login and the dynamic button
+     */
     public void updateLayoutVisibility()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        LinearLayout layout = (LinearLayout) findViewById(R.id.Login_Layout);
-        Button button = (Button) findViewById(R.id.button_dynamic);
+        LinearLayout login_layout = (LinearLayout) findViewById(R.id.Login_Layout);
+        Button button_dynamic = (Button) findViewById(R.id.button_dynamic);
         if(!appState.getLogged())
         {
-            layout.setVisibility(View.VISIBLE);
-            button.setVisibility(View.GONE);
+            login_layout.setVisibility(View.VISIBLE);
+            button_dynamic.setVisibility(View.GONE);
         }
         else if (!appState.getHotspot() && appState.getLogged())
         {
-            layout.setVisibility(View.GONE);
-            button.setVisibility(View.VISIBLE);
+            login_layout.setVisibility(View.GONE);
+            button_dynamic.setVisibility(View.VISIBLE);
         }
         else if (appState.getWifi())
         {
-            layout.setVisibility(View.GONE);
-            button.setVisibility(View.VISIBLE);
+            login_layout.setVisibility(View.GONE);
+            button_dynamic.setVisibility(View.VISIBLE);
         }
         else
         {
-            layout.setVisibility(View.GONE);
-            button.setVisibility(View.GONE);
+            login_layout.setVisibility(View.GONE);
+            button_dynamic.setVisibility(View.GONE);
         }
 
     }
 
+    /**
+     * The texts of the activity are updated according to the state of the different global variable
+     */
     public void updateComponents()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         Button button_dynamic = (Button) findViewById(R.id.button_dynamic);
-        TextView textView=(TextView) findViewById(R.id.text_accueil);
+        TextView state_textView=(TextView) findViewById(R.id.text_accueil);
         if(appState.getLogged() && appState.getHotspot()) {
             button_dynamic.setText(R.string.button_main_dynamic_startBrowsing);
-            textView.setText(R.string.textview_main_HotSpotFound);
-//            textView.setTextColor(Color.GREEN);
+            state_textView.setText(R.string.textview_main_HotSpotFound);
         }
         else if (appState.getLogged() && !appState.getHotspot())
         {
             button_dynamic.setText(R.string.button_main_dynamic_FindHotspot);
-            textView.setText(R.string.textview_main_NoHotSpotFound);
-//            textView.setTextColor(Color.RED);
+            state_textView.setText(R.string.textview_main_NoHotSpotFound);
         }
         else
         {
             button_dynamic.setText(R.string.button_main_dynamic_Signin);
-            textView.setText(R.string.textview_main_NotSignedIn);
-//            textView.setTextColor(Color.RED);
+            state_textView.setText(R.string.textview_main_NotSignedIn);
         }
 
     }
 
+    /**
+     * Update everything
+     */
     public void updateAll()
     {
         updateComponents();

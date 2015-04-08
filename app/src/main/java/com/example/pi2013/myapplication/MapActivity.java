@@ -3,7 +3,9 @@ package com.example.pi2013.myapplication;
 import android.os.Bundle;
 
 
-
+/**
+ * Use of Google Maps activity
+ */
 
 public class MapActivity extends BaseActivity {
     public static MapActivity MapActivity=null;

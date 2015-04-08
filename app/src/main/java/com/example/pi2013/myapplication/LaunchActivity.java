@@ -12,7 +12,10 @@ import android.util.DisplayMetrics;
 
 import java.util.Locale;
 
-
+/**
+ *
+ *
+ */
 public class LaunchActivity extends Activity {
 
     @Override
@@ -28,9 +31,17 @@ public class LaunchActivity extends Activity {
         @Override
         protected void onPreExecute() {
             setContentView(R.layout.activity_launch);
+
+            language_select();
+
+        }
+
+        // Charge default language of the application (previously chosen by the user in the Settings)
+        private void language_select()
+        {
+
             SharedPreferences settings = getSharedPreferences(SettingsActivity.PREFS_NAME, 0);
             String lang=settings.getString("language", Locale.getDefault().getLanguage() );
-
             Locale myLocale;
             myLocale = new Locale(lang);
             Resources res = getResources();
@@ -39,11 +50,8 @@ public class LaunchActivity extends Activity {
             conf.locale = myLocale;
             res.updateConfiguration(conf, dm);
             getBaseContext().getResources().updateConfiguration(conf,
-            getBaseContext().getResources().getDisplayMetrics());
-
-
+                    getBaseContext().getResources().getDisplayMetrics());
         }
-
         //The code to be executed in a background thread.
         @Override
         protected Void doInBackground(Void... params) {
@@ -51,7 +59,7 @@ public class LaunchActivity extends Activity {
             try {
                 //Get the current thread's token
                 synchronized (this) {
-                    this.wait(3000);
+                    this.wait(3000); // timer in milliseconds
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

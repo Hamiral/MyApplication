@@ -2,7 +2,9 @@ package com.example.pi2013.myapplication;
 
 import android.os.Bundle;
 
-
+/**
+ * Activity if the user has lost his account
+ */
 public class LostAccountActivity extends BaseActivity {
     public static LostAccountActivity LostAccountActivity=null;
 
