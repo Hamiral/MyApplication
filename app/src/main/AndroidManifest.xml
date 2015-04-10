@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="com.example.pi2013.myapplication.GlobalVariable"
@@ -44,7 +46,8 @@
         <activity
             android:name=".AccountManagementActivity"
             android:label="@string/title_activity_account_management"
-            android:launchMode="singleInstance" >
+            android:launchMode="singleInstance"
+            android:permission="android.permission.INTERNET">
         </activity>
         <activity
             android:name=".MapActivity"
