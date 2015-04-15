@@ -1,6 +1,8 @@
 package com.example.pi2013.myapplication;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 /**
  * Created by pi2013 on 26/03/2015.
@@ -35,4 +37,42 @@ public class GlobalVariable extends Application {
         Logged = logged;
     }
 
+    public void putPref(String key, String value, Context context)
+    {
+        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+    public void putPrefBool(String key,boolean value, Context context)
+    {
+        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean(key,value);
+        editor.commit();
+    }
+
+    public String getPref(String key, Context context)
+    {
+        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return sharedPref.getString(key, null);
+    }
+
+    public boolean getPrefBool(String key, Context context)
+    {
+        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return sharedPref.getBoolean(key, false);
+    }
+
+    public void removePref(String key, Context context)
+    {
+        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove(key);
+        editor.commit();
+    }
+
+
+
 }
+
