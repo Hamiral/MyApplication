@@ -21,6 +21,8 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+
+    <!-- Bouttons Personnalisés Nomosphere-->
     <!-- Boutton Personnalisé aux couleurs de Nomosphere-->
     <style name="BoutonNomosphere" parent="@android:style/Widget.Button">
         <item name="android:textColor">@color/grisNomosphereLogo</item>
