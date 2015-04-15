@@ -12,7 +12,7 @@
         android:id="@+id/image_client"
         android:contentDescription="@string/description_launch_image_client"
         android:baselineAlignBottom="false"
-        android:src="@drawable/ic_logo_client"
+        android:src="@drawable/ic_fond_client"
         android:alpha=".25"
         />
 
