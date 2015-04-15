@@ -215,77 +215,47 @@ public class MyActivity extends BaseActivity{
 
     public void onClickRememberMe(View view)
     {
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         this.RememberMeChecked = ((CheckBox) view).isChecked();
-        putPrefBool(PREF_REMEMBER,RememberMeChecked,getApplicationContext());
+        appState.putPrefBool(PREF_REMEMBER,RememberMeChecked,getApplicationContext());
     }
 
-    public void putPref(String key, String value, Context context)
-    {
-        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(key, value);
-        editor.commit();
-    }
-    public void putPrefBool(String key,boolean value, Context context)
-    {
-        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(key,value);
-        editor.commit();
-    }
-
-    public String getPref(String key, Context context)
-    {
-        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        return sharedPref.getString(key, null);
-    }
-
-    public boolean getPrefBool(String key, Context context)
-    {
-        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        return sharedPref.getBoolean(key, false);
-    }
-
-    public void removePref(String key, Context context)
-    {
-        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.remove(key);
-        editor.commit();
-    }
 
 
     public void rememberMe()
     {
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+
         if (RememberMeChecked)
         {
             if (!username.getText().toString().isEmpty() && !password.getText().toString().isEmpty())
             {
                 //Remember the username
-                putPref(PREF_USERNAME, username.getText().toString(), getApplicationContext());
+                appState.putPref(PREF_USERNAME, username.getText().toString(), getApplicationContext());
                 //Remember the password
-                putPref(PREF_PASSWORD, password.getText().toString(), getApplicationContext());
+                appState.putPref(PREF_PASSWORD, password.getText().toString(), getApplicationContext());
             }
             else{}
         }
         else
         {
             //remove the username that was memorized
-            removePref(PREF_USERNAME, getApplicationContext());
+            appState.removePref(PREF_USERNAME, getApplicationContext());
             //remove the password that was memorized
-            removePref(PREF_PASSWORD,getApplicationContext());
+            appState.removePref(PREF_PASSWORD,getApplicationContext());
             //remove the value of remember me memorized
-            removePref(PREF_REMEMBER, getApplicationContext());
+            appState.removePref(PREF_REMEMBER, getApplicationContext());
         }
     }
 
     public void affichageRememberMe()
     {
-        RememberMeChecked = getPrefBool(PREF_REMEMBER, getApplicationContext());
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        RememberMeChecked = appState.getPrefBool(PREF_REMEMBER, getApplicationContext());
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_Remember_Me);
         checkBox.setChecked(RememberMeChecked);
         //Fill the TextViews (will be null if not necessary)
-            username.setText(getPref(PREF_USERNAME, getApplicationContext()));
-            password.setText(getPref(PREF_PASSWORD, getApplicationContext()));
+            username.setText(appState.getPref(PREF_USERNAME, getApplicationContext()));
+            password.setText(appState.getPref(PREF_PASSWORD, getApplicationContext()));
     }
 }
