@@ -3,11 +3,14 @@ package com.example.pi2013.myapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -25,6 +28,15 @@ public class MyActivity extends BaseActivity {
     private Switch WifiSwitch;
     public static Activity MyActivity = null;
 
+    //For "Remember me"
+    public static final String PREFS_NAME = "PreferencesFile";
+    private static final String PREF_USERNAME = "username";
+    private static final String PREF_PASSWORD = "password";
+    private static final String PREF_REMEMBER = "RememberMe";
+    private boolean RememberMeChecked;
+    private EditText username;
+    private EditText password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +44,32 @@ public class MyActivity extends BaseActivity {
         MyActivity = this;
         createListenerforWifiSwitch();
 
+        username = (EditText)findViewById(R.id.editText1);
+        password = (EditText)findViewById(R.id.editText2);
+
+        WifiSwitch = (Switch)  findViewById(R.id.switchWiFi);
+        WifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+                if(isChecked)
+                {
+                    appState.setWifi(true);
+                    toggleWiFi(true);
+                    updateAll();
+                }
+                else
+                {
+                    appState.setWifi(false);
+                    toggleWiFi(false);
+                    updateAll();
+                }
+
+            }
+        });
+        affichageRememberMe();
         updateAll();
+
     }
 
     @Override
@@ -115,14 +152,15 @@ public class MyActivity extends BaseActivity {
      * @param view
      */
 
-    public void login(View view) {
-        EditText username = (EditText)findViewById(R.id.editText1);
-        EditText password = (EditText)findViewById(R.id.editText2);
+    public void login(View view)
+    {
+
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
+       if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
             //correct password
             appState.setLogged(true);
             Intent intent = new Intent(this, MyActivity.class);
+            rememberMe();
             startActivity(intent);
         } else {
             //wrong password
@@ -132,16 +170,12 @@ public class MyActivity extends BaseActivity {
         updateAll();
     }
 
-    public void onClickRememberMe(View view)
-    {
-    }
-
-
     public void onClickSignUp(View view)
     {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
+
     public void onClickLostMyPswd(View view)
     {
         Intent intent = new Intent(this, LostAccountActivity.class);
@@ -151,6 +185,8 @@ public class MyActivity extends BaseActivity {
     /**
      * update the WifiSwitch state if changes has been made outside of the activity
      */
+    // UPDATES
+
     public void updateWifiState()
     {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
@@ -234,5 +270,53 @@ public class MyActivity extends BaseActivity {
         updateWifiState();
         updateLayoutVisibility();
         invalidateOptionsMenu();
+    }
+
+    //REMEMBER ME
+
+    public void onClickRememberMe(View view)
+    {
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        this.RememberMeChecked = ((CheckBox) view).isChecked();
+        appState.putPrefBool(PREF_REMEMBER,RememberMeChecked,getApplicationContext());
+    }
+
+
+
+    public void rememberMe()
+    {
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+
+        if (RememberMeChecked)
+        {
+            if (!username.getText().toString().isEmpty() && !password.getText().toString().isEmpty())
+            {
+                //Remember the username
+                appState.putPref(PREF_USERNAME, username.getText().toString(), getApplicationContext());
+                //Remember the password
+                appState.putPref(PREF_PASSWORD, password.getText().toString(), getApplicationContext());
+            }
+            else{}
+        }
+        else
+        {
+            //remove the username that was memorized
+            appState.removePref(PREF_USERNAME, getApplicationContext());
+            //remove the password that was memorized
+            appState.removePref(PREF_PASSWORD,getApplicationContext());
+            //remove the value of remember me memorized
+            appState.removePref(PREF_REMEMBER, getApplicationContext());
+        }
+    }
+
+    public void affichageRememberMe()
+    {
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        RememberMeChecked = appState.getPrefBool(PREF_REMEMBER, getApplicationContext());
+        CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_Remember_Me);
+        checkBox.setChecked(RememberMeChecked);
+        //Fill the TextViews (will be null if not necessary)
+            username.setText(appState.getPref(PREF_USERNAME, getApplicationContext()));
+            password.setText(appState.getPref(PREF_PASSWORD, getApplicationContext()));
     }
 }
