@@ -31,7 +31,6 @@ public class LaunchActivity extends Activity {
         @Override
         protected void onPreExecute() {
             setContentView(R.layout.activity_launch);
-
             language_select();
 
         }
