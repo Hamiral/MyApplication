@@ -23,9 +23,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -33,6 +36,7 @@ import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -45,6 +49,7 @@ public class AccountManagementActivity extends BaseActivity {
     public static AccountManagementActivity AccountManagementActivity=null;
     public static String URL_link;
     public  JSONObject JSONContent;
+    public static String URL_cmd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +75,8 @@ public class AccountManagementActivity extends BaseActivity {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    JSONContent = requestWebService(URL_link);
+                    URL_cmd="/login";
+                    JSONContent = requestWebService(URL_link,URL_cmd);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -81,32 +87,85 @@ public class AccountManagementActivity extends BaseActivity {
             @Override
             protected void onPostExecute(Void result) {
                 TextView textView = (TextView) findViewById(R.id.Textview_id);
-                textView.setText(URL_link + JSONContent);
+                textView.setText(URL_link +URL_cmd+ JSONContent);
             }
         }
 
-   public static JSONObject requestWebService(String serviceUrl) throws IOException{
-        InputStream in = null;
+   public static JSONObject requestWebService(String serviceUrl, String cmdUrl) throws IOException{
+       InputStream in = null;
+       OutputStream out = null;
        HttpURLConnection urlConnection = null;
         try {
             // create connection
-           URL url = new URL(serviceUrl);
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setConnectTimeout(15000);
-            urlConnection.setReadTimeout(10000);
-            urlConnection.setRequestMethod("GET");
-            urlConnection.setDoInput(true);
+            if (cmdUrl=="/status") {
+                URL url = new URL(serviceUrl + cmdUrl);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setRequestProperty("Content-Type", "application/json");
+                urlConnection.setRequestProperty("Accept", "application/json");
+                urlConnection.setDoInput(true);
 
-            urlConnection.connect();
-            // handle issues
-            int statusCode = urlConnection.getResponseCode();
-            Log.d(DEBUG_TAG, "The response is: " + statusCode);
+                urlConnection.connect();
+                // handle issues
+                int statusCode = urlConnection.getResponseCode();
+                Log.d(DEBUG_TAG, "The response is: " + statusCode);
 
-            // create JSON object from content
-           in =  urlConnection.getInputStream();
-            String input = readIt(in,500);
-            JSONObject jsonObject = new JSONObject(input);
-            return jsonObject;
+                // create JSON object from content
+                in = urlConnection.getInputStream();
+                String input = readIt(in, 500);
+                JSONObject jsonObject = new JSONObject(input);
+                return jsonObject;
+            }
+            else if(cmdUrl=="/login"){
+                URL url = new URL(serviceUrl + cmdUrl);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setDoOutput(true);
+               // urlConnection.setDoInput(true);
+
+                urlConnection.connect();
+                // create JSON object from content
+
+              /*  JSONObject cred = new JSONObject();
+                cred.put("password", "momota");
+                cred.put("username", "lor.alex.f@gmail.com");*/
+                out = urlConnection.getOutputStream();
+                OutputStreamWriter wr= new OutputStreamWriter(out);
+                String urlParameters =
+                        "username=" + URLEncoder.encode("lor.alex.f@gmail.com", "UTF-8") +
+                                "&password=" + URLEncoder.encode("momota", "UTF-8");
+                wr.write(urlParameters);
+                wr.flush();
+
+                //display what returns the POST request
+
+                StringBuilder sb = new StringBuilder();
+
+                int HttpResult =urlConnection.getResponseCode();
+
+                if(HttpResult ==HttpURLConnection.HTTP_OK){
+
+                    BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"utf-8"));
+
+                    String line;
+
+                    while ((line = br.readLine()) != null) {
+                        sb.append(line);
+                    }
+
+                    br.close();
+
+                    JSONObject jsonObject= new JSONObject(""+sb.toString());
+                    return jsonObject;
+
+                }else{
+                    System.out.println(urlConnection.getResponseMessage());
+                }
+            }
             //return jsonObject.getString("authentified");
 
 
@@ -115,8 +174,7 @@ public class AccountManagementActivity extends BaseActivity {
         } catch (SocketTimeoutException e) {
             // data retrieval or connection timed out
         } catch (IOException e) {
-            // could not read response body
-            // (could not create input stream)
+            String blabla = e.getMessage();
         } catch (JSONException e) {
         } finally {
             if (urlConnection != null) {
@@ -139,7 +197,7 @@ public class AccountManagementActivity extends BaseActivity {
         WifiManager networkd = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         DhcpInfo details = networkd.getDhcpInfo();
         String gateway =intToIp(details.gateway);
-        URL_link="http://"+gateway+"/status";
+        URL_link="http://"+gateway;
     }
     public String intToIp(int i) {
 
