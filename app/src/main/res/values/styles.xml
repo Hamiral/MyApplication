@@ -21,6 +21,7 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+
     <!-- Bouttons Personnalisés Nomosphere-->
     <!-- Boutton Personnalisé aux couleurs de Nomosphere-->
     <style name="BoutonNomosphere" parent="@android:style/Widget.Button">
@@ -30,7 +31,7 @@
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_height">30dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/btn_default_modificated</item>
+        <item name="android:background">@drawable/btn_default_modified</item>
     </style>
 
     <style name="BoutonNormal" parent="@android:style/Widget.Button">

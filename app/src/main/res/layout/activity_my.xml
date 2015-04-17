@@ -105,15 +105,27 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             />
-
-        <CheckBox
-            android:id="@+id/checkbox_Remember_Me"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/checkbox_main_Remember_Me"
-            android:onClick="onClickRememberMe"
-            android:layout_gravity="center_horizontal" />
-
+         <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:id="@+id/LinearLayoutCheckbox">
+            <CheckBox
+                android:id="@+id/checkbox_Remember_Me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/checkbox_main_Remember_Me"
+                android:onClick="onClickRememberMe"
+                android:layout_gravity="center_horizontal" />
+            <CheckBox
+                android:id="@+id/checkbox_automatic_connection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/checkbox_main_automatic_connection"
+                android:onClick="onClickAutomaticConnection"
+                android:layout_gravity="center_horizontal" />
+         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -164,7 +176,24 @@
             android:layout_weight="0.85"
             android:onClick="onClickButtonDynamic"
             android:layout_gravity="center_vertical"
-            android:visibility="gone" />
+            android:visibility="gone"
+             />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_disconnect"
+            android:layout_weight="0.85"
+            android:text="@string/button_accountManagement_disconnect"
+            android:onClick="onClickButtonDisconnect"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"
+             />
+        <TextView
+            android:id="@+id/textview_debug"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
 
     </LinearLayout>
     </ScrollView>

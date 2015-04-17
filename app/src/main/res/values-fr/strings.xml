@@ -47,7 +47,7 @@
     <string name="button_main_sign_up">Créer un compte</string>
     <string name="button_main_login">Se connecter</string>
     <string name="toast_main_wrongpassword">Mauvais mot de passe</string>
-
+    <string name="checkbox_main_automatic_connection">Automatic Connection</string>
     <!-- Page Settings-->
 
     <string name="title_activity_settings">Paramètres</string>
@@ -303,6 +303,7 @@ des présentes conditions d\&apos;utilisation, la seule juridiction reconnue et 
 celle du Tribunal de Commerce de Grasse. Cette disposition est applicable même en cas de demande
 incidente, d\&apos;appel en garantie ou en cas de pluralité de défendeurs.
     </string>
+
 
 
 </resources>
