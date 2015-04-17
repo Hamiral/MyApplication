@@ -281,8 +281,6 @@ public class MyActivity extends BaseActivity {
         appState.putPrefBool(PREF_REMEMBER,RememberMeChecked,getApplicationContext());
     }
 
-
-
     public void rememberMe()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
