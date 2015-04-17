@@ -55,8 +55,9 @@ public class AccountManagementActivity extends BaseActivity {
 
         setContentView(R.layout.activity_account_management);
 
-    }
 
+
+    }
 
     public void onClickDisconnect(View view)
     {

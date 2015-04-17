@@ -86,6 +86,7 @@
     <!-- Page User Agreement-->
     <string name="title_activity_user_agreement">Conditions d\&apos;Utilisation</string>
     <string name="textview_user_agreement">CGU</string>
+    <string name="checkbox_main_automatic_connection">Automatic Connection</string>
 
 
 </resources>
