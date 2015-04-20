@@ -10,8 +10,22 @@
     <string name="actionbar_Settings">Paramètres</string>
 
     <!-- Page About-->
-    <string name="textview_about">Qui a fait cette application ?</string>
     <string name="title_activity_about">A propos</string>
+    <string name="textview_about">
+        A Propos: \n\n
+        Cette Application a été développée par:\n
+        El Awn Elouma,\n
+        Loizeau Fabrice,\n
+        Lor Alex,\n
+        et Poux Romane,\n
+        Elèves à l\&apos;Ecole Nationale Supérieure des Mines de Saint-Etienne,\n
+        Dans le cadre d\&apos;un Projet Industriel\n
+        Pour le compte de: \n\n
+        Nomosphere\n
+        140 bis rue de Rennes 75006 PARIS\n
+        09 73 01 10 03\n
+    </string>
+
 
     <!-- Page Account Management-->
     <string name="title_activity_account_management">Gestion du compte</string>
@@ -85,223 +99,224 @@
 
     <!-- Page User Agreement-->
     <string name="title_activity_user_agreement">Conditions d\&apos;Utilisation</string>
-    <string name="textview_user_agreement">Conditions générales d\&apos;utilisation du service Hotspot Wi-Fi
+    <string name="textview_user_agreement">
+        Conditions générales d\&apos;utilisation du service Hotspot Wi-Fi
         \n\n\n
-En cochant la case "J\&apos;accepte les Conditions Générales d\&apos;Utilisation", vous acceptez d\&apos;utiliser le service
-du Hotspot Wi-Fi en respectant les règles édictées dans les conditions présentées ci-dessus et devenez
-"Utilisateur" du service.
-        \n\n
-<u> Article 1. Terminologie - Définitions</u>
-        \n\n
+        En cochant la case "J\&apos;accepte les Conditions Générales d\&apos;Utilisation", vous acceptez d\&apos;utiliser le service
+        du Hotspot Wi-Fi en respectant les règles édictées dans les conditions présentées ci-dessus et devenez
+        "Utilisateur" du service.
+                \n\n
+        <u> Article 1. Terminologie - Définitions</u>
+                \n\n
 
-Utilisateur : Dénomination qui désigne l\&apos;abonné à une offre Hotspot Wi-Fi.
-Accès  à  Internet  : service  permettant  aux Clients  d\&apos;accéder  au  réseau  Internet  et  à  ses  différents services (courrier électronique, consultation  de  services en  ligne, échange de  données) à travers le
-réseau.
-Identifiants  ou  Identifiants  de  connexion  : désigne  les  codes  d\&apos;accès  (login  et  mot  de  passe) confidentiels et personnels permettant au Client de s\&apos;authentifier et de se connecter au Service Hotspot Wi-Fi.
-URL : Uniform Ressource Locator ou adresse d\&apos;un serveur. Adresse Internet permettant d\&apos;atteindre un site Web donné.
-Terminal  Wi-Fi  : Dénomination  regroupant  l\&apos;ensemble  des  appareils  informatiques  disposant  d\&apos;une connectivité Wi-Fi, tels que les ordinateurs portables, les PDAs (assistant numérique personnel), les
-téléphones mobiles dits "Smartphone" (téléphone mobile de type iPhone, Android ou Blackberry), les Tablettes tactiles, etc.
-VPN : Réseau Privé Virtuel (Virtual Private Network).
-        \n\n
-<u>Article 2. Objet</u>
-        \n\n
-Le présent document a pour objet de définir les conditions d\&apos;utilisation du service Hotspot Wi-Fi. Le service Hotspot Wi-Fi, ci-après le Service, permet à l\&apos;Utilisateur possédant un PDA ou un ordinateur
-portable compatible Wi-Fi de se connecter à Internet sans fil depuis les zones couvertes par le réseau Wi-Fi. Le Service est accessible depuis tout Terminal Wi-Fi, c\&apos;est-à-dire un terminal équipé d\&apos;une carte réseau
-Wireless LAN conforme à la norme IEEE 802.11.Il comprend les fonctions de base d\&apos;accès à l\&apos;Internet.
-Le Service ne comprend pas la fourniture de boite aux lettres ni l\&apos;hébergement de pages Web.
-Nomosphere recommande pour les ordinateurs portables des Utilisateurs la configuration suivante:
-        \n
-- ordinateur sous système d\&apos;exploitation Windows (XP, 7, Vista, 2000) ou Mac OS X,
-        \n
-- pré-équipé Wi-Fi ou muni d\&apos;une carte PCMCIA conforme aux normes IEE 802.11b/g/n et certifié
-par la Wi-Fi Alliance (information disponible sur www.wi-fi.org),
-        \n
-- disposant  d\&apos;un  navigateur  Internet  Explorer  à  partir  de  la  version  7,  Mozilla  Firefox,  Google
-Chrome ou Safari.
-        \n
-Le  bon  fonctionnement  de  la  connexion  en  mode  Wi-Fi  nécessite  obligatoirement  des  versions  de
-systèmes d\&apos;exploitation compatibles avec le Service et des cartes réseau agréées par Nomosphere. La
-liste de ces systèmes d\&apos;exploitation et cartes réseau est établie et mise à jour par Nomosphere. Elle est
-disponible  sur  demande  auprès  du  service  clients.  Il  appartient  à  l\&apos;Utilisateur  de  s\&apos;assurer  que  ses
-équipements font partie de cette liste.
-        \n\n
-<u>Article 3. Accès au service</u>
-        \n\n
-Le Service est en principe accessible 24 heures sur 24, durant les heures d\&apos;ouverture des lieux couverts par le service Hotspot Wi-Fi, dans les conditions et limites de l\&apos;offre Wi-Fi souscrite par l\&apos;Utilisateur.
-Pour accéder au Service, l\&apos;Utilisateur est tenu de fournir son login et un mot de passe (ci-après désignés " les Identifiants ").
-Par ailleurs, il est précisé que toute connexion aux URL figurant sur la présente page d\&apos;accueil après saisie des Identifiants de connexion sera décomptée du temps de connexion de l\&apos;offre Wi-Fi souscrite.
-        \n\n
-<u>Article 4. Assistance</u>
-        \n\n
-Nomosphere met  à disposition  de  l\&apos;Utilisateur  une  assistance  par email  pour  prendre  en  charge les problèmes rencontrés par les Utilisateurs et en assurer le traitement sur les aspects suivants :
-        \n
--
-support d\&apos;accès au Service,
-        \n
--
-support à l\&apos;usage du Service.
-        \n
-Cette assistance est disponible par email de 9h à 18h, sauf dimanche
-et jours fériés.
-        \n\n
-<u>Article 5. Cookies</u>
-        \n\n
-Il peut arriver que certains fichiers, appelés " cookies ", soient enregistrés sur l\&apos;ordinateur de l\&apos;Utilisateur
-lorsque  ce dernier utilise le Service. Ces fichiers nous  permettent de  vous  reconnaitre lorsque  vousvisitez notre site internet et lorsque  que  vous utilisez le Service, et facilitent ainsi la navigation  pour
-l\&apos;Utilisateur. En particulier, les cookies mémorisent les données de l\&apos;Utilisateur pour que ce dernier n\&apos;ait pas à les saisir à nouveau lors de ses visites ultérieures.
-L\&apos;Utilisateur a la faculté de les neutraliser en configurant son navigateur Internet en conséquence ou de les supprimer de son disque dur. Toutefois, l\&apos;attention de l\&apos;Utilisateur est attirée sur le fait que certains
-services  proposés ne  seront  alors  pas  accessibles  ou  ne  le  seront  que  partiellement  s\&apos;il  refuse  les cookies.
-        \n\n
-<u>Article 6. Engagements et responsabilités de l\&apos;Utilisateur</u>
-        \n\n
-Les Identifiants sont les codes d\&apos;accès permettant à l\&apos;Utilisateur de s\&apos;identifier et de se connecter au Service.  Ils  sont  personnels  et  confidentiels.  L\&apos;Utilisateur  s\&apos;engage  à  conserver  ses  Identifiants,  à
-prendre toutes les mesures nécessaires pour les maintenir confidentiels, et à ne pas les divulguer sous quelque forme que ce soit.
-Par l\&apos;utilisation de ces Identifiants, l\&apos;Utilisateur dispose d\&apos;un accès personnalisé et exclusif au Service.
-Il s\&apos;interdit donc de le céder à des tiers.
-    Tout  accès  au  Service  résultant  de  l\&apos;utilisation  des  Identifiants  de  l\&apos;Utilisateur  est  fait  sous  l\&apos;entière responsabilité de ce dernier, Nomosphere déclinant toute responsabilité de ce chef.
-En cas de perte ou de vol de ces Identifiants, l\&apos;utilisateur doit en informer Nomosphere via l\&apos;assistance téléphonique, et ceci dans les meilleurs délais afin que Nomosphere puisse les annuler.
-S\&apos;agissant de l\&apos;utilisation d\&apos;Internet, l\&apos;Utilisateur est informé que l\&apos;Internet est un réseau véhiculant des données susceptibles d\&apos;être protégées par des droits de propriété intellectuelle, littéraire, artistique ou
-d\&apos;enfreindre les dispositions légales en vigueur.
-L\&apos;Utilisateur s\&apos;interdit donc de transmettre sur l\&apos;Internet toute donnée prohibée, illicite, illégale, contraire aux bonnes mœurs ou à l\&apos;ordre public et portant atteinte ou susceptibles de porter atteinte aux droits
-de tiers et notamment aux droits de propriété intellectuelle, littéraire ou artistique.
-L\&apos;Utilisateur  s\&apos;interdit  toute  utilisation  frauduleuse,  abusive  ou  excessive  du  Service,  telle  que notamment  l\&apos;envoi  de  messages  indésirables,  comprenant  des  propos  injurieux,  diffamatoires,
-obscènes,  indécents,  illicites  ou  portant  atteinte  à  tout  droit,  notamment  les  droits  de  la  personne humaine et à la protection des mineurs, et plus généralement tout acte de spamming.
-S\&apos;agissant des produits ou des  services sur le réseau  Internet, l\&apos;Utilisateur adresse directement aux fournisseurs de contenus toute réclamation relative à l\&apos;exécution des services rendus par ceux-ci ou à
-la vente des produits par ceux-ci.
-L\&apos;Utilisateur est seul responsable de tout préjudice direct ou indirect, matériel ou immatériel causé à des tiers du fait de son utilisation propre du Service.
-L\&apos;Utilisateur  est  seul  responsable  de  l\&apos;utilisation  de  ses  Identifiants.  Toute  utilisation  du  Service effectuée en utilisant les Identifiants de l\&apos;Utilisateur est réputée avoir été faite par lui-même, sauf preuve
-contraire.
-        \n\n
-<u>Article 7. Sécurité</u>
-        \n\n
-Le niveau de codage de la voie radio est susceptible de varier en fonction des paliers de fonctionnalités introduits par Nomosphere et selon le profil de configuration de l\&apos;Utilisateur. Pour certains de ces profils,
-la voie radio n\&apos;est pas codée.
-Les communications effectuées via le Service présentent en principe le même niveau de sécurité que les communications Internet standard.
-S\&apos;il souhaite renforcer le niveau de sécurité, l\&apos;Utilisateur peut installer lui-même un logiciel de sécurité,tel  que  les  pare-feu  ou  les  VPN.  Il  est  du  ressort  du  département  informatique  ou  télécom  de  votre
-société d\&apos;installer et configurer un pare-feu ou VPN sur votre Terminal. De plus, Bien que nos services soient  compatibles  avec  la  plupart  des  réseaux  privés  virtuels  (VPN),  leur  interopérabilité  avec  le
-Service ne peuvent être garantie par Nomosphere. En outre, de par la nature de la technologie Wi-Fi, une protection absolue contre les intrusions ou les écoutes illicites ne peut être garantie.
-Nomosphere décline donc toute responsabilité concernant de tels événements.
-Il est expressément rappelé qu\&apos;Internet n\&apos;est pas un réseau sécurisé. Dans ces conditions, il appartient à  l\&apos;Utilisateur  de  prendre toutes  les mesures  appropriées  de  façon  à  protéger  ses  propres  données
-et/ou logiciels notamment de la contamination par d\&apos;éventuels virus circulant sur le réseau Internet ou de l\&apos;intrusion d\&apos;un tiers dans le système de son terminal (Ordinateur PC portable ou terminal Wi-Fi) à quelque  fin  que  ce  soit,  et  de  procéder  sur  son  terminal,  à  des  sauvegardes  préalablement  et
-postérieurement à la mise en place du Service.
-L\&apos;Utilisateur reconnaît également être pleinement informé du défaut de fiabilité du réseau Internet, tout
-particulièrement  en  termes  d\&apos;absence  de  sécurité  relative  à  la  transmission  de  données  et  de  non
-garantie des performances relatives au volume et à la rapidité de transmission des données.
-L\&apos;Utilisateur reconnaît être informé que l\&apos;intégrité, l\&apos;authent
-ification et la confidentialité des informations,
-fichiers et données de toute nature (code de carte de crédit, etc.) qu\&apos;il souhaite échanger sur le réseau
-Internet ne peuvent être garanties sur ce réseau.
-L\&apos;Utilisateur ne doit donc pas transmettre via le
-réseau Internet des messages dont il souhaiterait voir
-la confidentialité garantie de manière infaillible.
-        \n\n
-<u>Article 8. Engagements et responsabilités de Nomosphere</u>
-        \n\n
-Nomosphere met tout en œuvre pour assurer l\&apos;accès au Service souscrit mais n\&apos;est pas responsable
-des contenus accessibles par le réseau Internet et des dommages qui peuvent naître de leur utilisation à moins que ces dommages n\&apos;aient été causés intentionnellement par Nomosphere.
-Compte tenu du secret dont doivent bénéficier les correspondances privées, et des dispositions légales applicables en la matière, Nomosphere n\&apos;exerce aucun contrôle sur le contenu ou les caractéristiques
-des données reçues ou transmises par l\&apos;Utilisateur sur son réseau et/ou sur le réseau Internet. Toutefois,  pour  assurer la  bonne  gestion  du  système  d\&apos;accès  au  réseau  Internet,  Nomosphere  se
-réserve le droit de supprimer tout message ou d\&apos;empêcher toute opération de l\&apos;Utilisateur susceptible de perturber le bon fonctionnement de son réseau ou du réseau Internet ou ne respectant pas les règles
-de fonctionnement, légales, d\&apos;éthique et de déontologie.
-Il  peut  être  fait  exception  à  cette  règle  de  confidentialité  dans  les  limites  autorisées  par  la  loi,  à  la demande des autorités publiques et/ou judiciaires.
-Nomosphere  ne saurait  être  tenue  responsable  de  l\&apos;exploitation  des  données  et  informations  que l\&apos;Utilisateur aurait introduites sur le réseau Internet.
-Nomosphere  décline  toute  responsabilité  quant  aux  conséquences  d\&apos;une  utilisation  frauduleuse, abusive  ou  excessive  du Service  par  l\&apos;Utilisateur,  telle  que  notamment  l\&apos;envoi  de  messages
-indésirables, spamming, et autres cas d\&apos;utilisation pouvant ainsi perturber la disponibilité du Service ou du réseau.
-La responsabilité de Nomosphere ne peut pas être engagée, dans les cas légitimes suivants :
-        \n
--
-En cas d\&apos;utilisation de matériel non agréé par Nomosphere,
-        \n
--
-En cas de mauvaise installation et/ou de mauvaise configuration et/ou de dysfonctionnement
-du terminal Wi-Fi de l\&apos;Utilisateur et/ou de la carte réseau Wireless LAN (IEEE 802.
-11b) de son terminal,
-        \n
--
-En  cas  d\&apos;incompatibilité  ou  de  dysfonctionnement  d\&apos;une  carte  réseau  Wireless  LAN  (IEEE
-802.11b) avec le réseau Hotspot Wi-Fi, notamment si le problème est lié à un paramétrage du
-Terminal de l\&apos;Utilisateur le rendant le terminal incomp
-atible avec le Service,
-        \n
--
-En cas d\&apos;incompatibilité ou de dysfonctionnement avec des systèmes de messagerie ou avec des applications mises en place et/ou exploitées par des tiers. La possibilité d\&apos;envoyer des mails
-en utilisant un logiciel de messagerie depuis le réseau Hotspot Wi-Fi dépend du fournisseur de messagerie choisi par l\&apos;Utilisateur, certains fournisseurs n\&apos;autorisant pas l\&apos;envoi de mail depuis
-un autre réseau que le leur. Il appartient à l\&apos;Utilisateur de se reporter aux informations relatives à la configuration de son logiciel de messagerie auprès de son Fournisseur d\&apos;Accès Internet,
-Nomosphere déclinant toute responsabilité de ce chef,
-        \n
--
-En cas de mauvaise utilisation du Service par l\&apos;Utilisateur,
-        \n
--
-En cas de non-respect par l\&apos;Utilisateur de ses obligations,
-        \n
--
-En cas d\&apos;impossibilité d\&apos;accès par Internet au réseau privé virtuel (VPN) d\&apos;une entreprise,
-        \n
--
-En cas d\&apos;utilisation du Service consécutive à une divulgation, une perte ou un vol des Identifiants
-associés  au  compte  Hotspot  Wi-Fi  de  l\&apos;utilisateur,  et  plus  généralement,  d\&apos;utilisation  dudit
-Service  par  une  personne  non  autorisée,  non  consécutive  à  une  faute  de  la  société
-Nomosphere,
-        \n
--
-En cas de perturbations ou d\&apos;interruptions,
-        \n
--
-En cas de perturbations et/ou d\&apos;indisponibilité totale ou partielle, et/ou d\&apos;inter
-ruption de tout ou partie des services proposés sur les réseaux exploités par des Opérateurs Tiers,
-        \n
--
-En cas de force majeure.
-        \n\n
-Nomosphere reste également étrangère à tous litiges qui peuvent opposer l\&apos;Utilisateur à des tiers.
-        \n\n
-<u>Article 9. Suspension / Résiliation</u>
-        \n\n
-Nomosphere se réserve le droit de suspendre et de résilier l\&apos;accès au Service sans que l\&apos;Utilisateur ne
-puisse lui demander une quelconque indemnité, en cas de violation d\&apos;une des clauses des présentes
-conditions d\&apos;utilisation du service Hotspot Wi-Fi
-et notamment dans le cas où :
-        \n
--
-Nomosphere se verrait notifier par des utilisateurs d\&apos;Internet, que l\&apos;Utilisateur ne respecte pas
-le code de bonne conduite Internet ou fait un usage d\&apos;Internet de nature à porter préjudice aux
-droits des tiers, qui seraient contraire aux bonnes mœurs ou à l\&apos;ordre public,
-        \n
--
-Nomosphere se verrait notifier par des ayant droits que l\&apos;Utilisateur reproduit et/ou diffuse des
-données protégées par un droit de propriété,
-        \n
--
-Nomosphere  constaterait  des  actes  de  piratage  ou  de  tentative  d\&apos;utilisation  illicite  des informations circulant sur le réseau et ayant pour cause ou origine le compte de l\&apos;Utilisateur.
-        \n\n
-<u>Article 10. Données non personnelles et informations nominatives</u>
-        \n\n
-Nomosphere  pourra  enregistrer  certaines  données  non  personnelles  comme le  type  de  navigateur utilisé ou le lieu d\&apos;où l\&apos;Utilisateur s\&apos;est connecté au Service. Ces informations ne permettent en aucun
-cas d\&apos;établir un lien avec l\&apos;Utilisateur et servent exclusivement à renseigner Nomosphere pour qu\&apos;elle puisse offrir un service efficace sur les lieux d\&apos;accès au Service.
-Nomosphere peut également parfois indiquer aux propriétaires et exploitants de pages Web reliées aux pages du Service, le nombre d\&apos;utilisateurs qui accèdent à ces pages Web à partir des pages du Service.
-Ces informations ne permettent en aucun cas d\&apos;établir un lien avec l\&apos;Utilisateur. Il est possible que dans le cadre de l\&apos;utilisation du Service, Nomosphere recueille pendant la durée et
-pour les besoins du dit Service, des données relatives au trafic généré par l\&apos;Utilisateur, et procède au stockage, à la conservation  et au  traitement des  données de  communications effectuées, ce que le
-l\&apos;Utilisateur accepte. D\&apos;autre part, et dans l\&apos;hypothèse de recueil par Nomosphere de données nominatives, cette dernière prend  les mesures  propres  à  assurer  la  protection  et  la  confidentialité  desdites  informations  qu\&apos;elle
-détient ou qu\&apos;elle traite dans le respect des dispositions de la Loi n° 78-17 du 6 Janvier 1978, relative à l\&apos;informatique, aux fichiers et aux libertés.
-Elles  peuvent  donner  lieu  à  exercice  du  droit  individuel  d\&apos;accès,  de  rectification  et  de  suppression auprès de Nomosphere dans les conditions prévues par la délibération n° 80-10 du 1er avril 1980 de la
-Commission Nationale de l\&apos;Informatique et des Libertés.
-De plus, il dispose de la faculté de revenir à tout moment sur son consentement auprès de l\&apos;assistance mise à sa disposition dans le cadre du Service.
-        \n\n
-<u>Article 11. Force majeure</u>
-        \n\n
-Nomosphere ne sera pas responsable de la non-exécution ou de l\&apos;exécution partielle de ses obligations si ladite inexécution ou exécution partielle résulte d\&apos;un fait indépendant de sa volonté ou échappant à
-son contrôle, ainsi qu\&apos;en cas de force majeure au sens de la jurisprudence de la Cour de Cassation.
-        \n\n
-<u>Article 12. Litiges - Attribution de juridiction</u>
-        \n\n
-Les  présentes  Conditions  d\&apos;Utilisation  sont  soumises  au  droit  français  et  les  parties  attribuent  une
-compétence non exclusive aux juridictions françaises. Seul le Droit Français est applicable.
-A défaut d\&apos;accord amiable, en cas de contesta
-tion résultant de l\&apos;exécution d\&apos;un contrat souscrit au titre
-des présentes conditions d\&apos;utilisation, la seule juridiction reconnue et acceptée de part et d\&apos;autre est
-celle du Tribunal de Commerce de Grasse. Cette disposition est applicable même en cas de demande
-incidente, d\&apos;appel en garantie ou en cas de pluralité de défendeurs.
+        Utilisateur : Dénomination qui désigne l\&apos;abonné à une offre Hotspot Wi-Fi.
+        Accès  à  Internet  : service  permettant  aux Clients  d\&apos;accéder  au  réseau  Internet  et  à  ses  différents services (courrier électronique, consultation  de  services en  ligne, échange de  données) à travers le
+        réseau.
+        Identifiants  ou  Identifiants  de  connexion  : désigne  les  codes  d\&apos;accès  (login  et  mot  de  passe) confidentiels et personnels permettant au Client de s\&apos;authentifier et de se connecter au Service Hotspot Wi-Fi.
+        URL : Uniform Ressource Locator ou adresse d\&apos;un serveur. Adresse Internet permettant d\&apos;atteindre un site Web donné.
+        Terminal  Wi-Fi  : Dénomination  regroupant  l\&apos;ensemble  des  appareils  informatiques  disposant  d\&apos;une connectivité Wi-Fi, tels que les ordinateurs portables, les PDAs (assistant numérique personnel), les
+        téléphones mobiles dits "Smartphone" (téléphone mobile de type iPhone, Android ou Blackberry), les Tablettes tactiles, etc.
+        VPN : Réseau Privé Virtuel (Virtual Private Network).
+                \n\n
+        <u>Article 2. Objet</u>
+                \n\n
+        Le présent document a pour objet de définir les conditions d\&apos;utilisation du service Hotspot Wi-Fi. Le service Hotspot Wi-Fi, ci-après le Service, permet à l\&apos;Utilisateur possédant un PDA ou un ordinateur
+        portable compatible Wi-Fi de se connecter à Internet sans fil depuis les zones couvertes par le réseau Wi-Fi. Le Service est accessible depuis tout Terminal Wi-Fi, c\&apos;est-à-dire un terminal équipé d\&apos;une carte réseau
+        Wireless LAN conforme à la norme IEEE 802.11.Il comprend les fonctions de base d\&apos;accès à l\&apos;Internet.
+        Le Service ne comprend pas la fourniture de boite aux lettres ni l\&apos;hébergement de pages Web.
+        Nomosphere recommande pour les ordinateurs portables des Utilisateurs la configuration suivante:
+                \n
+        - ordinateur sous système d\&apos;exploitation Windows (XP, 7, Vista, 2000) ou Mac OS X,
+                \n
+        - pré-équipé Wi-Fi ou muni d\&apos;une carte PCMCIA conforme aux normes IEE 802.11b/g/n et certifié
+        par la Wi-Fi Alliance (information disponible sur www.wi-fi.org),
+                \n
+        - disposant  d\&apos;un  navigateur  Internet  Explorer  à  partir  de  la  version  7,  Mozilla  Firefox,  Google
+        Chrome ou Safari.
+                \n
+        Le  bon  fonctionnement  de  la  connexion  en  mode  Wi-Fi  nécessite  obligatoirement  des  versions  de
+        systèmes d\&apos;exploitation compatibles avec le Service et des cartes réseau agréées par Nomosphere. La
+        liste de ces systèmes d\&apos;exploitation et cartes réseau est établie et mise à jour par Nomosphere. Elle est
+        disponible  sur  demande  auprès  du  service  clients.  Il  appartient  à  l\&apos;Utilisateur  de  s\&apos;assurer  que  ses
+        équipements font partie de cette liste.
+                \n\n
+        <u>Article 3. Accès au service</u>
+                \n\n
+        Le Service est en principe accessible 24 heures sur 24, durant les heures d\&apos;ouverture des lieux couverts par le service Hotspot Wi-Fi, dans les conditions et limites de l\&apos;offre Wi-Fi souscrite par l\&apos;Utilisateur.
+        Pour accéder au Service, l\&apos;Utilisateur est tenu de fournir son login et un mot de passe (ci-après désignés " les Identifiants ").
+        Par ailleurs, il est précisé que toute connexion aux URL figurant sur la présente page d\&apos;accueil après saisie des Identifiants de connexion sera décomptée du temps de connexion de l\&apos;offre Wi-Fi souscrite.
+                \n\n
+        <u>Article 4. Assistance</u>
+                \n\n
+        Nomosphere met  à disposition  de  l\&apos;Utilisateur  une  assistance  par email  pour  prendre  en  charge les problèmes rencontrés par les Utilisateurs et en assurer le traitement sur les aspects suivants :
+                \n
+        -
+        support d\&apos;accès au Service,
+                \n
+        -
+        support à l\&apos;usage du Service.
+                \n
+        Cette assistance est disponible par email de 9h à 18h, sauf dimanche
+        et jours fériés.
+                \n\n
+        <u>Article 5. Cookies</u>
+                \n\n
+        Il peut arriver que certains fichiers, appelés " cookies ", soient enregistrés sur l\&apos;ordinateur de l\&apos;Utilisateur
+        lorsque  ce dernier utilise le Service. Ces fichiers nous  permettent de  vous  reconnaitre lorsque  vousvisitez notre site internet et lorsque  que  vous utilisez le Service, et facilitent ainsi la navigation  pour
+        l\&apos;Utilisateur. En particulier, les cookies mémorisent les données de l\&apos;Utilisateur pour que ce dernier n\&apos;ait pas à les saisir à nouveau lors de ses visites ultérieures.
+        L\&apos;Utilisateur a la faculté de les neutraliser en configurant son navigateur Internet en conséquence ou de les supprimer de son disque dur. Toutefois, l\&apos;attention de l\&apos;Utilisateur est attirée sur le fait que certains
+        services  proposés ne  seront  alors  pas  accessibles  ou  ne  le  seront  que  partiellement  s\&apos;il  refuse  les cookies.
+                \n\n
+        <u>Article 6. Engagements et responsabilités de l\&apos;Utilisateur</u>
+                \n\n
+        Les Identifiants sont les codes d\&apos;accès permettant à l\&apos;Utilisateur de s\&apos;identifier et de se connecter au Service.  Ils  sont  personnels  et  confidentiels.  L\&apos;Utilisateur  s\&apos;engage  à  conserver  ses  Identifiants,  à
+        prendre toutes les mesures nécessaires pour les maintenir confidentiels, et à ne pas les divulguer sous quelque forme que ce soit.
+        Par l\&apos;utilisation de ces Identifiants, l\&apos;Utilisateur dispose d\&apos;un accès personnalisé et exclusif au Service.
+        Il s\&apos;interdit donc de le céder à des tiers.
+            Tout  accès  au  Service  résultant  de  l\&apos;utilisation  des  Identifiants  de  l\&apos;Utilisateur  est  fait  sous  l\&apos;entière responsabilité de ce dernier, Nomosphere déclinant toute responsabilité de ce chef.
+        En cas de perte ou de vol de ces Identifiants, l\&apos;utilisateur doit en informer Nomosphere via l\&apos;assistance téléphonique, et ceci dans les meilleurs délais afin que Nomosphere puisse les annuler.
+        S\&apos;agissant de l\&apos;utilisation d\&apos;Internet, l\&apos;Utilisateur est informé que l\&apos;Internet est un réseau véhiculant des données susceptibles d\&apos;être protégées par des droits de propriété intellectuelle, littéraire, artistique ou
+        d\&apos;enfreindre les dispositions légales en vigueur.
+        L\&apos;Utilisateur s\&apos;interdit donc de transmettre sur l\&apos;Internet toute donnée prohibée, illicite, illégale, contraire aux bonnes mœurs ou à l\&apos;ordre public et portant atteinte ou susceptibles de porter atteinte aux droits
+        de tiers et notamment aux droits de propriété intellectuelle, littéraire ou artistique.
+        L\&apos;Utilisateur  s\&apos;interdit  toute  utilisation  frauduleuse,  abusive  ou  excessive  du  Service,  telle  que notamment  l\&apos;envoi  de  messages  indésirables,  comprenant  des  propos  injurieux,  diffamatoires,
+        obscènes,  indécents,  illicites  ou  portant  atteinte  à  tout  droit,  notamment  les  droits  de  la  personne humaine et à la protection des mineurs, et plus généralement tout acte de spamming.
+        S\&apos;agissant des produits ou des  services sur le réseau  Internet, l\&apos;Utilisateur adresse directement aux fournisseurs de contenus toute réclamation relative à l\&apos;exécution des services rendus par ceux-ci ou à
+        la vente des produits par ceux-ci.
+        L\&apos;Utilisateur est seul responsable de tout préjudice direct ou indirect, matériel ou immatériel causé à des tiers du fait de son utilisation propre du Service.
+        L\&apos;Utilisateur  est  seul  responsable  de  l\&apos;utilisation  de  ses  Identifiants.  Toute  utilisation  du  Service effectuée en utilisant les Identifiants de l\&apos;Utilisateur est réputée avoir été faite par lui-même, sauf preuve
+        contraire.
+                \n\n
+        <u>Article 7. Sécurité</u>
+                \n\n
+        Le niveau de codage de la voie radio est susceptible de varier en fonction des paliers de fonctionnalités introduits par Nomosphere et selon le profil de configuration de l\&apos;Utilisateur. Pour certains de ces profils,
+        la voie radio n\&apos;est pas codée.
+        Les communications effectuées via le Service présentent en principe le même niveau de sécurité que les communications Internet standard.
+        S\&apos;il souhaite renforcer le niveau de sécurité, l\&apos;Utilisateur peut installer lui-même un logiciel de sécurité,tel  que  les  pare-feu  ou  les  VPN.  Il  est  du  ressort  du  département  informatique  ou  télécom  de  votre
+        société d\&apos;installer et configurer un pare-feu ou VPN sur votre Terminal. De plus, Bien que nos services soient  compatibles  avec  la  plupart  des  réseaux  privés  virtuels  (VPN),  leur  interopérabilité  avec  le
+        Service ne peuvent être garantie par Nomosphere. En outre, de par la nature de la technologie Wi-Fi, une protection absolue contre les intrusions ou les écoutes illicites ne peut être garantie.
+        Nomosphere décline donc toute responsabilité concernant de tels événements.
+        Il est expressément rappelé qu\&apos;Internet n\&apos;est pas un réseau sécurisé. Dans ces conditions, il appartient à  l\&apos;Utilisateur  de  prendre toutes  les mesures  appropriées  de  façon  à  protéger  ses  propres  données
+        et/ou logiciels notamment de la contamination par d\&apos;éventuels virus circulant sur le réseau Internet ou de l\&apos;intrusion d\&apos;un tiers dans le système de son terminal (Ordinateur PC portable ou terminal Wi-Fi) à quelque  fin  que  ce  soit,  et  de  procéder  sur  son  terminal,  à  des  sauvegardes  préalablement  et
+        postérieurement à la mise en place du Service.
+        L\&apos;Utilisateur reconnaît également être pleinement informé du défaut de fiabilité du réseau Internet, tout
+        particulièrement  en  termes  d\&apos;absence  de  sécurité  relative  à  la  transmission  de  données  et  de  non
+        garantie des performances relatives au volume et à la rapidité de transmission des données.
+        L\&apos;Utilisateur reconnaît être informé que l\&apos;intégrité, l\&apos;authent
+        ification et la confidentialité des informations,
+        fichiers et données de toute nature (code de carte de crédit, etc.) qu\&apos;il souhaite échanger sur le réseau
+        Internet ne peuvent être garanties sur ce réseau.
+        L\&apos;Utilisateur ne doit donc pas transmettre via le
+        réseau Internet des messages dont il souhaiterait voir
+        la confidentialité garantie de manière infaillible.
+                \n\n
+        <u>Article 8. Engagements et responsabilités de Nomosphere</u>
+                \n\n
+        Nomosphere met tout en œuvre pour assurer l\&apos;accès au Service souscrit mais n\&apos;est pas responsable
+        des contenus accessibles par le réseau Internet et des dommages qui peuvent naître de leur utilisation à moins que ces dommages n\&apos;aient été causés intentionnellement par Nomosphere.
+        Compte tenu du secret dont doivent bénéficier les correspondances privées, et des dispositions légales applicables en la matière, Nomosphere n\&apos;exerce aucun contrôle sur le contenu ou les caractéristiques
+        des données reçues ou transmises par l\&apos;Utilisateur sur son réseau et/ou sur le réseau Internet. Toutefois,  pour  assurer la  bonne  gestion  du  système  d\&apos;accès  au  réseau  Internet,  Nomosphere  se
+        réserve le droit de supprimer tout message ou d\&apos;empêcher toute opération de l\&apos;Utilisateur susceptible de perturber le bon fonctionnement de son réseau ou du réseau Internet ou ne respectant pas les règles
+        de fonctionnement, légales, d\&apos;éthique et de déontologie.
+        Il  peut  être  fait  exception  à  cette  règle  de  confidentialité  dans  les  limites  autorisées  par  la  loi,  à  la demande des autorités publiques et/ou judiciaires.
+        Nomosphere  ne saurait  être  tenue  responsable  de  l\&apos;exploitation  des  données  et  informations  que l\&apos;Utilisateur aurait introduites sur le réseau Internet.
+        Nomosphere  décline  toute  responsabilité  quant  aux  conséquences  d\&apos;une  utilisation  frauduleuse, abusive  ou  excessive  du Service  par  l\&apos;Utilisateur,  telle  que  notamment  l\&apos;envoi  de  messages
+        indésirables, spamming, et autres cas d\&apos;utilisation pouvant ainsi perturber la disponibilité du Service ou du réseau.
+        La responsabilité de Nomosphere ne peut pas être engagée, dans les cas légitimes suivants :
+                \n
+        -
+        En cas d\&apos;utilisation de matériel non agréé par Nomosphere,
+                \n
+        -
+        En cas de mauvaise installation et/ou de mauvaise configuration et/ou de dysfonctionnement
+        du terminal Wi-Fi de l\&apos;Utilisateur et/ou de la carte réseau Wireless LAN (IEEE 802.
+        11b) de son terminal,
+                \n
+        -
+        En  cas  d\&apos;incompatibilité  ou  de  dysfonctionnement  d\&apos;une  carte  réseau  Wireless  LAN  (IEEE
+        802.11b) avec le réseau Hotspot Wi-Fi, notamment si le problème est lié à un paramétrage du
+        Terminal de l\&apos;Utilisateur le rendant le terminal incomp
+        atible avec le Service,
+                \n
+        -
+        En cas d\&apos;incompatibilité ou de dysfonctionnement avec des systèmes de messagerie ou avec des applications mises en place et/ou exploitées par des tiers. La possibilité d\&apos;envoyer des mails
+        en utilisant un logiciel de messagerie depuis le réseau Hotspot Wi-Fi dépend du fournisseur de messagerie choisi par l\&apos;Utilisateur, certains fournisseurs n\&apos;autorisant pas l\&apos;envoi de mail depuis
+        un autre réseau que le leur. Il appartient à l\&apos;Utilisateur de se reporter aux informations relatives à la configuration de son logiciel de messagerie auprès de son Fournisseur d\&apos;Accès Internet,
+        Nomosphere déclinant toute responsabilité de ce chef,
+                \n
+        -
+        En cas de mauvaise utilisation du Service par l\&apos;Utilisateur,
+                \n
+        -
+        En cas de non-respect par l\&apos;Utilisateur de ses obligations,
+                \n
+        -
+        En cas d\&apos;impossibilité d\&apos;accès par Internet au réseau privé virtuel (VPN) d\&apos;une entreprise,
+                \n
+        -
+        En cas d\&apos;utilisation du Service consécutive à une divulgation, une perte ou un vol des Identifiants
+        associés  au  compte  Hotspot  Wi-Fi  de  l\&apos;utilisateur,  et  plus  généralement,  d\&apos;utilisation  dudit
+        Service  par  une  personne  non  autorisée,  non  consécutive  à  une  faute  de  la  société
+        Nomosphere,
+                \n
+        -
+        En cas de perturbations ou d\&apos;interruptions,
+                \n
+        -
+        En cas de perturbations et/ou d\&apos;indisponibilité totale ou partielle, et/ou d\&apos;inter
+        ruption de tout ou partie des services proposés sur les réseaux exploités par des Opérateurs Tiers,
+                \n
+        -
+        En cas de force majeure.
+                \n\n
+        Nomosphere reste également étrangère à tous litiges qui peuvent opposer l\&apos;Utilisateur à des tiers.
+                \n\n
+        <u>Article 9. Suspension / Résiliation</u>
+                \n\n
+        Nomosphere se réserve le droit de suspendre et de résilier l\&apos;accès au Service sans que l\&apos;Utilisateur ne
+        puisse lui demander une quelconque indemnité, en cas de violation d\&apos;une des clauses des présentes
+        conditions d\&apos;utilisation du service Hotspot Wi-Fi
+        et notamment dans le cas où :
+                \n
+        -
+        Nomosphere se verrait notifier par des utilisateurs d\&apos;Internet, que l\&apos;Utilisateur ne respecte pas
+        le code de bonne conduite Internet ou fait un usage d\&apos;Internet de nature à porter préjudice aux
+        droits des tiers, qui seraient contraire aux bonnes mœurs ou à l\&apos;ordre public,
+                \n
+        -
+        Nomosphere se verrait notifier par des ayant droits que l\&apos;Utilisateur reproduit et/ou diffuse des
+        données protégées par un droit de propriété,
+                \n
+        -
+        Nomosphere  constaterait  des  actes  de  piratage  ou  de  tentative  d\&apos;utilisation  illicite  des informations circulant sur le réseau et ayant pour cause ou origine le compte de l\&apos;Utilisateur.
+                \n\n
+        <u>Article 10. Données non personnelles et informations nominatives</u>
+                \n\n
+        Nomosphere  pourra  enregistrer  certaines  données  non  personnelles  comme le  type  de  navigateur utilisé ou le lieu d\&apos;où l\&apos;Utilisateur s\&apos;est connecté au Service. Ces informations ne permettent en aucun
+        cas d\&apos;établir un lien avec l\&apos;Utilisateur et servent exclusivement à renseigner Nomosphere pour qu\&apos;elle puisse offrir un service efficace sur les lieux d\&apos;accès au Service.
+        Nomosphere peut également parfois indiquer aux propriétaires et exploitants de pages Web reliées aux pages du Service, le nombre d\&apos;utilisateurs qui accèdent à ces pages Web à partir des pages du Service.
+        Ces informations ne permettent en aucun cas d\&apos;établir un lien avec l\&apos;Utilisateur. Il est possible que dans le cadre de l\&apos;utilisation du Service, Nomosphere recueille pendant la durée et
+        pour les besoins du dit Service, des données relatives au trafic généré par l\&apos;Utilisateur, et procède au stockage, à la conservation  et au  traitement des  données de  communications effectuées, ce que le
+        l\&apos;Utilisateur accepte. D\&apos;autre part, et dans l\&apos;hypothèse de recueil par Nomosphere de données nominatives, cette dernière prend  les mesures  propres  à  assurer  la  protection  et  la  confidentialité  desdites  informations  qu\&apos;elle
+        détient ou qu\&apos;elle traite dans le respect des dispositions de la Loi n° 78-17 du 6 Janvier 1978, relative à l\&apos;informatique, aux fichiers et aux libertés.
+        Elles  peuvent  donner  lieu  à  exercice  du  droit  individuel  d\&apos;accès,  de  rectification  et  de  suppression auprès de Nomosphere dans les conditions prévues par la délibération n° 80-10 du 1er avril 1980 de la
+        Commission Nationale de l\&apos;Informatique et des Libertés.
+        De plus, il dispose de la faculté de revenir à tout moment sur son consentement auprès de l\&apos;assistance mise à sa disposition dans le cadre du Service.
+                \n\n
+        <u>Article 11. Force majeure</u>
+                \n\n
+        Nomosphere ne sera pas responsable de la non-exécution ou de l\&apos;exécution partielle de ses obligations si ladite inexécution ou exécution partielle résulte d\&apos;un fait indépendant de sa volonté ou échappant à
+        son contrôle, ainsi qu\&apos;en cas de force majeure au sens de la jurisprudence de la Cour de Cassation.
+                \n\n
+        <u>Article 12. Litiges - Attribution de juridiction</u>
+                \n\n
+        Les  présentes  Conditions  d\&apos;Utilisation  sont  soumises  au  droit  français  et  les  parties  attribuent  une
+        compétence non exclusive aux juridictions françaises. Seul le Droit Français est applicable.
+        A défaut d\&apos;accord amiable, en cas de contesta
+        tion résultant de l\&apos;exécution d\&apos;un contrat souscrit au titre
+        des présentes conditions d\&apos;utilisation, la seule juridiction reconnue et acceptée de part et d\&apos;autre est
+        celle du Tribunal de Commerce de Grasse. Cette disposition est applicable même en cas de demande
+        incidente, d\&apos;appel en garantie ou en cas de pluralité de défendeurs.
     </string>
 
 
