@@ -270,7 +270,7 @@ final Runnable myRunnable = new Runnable() {
     public void onLoginRequested()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        if (RequestResult.equals("false")) {
+        if (RequestResult.equals("error")) {
             //wrong password
             appState.setLogged(false);
             appState.setHotspot(false);
@@ -484,11 +484,14 @@ final Runnable myRunnable = new Runnable() {
         //after executing the code in the thread
         @Override
         protected void onPostExecute(Void result) {
-
-            if (JSONContent==null && AutomaticConnectionChecked)
+            GlobalVariable appState = (GlobalVariable) getApplicationContext();
+            if (JSONContent==null && (AutomaticConnectionChecked ||URL_cmd=="/login") )
             {
-                TextView textView = (TextView) findViewById(R.id.text_accueil);
-                textView.setText("Connexion impossible, vérifiez que vous êtes connecté sur le bon wifi");
+                if(URL_cmd=="/login")
+                Toast.makeText(getApplicationContext(),"Connexion impossible, vérifiez votre connexion wifi", Toast.LENGTH_SHORT).show();
+                appState.setLogged(false);
+                appState.setHotspot(false);
+                updateAll();
                 return;
             }
             else if(JSONContent==null)
