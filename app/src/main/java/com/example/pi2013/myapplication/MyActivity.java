@@ -57,8 +57,8 @@ public class MyActivity extends BaseActivity {
     private static final String PREF_REMEMBER = "RememberMe";
     private static final String PREF_AUTOMATIC = "Automatic";
     private static final String DEBUG_TAG = "Example";
-    private boolean AutomaticConnectionChecked;
-    private boolean RememberMeChecked;
+    private boolean AutomaticConnectionChecked=false;
+    private boolean RememberMeChecked=false;
     private static EditText username;
     private static EditText password;
     public static String URL_link;
@@ -106,6 +106,7 @@ public class MyActivity extends BaseActivity {
                 CheckStatus();
             }
         }, 0, 5000);
+        affichageRememberMe();
         updateAll();
 
     }
@@ -129,6 +130,7 @@ final Runnable myRunnable = new Runnable() {
     @Override
     public void onRestart() {
         super.onRestart();
+        affichageAutomaticConnection();
         updateAll();
     }
 
@@ -204,16 +206,18 @@ final Runnable myRunnable = new Runnable() {
     {
         URL_cmd="/logout";
         new LoadViewTask().execute();
-
     }
 
     public void onDisconnectRequested()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         try {
-            if(JSONContent.getString("process").equals("success"))
-            appState.setLogged(false);
-            appState.setHotspot(false);
+            if(JSONContent.getString("process").equals("success")) {
+                appState.putPrefBool(PREF_AUTOMATIC,false,getApplicationContext());
+                affichageAutomaticConnection();
+                appState.setLogged(false);
+                appState.setHotspot(false);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -228,8 +232,13 @@ final Runnable myRunnable = new Runnable() {
     public void onStatusRequested()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        if(appState.getPref(PREF_USERNAME,getApplicationContext())==null)
+        {
+            return;
+        }
+
         try {
-             if(JSONContent.getString("authentified").equals("false") && !appState.getPref(PREF_USERNAME, getApplicationContext()).isEmpty() &&AutomaticConnectionChecked)
+             if(JSONContent.getString("authentified").equals("false")    &&   !appState.getPref(PREF_USERNAME, getApplicationContext()).isEmpty() && AutomaticConnectionChecked)
             {
                 URL_cmd="/login";
                 new LoadViewTask().execute();
@@ -386,8 +395,6 @@ final Runnable myRunnable = new Runnable() {
      */
     public void updateAll()
     {
-        affichageRememberMe();
-        affichageAutomaticConnection();
         updateComponents();
         updateWifiState();
         updateLayoutVisibility();
@@ -446,26 +453,6 @@ final Runnable myRunnable = new Runnable() {
         AutomaticConnectionChecked = appState.getPrefBool(PREF_AUTOMATIC, getApplicationContext());
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_automatic_connection);
         checkBox.setChecked(AutomaticConnectionChecked);
-       /* if(AutomaticConnectionChecked)
-        {
-            if(myTimer==null) {
-                myTimer = new Timer();
-                myTimer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        CheckStatus();
-                    }
-                }, 0, 5000);
-            }
-        }
-        else
-        {
-            if(myTimer!=null)
-            {
-                myTimer.cancel();
-                myTimer=null;
-            }
-        }*/
     }
 
     public void onClickAutomaticConnection(View view)
@@ -497,11 +484,15 @@ final Runnable myRunnable = new Runnable() {
         //after executing the code in the thread
         @Override
         protected void onPostExecute(Void result) {
-            TextView textView = (TextView) findViewById(R.id.text_accueil);
-            textView.setText(URL_link +URL_cmd+ JSONContent);
-            if (JSONContent==null)
+
+            if (JSONContent==null && AutomaticConnectionChecked)
             {
-               // Toast.makeText(getApplicationContext(),"Connexion impossible, vérifiez que vous êtes connecté sur le bon wifi", Toast.LENGTH_SHORT).show();
+                TextView textView = (TextView) findViewById(R.id.text_accueil);
+                textView.setText("Connexion impossible, vérifiez que vous êtes connecté sur le bon wifi");
+                return;
+            }
+            else if(JSONContent==null)
+            {
                 return;
             }
             try {
