@@ -129,19 +129,14 @@
                 android:id="@+id/buttonLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
                 android:onClick="onClickLogin"
-=======
-                android:onClick="login"
                 android:layout_marginLeft="75dp"
                 android:layout_marginRight="75dp"
                 android:layout_marginTop="25dp"
                 android:layout_gravity="center_horizontal"
->>>>>>> origin/Romane-Mercredi-22
                 android:gravity="center"
                 android:text="@string/button_main_login"
                 />
-
 
 
 
