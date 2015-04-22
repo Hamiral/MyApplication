@@ -53,6 +53,8 @@ public class MyActivity extends BaseActivity {
     private static final String PREF_PASSWORD = "password";
     private static final String PREF_REMEMBER = "RememberMe";
     private static final String PREF_AUTOMATIC = "Automatic";
+
+
     private static final String DEBUG_TAG = "Example";
     private boolean AutomaticConnectionChecked=false;
     private boolean RememberMeChecked=false;
@@ -64,6 +66,7 @@ public class MyActivity extends BaseActivity {
     public TextView text_debug;
     Timer myTimer;
     final Handler myHandler = new Handler();
+    private boolean mLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -252,6 +255,7 @@ final Runnable myRunnable = new Runnable() {
     public void login(View view)
     {
         URL_cmd="/login";
+        mLogin=true;
         new LoadViewTask(URL_cmd).execute();
     }
 
@@ -262,6 +266,7 @@ final Runnable myRunnable = new Runnable() {
             //wrong password
             appState.setLogged(false);
             appState.setHotspot(false);
+            if(mLogin)
             Toast.makeText(getApplicationContext(),getString(R.string.toast_main_wrongpassword), Toast.LENGTH_SHORT).show();
         }
         else if(JSONContent.getString("process").equals("success")) {
@@ -276,7 +281,7 @@ final Runnable myRunnable = new Runnable() {
         {
             Toast.makeText(getApplicationContext(),getString(R.string.toast_main_error), Toast.LENGTH_SHORT).show();
         }
-
+        mLogin=false;
     }
 
     /**
@@ -422,8 +427,9 @@ final Runnable myRunnable = new Runnable() {
     public void affichageAutomaticConnection()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        AutomaticConnectionChecked = appState.getPrefBool(PREF_AUTOMATIC, getApplicationContext());
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_automatic_connection);
-        checkBox.setChecked(appState.getPrefBool(PREF_AUTOMATIC, getApplicationContext()));
+        checkBox.setChecked(AutomaticConnectionChecked);
     }
 
     public void onClickAutomaticConnection(View view)
