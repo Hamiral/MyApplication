@@ -1,33 +1,10 @@
 package com.example.pi2013.myapplication;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.DhcpInfo;
-import android.net.wifi.WifiManager;
-import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.SocketTimeoutException;
-import java.net.URL;
-import java.net.URLEncoder;
 
 
 public class  BaseActivity extends ActionBarActivity {
@@ -58,14 +35,8 @@ public class  BaseActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         switch (id) {
-            case R.id.action_ID:
-                openID();
-                return true;
             case R.id.action_navigate:
                 openNavigate();
-                return true;
-            case R.id.action_MAPS:
-                openMAPS();
                 return true;
             case R.id.action_settings:
                 openSettings();
@@ -73,17 +44,6 @@ public class  BaseActivity extends ActionBarActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-
-    private void openMAPS() {
-        Intent intent = new Intent(this, MapActivity.class);
-        startActivity(intent);
-    }
-
-    private void openID() {
-        Intent intent = new Intent(this, AccountManagementActivity.class);
-        startActivity(intent);
     }
 
     private void openNavigate() {
