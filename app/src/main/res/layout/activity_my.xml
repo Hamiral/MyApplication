@@ -162,7 +162,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_disconnect"
             android:layout_weight="0.85"
-            android:text="@string/button_accountManagement_disconnect"
+            android:text="@string/button_main_disconnect"
             android:onClick="onClickButtonDisconnect"
             android:layout_gravity="center_vertical"
             android:visibility="gone"

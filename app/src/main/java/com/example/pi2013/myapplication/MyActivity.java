@@ -3,14 +3,12 @@ package com.example.pi2013.myapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.DhcpInfo;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -265,7 +263,7 @@ final Runnable myRunnable = new Runnable() {
             //wrong password
             appState.setLogged(false);
             appState.setHotspot(false);
-            Toast.makeText(getApplicationContext(),"WrongPassword or Username", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.toast_main_wrongpassword), Toast.LENGTH_SHORT).show();
         }
         else if(RequestResult.equals("success")) {
             //correct password
@@ -279,7 +277,7 @@ final Runnable myRunnable = new Runnable() {
         }
         else
         {
-            Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.toast_main_error), Toast.LENGTH_SHORT).show();
         }
 
         updateAll();
@@ -357,11 +355,7 @@ final Runnable myRunnable = new Runnable() {
             button_dynamic.setText(R.string.button_main_dynamic_startBrowsing);
             state_textView.setText(R.string.textview_main_HotSpotFound);
         }
-        else if (appState.getLogged() && !appState.getHotspot())
-        {
-            button_dynamic.setText(R.string.button_main_dynamic_FindHotspot);
-            state_textView.setText(R.string.textview_main_NoHotSpotFound);
-        }
+
         else
         {
             button_dynamic.setText(R.string.button_main_dynamic_Signin);
@@ -473,8 +467,13 @@ final Runnable myRunnable = new Runnable() {
             GlobalVariable appState = (GlobalVariable) getApplicationContext();
             if (JSONContent==null && (AutomaticConnectionChecked ||cmd=="/login") )
             {
+<<<<<<< HEAD
                 if(cmd=="/login")
                 Toast.makeText(getApplicationContext(),"Connexion impossible, vérifiez votre connexion wifi", Toast.LENGTH_SHORT).show();
+=======
+                if(URL_cmd=="/login")
+                Toast.makeText(getApplicationContext(),getString(R.string.toast_main_impossibletoconnect), Toast.LENGTH_SHORT).show();
+>>>>>>> origin/Romane-Mercredi-22
                 appState.setLogged(false);
                 appState.setHotspot(false);
                 updateAll();

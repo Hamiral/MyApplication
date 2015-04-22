@@ -5,49 +5,26 @@
 
     <!-- Actionbar-->
     <string name="actionbar_Navigate">Naviguer</string>
-    <string name="actionbar_Maps">Maps</string>
-    <string name="actionbar_Account_management">Gestion du compte</string>
     <string name="actionbar_Settings">Paramètres</string>
-
-    <!-- Page About-->
-    <string name="textview_about">Qui a fait cette application ?</string>
-    <string name="title_activity_about">A propos</string>
-
-    <!-- Page Account Management-->
-    <string name="title_activity_account_management">Gestion du compte</string>
-    <string name="button_accountManagement_disconnect">Déconnexion</string>
-    <string name="textview_accountManagement_modify_password">Changer votre mot de passe</string>
-    <string name="textview_accountManagement_id">Utilisateur : </string>
 
     <!-- Page Launch-->
     <string name="title_activity_launch">Nomosphere</string>
     <string name="description_launch_image_client">Image Client</string>
 
-    <!-- Page Lost Account-->
-    <string name="title_activity_lost_account">Compte perdu</string>
-
-    <!-- Page Map-->
-    <string name="title_activity_map">Map</string>
-
     <!-- Page My Activity-->
-
+    <string name="button_main_disconnect">Se Déconnecter</string>
     <string name="textview_main_HotSpotFound">Bienvenue! \nVous êtes dans une zone Wi-Fi</string>
     <string name="textview_main_NotSignedIn">Bienvenue! \nVeuillez rentrer vos identifiants, afin de vous connecter à votre compte Nomosphère.</string>
     <string name="textview_main_NoHotSpotFound">Bienvenue! \nVeuillez vous rendre dans une zone de couverture Wi-Fi pour bénéficier d\&apos;un accès internet gratuit</string>
     <string name="switch_main_Wifi">Wifi</string>
-
     <string name="button_main_dynamic_startBrowsing">Commencer la navigation</string>
-    <string name="button_main_dynamic_FindHotspot">Trouver un hotspot</string>
     <string name="button_main_dynamic_Signin">Se connecter</string>
-
     <string name="textview_main_login">Adresse e-mail :</string>
     <string name="textview_main_password">Mot de passe :</string>
     <string name="checkbox_main_Remember_Me">Se souvenir de moi</string>
-    <string name="textview_main_password_lost">J\&apos;ai oublié mon mot de passe</string>
-    <string name="button_main_sign_up">Créer un compte</string>
     <string name="button_main_login">Se connecter</string>
-    <string name="toast_main_wrongpassword">Mauvais mot de passe</string>
     <string name="checkbox_main_automatic_connection">Automatic Connection</string>
+
     <!-- Page Settings-->
 
     <string name="title_activity_settings">Paramètres</string>
@@ -59,29 +36,18 @@
     </string-array>
 
     <string name="button_settings_user_agreement">Conditions Générales d\&apos;Utilisation</string>
-    <string name="button_settings_about">A propos</string>
-    <string name="switch_settings_notifications">Notifications</string>
     <string name="switch_settings_wifi">Wifi</string>
-    <string name="switch_settings_hotspot">Debug Hotspot</string>
-
     <string name="toast_settings_wifi_enabled">Vous avez activé le Wifi</string>
     <string name="toast_settings_wifi_disabled">Vous avez désactivé le Wifi</string>
     <string name="toast_settings_notification_enabled"></string>
     <string name="toast_settings_notification_disabled"></string>
     <string name="toast_settings_hotspot_enabled">Vous avez trouvé un Hotspot</string>
     <string name="toast_settings_hotspot_disabled">Vous n\&apos;avez pas trouvé de Hotspot </string>
-
     <string name="toast_settings_spinner_french">Vous avez choisi le français</string>
     <string name="toast_settings_spinner_english">You have selected English</string>
-
-
-
-    <!-- Page Sign Up-->
-    <string name="title_activity_sign_up">Créer un compte</string>
-    <string name="textview_signup_email">Adresse e-mail</string>
-    <string name="textview_signup_password">Mot de passe</string>
-    <string name="textview_signup_password_confirm">Confirmer le mot de passe</string>
-    <string name="checkbox_signup_useragreement">J\&apos;ai lu et j\&apos;accepte les conditions d\&apos;utilisation</string>
+    <string name="toast_main_impossibletoconnect">Connexion impossible, vérifiez votre connexion wifi</string>
+    <string name="toast_main_error">Erreur</string>
+    <string name="toast_main_wrongpassword">Mauvais Identifiants</string>
 
     <!-- Page User Agreement-->
     <string name="title_activity_user_agreement">Conditions d\&apos;Utilisation</string>
