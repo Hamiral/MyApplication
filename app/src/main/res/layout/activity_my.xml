@@ -18,14 +18,11 @@
 
     <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
         android:paddingLeft="10dp"
-        android:paddingRight="5dp">
+        android:paddingRight="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
 
     <LinearLayout
@@ -108,7 +105,7 @@
          <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_gravity="center"
                 android:id="@+id/LinearLayoutCheckbox">
             <CheckBox
@@ -126,24 +123,23 @@
                 android:onClick="onClickAutomaticConnection"
                 android:layout_gravity="center_horizontal" />
          </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:id="@+id/LinearLayoutButtons">
+
 
             <Button
                 android:id="@+id/buttonLogin"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="login"
+                android:layout_marginLeft="75dp"
+                android:layout_marginRight="75dp"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="@string/button_main_login"
                 />
 
 
-        </LinearLayout>
+
 
 
         </LinearLayout>
