@@ -195,11 +195,7 @@ final Runnable myRunnable = new Runnable() {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
             startActivity(browserIntent);
         }
-        else if (appState.getLogged() && !appState.getHotspot())
-        {
-            Intent findHotspotIntent = new Intent(this, MapActivity.class);
-            startActivity(findHotspotIntent);
-        }
+
     }
 
     public void onClickButtonDisconnect(View view)
@@ -291,18 +287,6 @@ final Runnable myRunnable = new Runnable() {
         }
 
         updateAll();
-    }
-
-    public void onClickSignUp(View view)
-    {
-        Intent intent = new Intent(this, SignUpActivity.class);
-        startActivity(intent);
-    }
-
-    public void onClickLostMyPswd(View view)
-    {
-        Intent intent = new Intent(this, LostAccountActivity.class);
-        startActivity(intent);
     }
 
     /**

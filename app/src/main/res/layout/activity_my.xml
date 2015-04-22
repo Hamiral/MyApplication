@@ -142,31 +142,10 @@
                 android:text="@string/button_main_login"
                 />
 
-            <Button
-                android:id="@+id/button_Sign_Up"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onClickSignUp"
-                android:text="@string/button_main_sign_up"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:gravity="center"
-                android:elegantTextHeight="false" />
 
         </LinearLayout>
 
-            <TextView
-                android:id="@+id/I_ve_lost_my_pswd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textview_main_password_lost"
-                android:textColor="@color/blue"
-                android:textColorLink="@color/blue"
-                android:onClick="onClickLostMyPswd"
-                android:clickable="true"
-                android:layout_gravity="center_horizontal"
-                />
+
         </LinearLayout>
 
         <Button

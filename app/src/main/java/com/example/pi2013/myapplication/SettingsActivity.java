@@ -34,7 +34,6 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         getActionBar().setTitle(getResources().getString(R.string.title_activity_settings));
 
         initSpinner_ChoixLangue();
-        initSwitch_HotSpotSwitch();
         initSwitch_WifiSwitch();
 
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
@@ -130,30 +129,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         });
     }
 
-    /**
-     * Initialize the listener for the HotSpot Switch
-     */
-    public void initSwitch_HotSpotSwitch()
-    {
 
-        HotSpotSwitch = (Switch)  findViewById(R.id.Hotspot_switch);
-        HotSpotSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-                if(isChecked)
-                {
-                    appState.setHotspot(true);
-                    Toast.makeText(getApplicationContext(), R.string.toast_settings_hotspot_enabled, Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    appState.setHotspot(false);
-                    Toast.makeText(getApplicationContext(), R.string.toast_settings_hotspot_disabled, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
@@ -187,11 +163,6 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         Intent intent = new Intent(this, UserAgreementActivity.class);
         startActivity(intent);
     }
-    public void start_about_activity(View view)
-    {
-        Intent intent = new Intent(this, AboutActivity.class);
-        startActivity(intent);
-    }
 
     /**
      * Enable or Disable the wifi state of the device
@@ -213,29 +184,9 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
      */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-       if(AccountManagementActivity.AccountManagementActivity!=null)
-       {
-           AccountManagementActivity.AccountManagementActivity.finish();
-       }
-
-       if(LostAccountActivity.LostAccountActivity!=null)
-       {
-           LostAccountActivity.LostAccountActivity.finish();
-       }
-
        if(MyActivity.MyActivity!=null)
        {
            MyActivity.MyActivity.finish();
-       }
-
-       if(MapActivity.MapActivity!=null)
-       {
-           MapActivity.MapActivity.finish();
-       }
-
-       if(SignUpActivity.SignUpActivity!=null)
-       {
-           SignUpActivity.SignUpActivity.finish();
        }
 
        if(UserAgreementActivity.UserAgreementActivity!=null)

@@ -43,17 +43,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AccountManagementActivity"
-            android:label="@string/title_activity_account_management"
-            android:launchMode="singleInstance"
-            android:permission="android.permission.INTERNET">
-        </activity>
-        <activity
-            android:name=".MapActivity"
-            android:label="@string/title_activity_map"
-            android:launchMode="singleInstance" >
-        </activity>
+
+
         <activity
             android:name=".UserAgreementActivity"
             android:label="@string/title_activity_user_agreement"
@@ -63,30 +54,8 @@
             android:value="com.example.pi2013.myapplication.SettingsActivity" />
 
         </activity>
-        <activity
-            android:name=".AboutActivity"
-            android:label="@string/title_activity_about"
-            android:launchMode="singleInstance" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.pi2013.myapplication.SettingsActivity" />
-        </activity>
-        <activity
-            android:name=".SignUpActivity"
-            android:label="@string/title_activity_sign_up"
-            android:launchMode="singleInstance" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.pi2013.myapplication.MyActivity" />
-        </activity>
-        <activity
-            android:name=".LostAccountActivity"
-            android:label="@string/title_activity_lost_account"
-            android:launchMode="singleInstance">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.pi2013.myapplication.MyActivity" />
-        </activity>
+
+
 
     </application>
 
