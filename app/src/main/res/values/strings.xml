@@ -7,49 +7,28 @@
 
     <!-- Actionbar-->
     <string name="actionbar_Navigate">Navigate</string>
-    <string name="actionbar_Maps">Maps</string>
-    <string name="actionbar_Account_management">Account Management</string>
     <string name="actionbar_Settings">Settings</string>
-
-    <!-- Page About-->
-    <string name="textview_about">About this: </string>
-    <string name="title_activity_about">About</string>
-
-    <!-- Page Account Management-->
-    <string name="title_activity_account_management">Account Management</string>
-    <string name="button_accountManagement_disconnect">Disconnect</string>
-    <string name="textview_accountManagement_modify_password">Change Your Password</string>
-    <string name="textview_accountManagement_id">UserName: </string>
 
     <!-- Page Launch-->
     <string name="title_activity_launch">Nomosphere</string>
     <string name="description_launch_image_client">Image Client</string>
 
-    <!-- Page Lost Account-->
-    <string name="title_activity_lost_account">LostAccount</string>
-
-    <!-- Page Map-->
-    <string name="title_activity_map">Map</string>
-
     <!-- Page My Activity-->
 
+    <string name="button_main_disconnect">Disconnect</string>
     <string name="textview_main_HotSpotFound">Welcome! \nYou have found a Hotspot.</string>
     <string name="textview_main_NotSignedIn">Welcome! \nPlease, enter your username and password to access your Nomosphere account.</string>
     <string name="textview_main_NoHotSpotFound">Welcome! \nPlease go to a Hotspot in order to benefit from a free Wi-Fi.</string>
     <string name="switch_main_Wifi">Wifi</string>
-
     <string name="button_main_dynamic_startBrowsing">StartBrowsing</string>
-    <string name="button_main_dynamic_FindHotspot">Find a Hotspot</string>
     <string name="button_main_dynamic_Signin">Sign In</string>
-
     <string name="textview_main_login">E-mail address :</string>
     <string name="textview_main_password">Password :</string>
     <string name="checkbox_main_Remember_Me">Remember Me</string>
     <string name="button_main_login">Log In</string>
-    <string name="textview_main_password_lost">I have lost my password</string>
-    <string name="button_main_sign_up">Sign Up</string>
-    <string name="toast_main_wrongpassword">Wrong password</string>
-
+    <string name="toast_main_wrongpassword">WrongPassword or Username</string>
+    <string name="toast_main_error">Error</string>
+    <string name="toast_main_impossibletoconnect">Cannot connect, please check your Wi-Fi parameters</string>
 
     <!-- Page Settings-->
 
@@ -62,10 +41,7 @@
     </string-array>
 
     <string name="button_settings_user_agreement">User Agreement</string>
-    <string name="button_settings_about">About</string>
-    <string name="switch_settings_notifications">Notifications</string>
     <string name="switch_settings_wifi">Wifi</string>
-    <string name="switch_settings_hotspot">Debug Hotspot</string>
 
     <string name="toast_settings_wifi_enabled">You have enabled the Wifi</string>
     <string name="toast_settings_wifi_disabled">You have disable the Wifi</string>
@@ -73,23 +49,14 @@
     <string name="toast_settings_notification_disabled"></string>
     <string name="toast_settings_hotspot_enabled">You have found a HotSpot</string>
     <string name="toast_settings_hotspot_disabled">You have not found a HotSpot :(</string>
-
     <string name="toast_settings_spinner_french">Vous avez choisi le français</string>
     <string name="toast_settings_spinner_english">You have selected English</string>
-
-
-
-    <!-- Page Sign Up-->
-    <string name="title_activity_sign_up">SignUp</string>
-    <string name="textview_signup_email">e-mail address</string>
-    <string name="textview_signup_password">Password</string>
-    <string name="textview_signup_password_confirm">Confirm Password</string>
-    <string name="checkbox_signup_useragreement">I have read and accept the user license and service agreement</string>
 
     <!-- Page User Agreement-->
     <string name="title_activity_user_agreement">UserAgreement</string>
     <string name="textview_user_agreement">User Agreement</string>
     <string name="checkbox_main_automatic_connection">Automatic Connection</string>
+
 
 
 </resources>
