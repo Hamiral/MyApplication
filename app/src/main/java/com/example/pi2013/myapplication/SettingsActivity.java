@@ -21,7 +21,7 @@ import java.util.Locale;
 
 public class SettingsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
     private Switch WifiSwitch;
-    public static final String PREFS_LANGUAGE = "com.example.pi2013.myapplication.PREFERENCE_FILE_KEY";
+    public static final String PREFS_NAME = "com.example.pi2013.myapplication.PREFERENCE_FILE_KEY";
 
 
     @Override
@@ -86,6 +86,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
                         R.string.toast_settings_spinner_english, Toast.LENGTH_SHORT)
                         .show();
                 setLocale("en");
+                break;
             }
             case 2 :
             {
@@ -93,6 +94,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
                         R.string.toast_settings_spinner_french, Toast.LENGTH_SHORT)
                         .show();
                 setLocale("fr");
+                break;
             }
         }
 
@@ -154,7 +156,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         onConfigurationChanged(conf);
 
         //Register the default language of the application
-        SharedPreferences sharedPref = getSharedPreferences(PREFS_LANGUAGE, Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("language", lang);
         editor.commit();

@@ -34,6 +34,7 @@
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:text="@string/switch_settings_wifi"
             android:id="@+id/state_wifi"
             android:checked="false" />
@@ -41,6 +42,12 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
             android:text="@string/button_settings_user_agreement"
             android:id="@+id/user_agreement"
             android:layout_weight="0.07"

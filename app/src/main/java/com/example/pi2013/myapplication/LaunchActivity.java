@@ -39,7 +39,7 @@ public class LaunchActivity extends Activity {
         private void language_select()
         {
 
-            SharedPreferences settings = getSharedPreferences(SettingsActivity.PREFS_LANGUAGE, 0);
+            SharedPreferences settings = getSharedPreferences(SettingsActivity.PREFS_NAME, 0);
             String lang=settings.getString("language", Locale.getDefault().getLanguage() );
             Locale myLocale;
             myLocale = new Locale(lang);
