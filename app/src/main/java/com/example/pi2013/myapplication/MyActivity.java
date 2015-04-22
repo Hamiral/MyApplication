@@ -512,11 +512,12 @@ final Runnable myRunnable = new Runnable() {
         HttpURLConnection urlConnection = null;
         try {
             // create connection
+            URL url = new URL(serviceUrl + cmdUrl);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setConnectTimeout(15000);
+            urlConnection.setReadTimeout(10000);
             if (cmdUrl=="/status" || cmdUrl=="/logout") {
-                URL url = new URL(serviceUrl + cmdUrl);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setConnectTimeout(15000);
-                urlConnection.setReadTimeout(10000);
+
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setRequestProperty("Content-Type", "application/json");
                 urlConnection.setRequestProperty("Accept", "application/json");
@@ -534,20 +535,12 @@ final Runnable myRunnable = new Runnable() {
                 return jsonObject;
             }
             else if(cmdUrl=="/login"){
-                URL url = new URL(serviceUrl + cmdUrl);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setConnectTimeout(15000);
-                urlConnection.setReadTimeout(10000);
+
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setDoOutput(true);
-                // urlConnection.setDoInput(true);
 
                 urlConnection.connect();
-                // create JSON object from content
 
-              /*  JSONObject cred = new JSONObject();
-                cred.put("password", "momota");
-                cred.put("username", "lor.alex.f@gmail.com");*/
                 out = urlConnection.getOutputStream();
                 OutputStreamWriter wr= new OutputStreamWriter(out);
                 String urlParameters =
