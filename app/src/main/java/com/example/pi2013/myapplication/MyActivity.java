@@ -67,7 +67,6 @@ public class MyActivity extends BaseActivity {
     public static String RequestResult;
     public TextView text_debug;
     Timer myTimer;
-    public int i=0;
     final Handler myHandler = new Handler();
 
     @Override
@@ -106,14 +105,12 @@ public class MyActivity extends BaseActivity {
                 CheckStatus();
             }
         }, 0, 5000);
-        affichageRememberMe();
         updateAll();
 
     }
 
 
     private void CheckStatus() {
-        i++;
         URL_cmd="/status";
         new LoadViewTask().execute();
         myHandler.post(myRunnable);
@@ -123,7 +120,7 @@ final Runnable myRunnable = new Runnable() {
     public void run() {
         if(JSONContent==null)
         {return;}
-        text_debug.setText(i+ JSONContent.toString());
+        if(URL_cmd!="/status")
         updateAll();
     }
 };
@@ -228,13 +225,16 @@ final Runnable myRunnable = new Runnable() {
     public void onStatusRequested()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+
+        // The variable used to store the username or password may not be initialized (first use of the application for example)
+        // Without this check, the application will crash when trying to get an username (getPref(....).isEmpty())
         if(appState.getPref(PREF_USERNAME,getApplicationContext())==null)
         {
             return;
         }
 
         try {
-             if(JSONContent.getString("authentified").equals("false")    &&   !appState.getPref(PREF_USERNAME, getApplicationContext()).isEmpty() && AutomaticConnectionChecked)
+             if(JSONContent.getString("authentified").equals("false")    &&   !appState.getPref(PREF_USERNAME, getApplicationContext()).isEmpty() && AutomaticConnectionChecked )
             {
                 URL_cmd="/login";
                 new LoadViewTask().execute();
@@ -276,6 +276,7 @@ final Runnable myRunnable = new Runnable() {
             //correct password
             appState.setLogged(true);
             appState.setHotspot(true);
+            AutomaticConnectionChecked=true;
             Intent intent = new Intent(this, MyActivity.class);
             rememberMe();
             startActivity(intent);
@@ -283,7 +284,7 @@ final Runnable myRunnable = new Runnable() {
         }
         else
         {
-            Toast.makeText(getApplicationContext(),"Vous n'êtes pas sur le bon wifi", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_SHORT).show();
         }
 
         updateAll();
@@ -383,6 +384,8 @@ final Runnable myRunnable = new Runnable() {
         updateWifiState();
         updateLayoutVisibility();
         invalidateOptionsMenu();
+        affichageAutomaticConnection();
+        affichageRememberMe();
     }
 
     //REMEMBER ME
@@ -498,7 +501,7 @@ final Runnable myRunnable = new Runnable() {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
+            if(URL_cmd!="/status")
             updateAll();
         }
     }
