@@ -467,13 +467,9 @@ final Runnable myRunnable = new Runnable() {
             GlobalVariable appState = (GlobalVariable) getApplicationContext();
             if (JSONContent==null && (AutomaticConnectionChecked ||cmd=="/login") )
             {
-<<<<<<< HEAD
-                if(cmd=="/login")
-                Toast.makeText(getApplicationContext(),"Connexion impossible, vérifiez votre connexion wifi", Toast.LENGTH_SHORT).show();
-=======
+
                 if(URL_cmd=="/login")
                 Toast.makeText(getApplicationContext(),getString(R.string.toast_main_impossibletoconnect), Toast.LENGTH_SHORT).show();
->>>>>>> origin/Romane-Mercredi-22
                 appState.setLogged(false);
                 appState.setHotspot(false);
                 updateAll();
