@@ -21,9 +21,7 @@ import java.util.Locale;
 
 public class SettingsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
     private Switch WifiSwitch;
-    private Switch HotSpotSwitch;
-    private Switch NotifSwitch;
-    public static final String PREFS_NAME = "com.example.pi2013.myapplication.PREFERENCE_FILE_KEY";
+    public static final String PREFS_LANGUAGE = "com.example.pi2013.myapplication.PREFERENCE_FILE_KEY";
 
 
     @Override
@@ -38,7 +36,6 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         WifiSwitch.setChecked(appState.getWifi());
-        HotSpotSwitch.setChecked(appState.getHotspot());
 
     }
     @Override
@@ -141,6 +138,8 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
      * @param lang
      */
     public void setLocale(String lang) {
+
+        //Set the application's language
         Locale myLocale;
         myLocale = new Locale(lang);
         Resources res = getResources();
@@ -150,9 +149,12 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         res.updateConfiguration(conf, dm);
         getBaseContext().getResources().updateConfiguration(conf,
         getBaseContext().getResources().getDisplayMetrics());
+
+        //
         onConfigurationChanged(conf);
 
-        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        //Register the default language of the application
+        SharedPreferences sharedPref = getSharedPreferences(PREFS_LANGUAGE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("language", lang);
         editor.commit();

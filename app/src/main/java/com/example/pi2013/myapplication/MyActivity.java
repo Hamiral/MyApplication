@@ -47,7 +47,6 @@ import java.util.TimerTask;
  * To get more information about the layout display, please check the updatelayout() function or the document
  */
 public class MyActivity extends BaseActivity {
-    public final static String EXTRA_MESSAGE = "com.example.pi2013.myapplication.MESSAGE";
     private Switch WifiSwitch;
     public static Activity MyActivity = null;
 
@@ -112,7 +111,7 @@ public class MyActivity extends BaseActivity {
 
     private void CheckStatus() {
         URL_cmd="/status";
-        new LoadViewTask().execute();
+        new LoadViewTask(URL_cmd).execute();
         myHandler.post(myRunnable);
     }
 
@@ -127,7 +126,6 @@ final Runnable myRunnable = new Runnable() {
     @Override
     public void onRestart() {
         super.onRestart();
-        affichageAutomaticConnection();
         updateAll();
     }
 
@@ -198,7 +196,7 @@ final Runnable myRunnable = new Runnable() {
     public void onClickButtonDisconnect(View view)
     {
         URL_cmd="/logout";
-        new LoadViewTask().execute();
+        new LoadViewTask(URL_cmd).execute();
     }
 
     public void onDisconnectRequested()
@@ -215,11 +213,6 @@ final Runnable myRunnable = new Runnable() {
             e.printStackTrace();
         }
         updateAll();
-        /*if(myTimer!=null)
-        {
-            myTimer.cancel();
-            myTimer=null;
-        }*/
     }
 
     public void onStatusRequested()
@@ -237,16 +230,18 @@ final Runnable myRunnable = new Runnable() {
              if(JSONContent.getString("authentified").equals("false")    &&   !appState.getPref(PREF_USERNAME, getApplicationContext()).isEmpty() && AutomaticConnectionChecked )
             {
                 URL_cmd="/login";
-                new LoadViewTask().execute();
+                new LoadViewTask(URL_cmd).execute();
             }
             else if(JSONContent.getString("authentified").equals("false"))
             {
                 appState.setLogged(false);
+                updateAll();
             }
 
             else if(JSONContent.getString("authentified").equals("true"))
             {
                 appState.setLogged(true);
+                updateAll();
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -260,7 +255,7 @@ final Runnable myRunnable = new Runnable() {
     public void login(View view)
     {
         URL_cmd="/login";
-        new LoadViewTask().execute();
+        new LoadViewTask(URL_cmd).execute();
     }
 
     public void onLoginRequested()
@@ -451,6 +446,10 @@ final Runnable myRunnable = new Runnable() {
 
 
     public class LoadViewTask extends AsyncTask<Void, Integer, Void> {
+        String cmd;
+        public LoadViewTask(String URL_cmd){
+            cmd=URL_cmd;
+        }
         //Before running code in separate thread
         @Override
         protected void onPreExecute() {
@@ -461,7 +460,7 @@ final Runnable myRunnable = new Runnable() {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                JSONContent = requestWebService(URL_link,URL_cmd);
+                JSONContent = requestWebService(URL_link,cmd);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -472,9 +471,9 @@ final Runnable myRunnable = new Runnable() {
         @Override
         protected void onPostExecute(Void result) {
             GlobalVariable appState = (GlobalVariable) getApplicationContext();
-            if (JSONContent==null && (AutomaticConnectionChecked ||URL_cmd=="/login") )
+            if (JSONContent==null && (AutomaticConnectionChecked ||cmd=="/login") )
             {
-                if(URL_cmd=="/login")
+                if(cmd=="/login")
                 Toast.makeText(getApplicationContext(),"Connexion impossible, vérifiez votre connexion wifi", Toast.LENGTH_SHORT).show();
                 appState.setLogged(false);
                 appState.setHotspot(false);
@@ -486,22 +485,22 @@ final Runnable myRunnable = new Runnable() {
                 return;
             }
             try {
-                if (URL_cmd=="/login") {
+                if (cmd=="/login") {
                     RequestResult = JSONContent.getString("process");
                     onLoginRequested();
                 }
-                else if(URL_cmd=="/logout") {
+                else if(cmd=="/logout") {
                     RequestResult = JSONContent.getString("process");
                     onDisconnectRequested();
                 }
-                else if(URL_cmd=="/status"){
+                else if(cmd=="/status"){
                     RequestResult = JSONContent.getString("authentified");
                     onStatusRequested();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            if(URL_cmd!="/status")
+            if(cmd!="/status")
             updateAll();
         }
     }
@@ -551,23 +550,13 @@ final Runnable myRunnable = new Runnable() {
 
                 //display what returns the POST request
 
-                StringBuilder sb = new StringBuilder();
-
                 int HttpResult =urlConnection.getResponseCode();
 
                 if(HttpResult ==HttpURLConnection.HTTP_OK){
 
-                    BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"utf-8"));
-
-                    String line;
-
-                    while ((line = br.readLine()) != null) {
-                        sb.append(line);
-                    }
-
-                    br.close();
-
-                    JSONObject jsonObject= new JSONObject(sb.toString());
+                    in = urlConnection.getInputStream();
+                    String input = readIt(in, 500);
+                    JSONObject jsonObject = new JSONObject(input);
                     return jsonObject;
 
                 }else{
