@@ -1,7 +1,6 @@
 package com.example.pi2013.myapplication;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -32,13 +31,11 @@ public class LaunchActivity extends Activity {
         protected void onPreExecute() {
             setContentView(R.layout.activity_launch);
             language_select();
-
         }
 
         // Charge default language of the application (previously chosen by the user in the Settings)
         private void language_select()
         {
-
             SharedPreferences settings = getSharedPreferences(SettingsActivity.PREFS_NAME, 0);
             String lang=settings.getString("language", Locale.getDefault().getLanguage() );
             Locale myLocale;

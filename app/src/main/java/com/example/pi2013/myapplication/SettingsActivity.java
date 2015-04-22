@@ -7,7 +7,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,15 +38,13 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
     }
     @Override
-    public void onRestart()
-    {
+    public void onRestart(){
         super.onRestart();
 
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
         WifiSwitch = (Switch)  findViewById(R.id.state_wifi);
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        if (wifiManager.isWifiEnabled() || appState.getWifi())
-        {
+        if (wifiManager.isWifiEnabled() || appState.getWifi()){
             WifiSwitch.setChecked(true);
         }
         else {
@@ -59,8 +56,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
      * Initialize the Spinner to get all the possible language from the string.xml
      * See the onItemSelected() function below
      */
-    public void initSpinner_ChoixLangue()
-    {
+    public void initSpinner_ChoixLangue(){
         Spinner ChoixLangue = (Spinner) findViewById(R.id.language_choice);
         ChoixLangue.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -78,21 +74,14 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
      * @param id
      */
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        switch(pos)
-        {
-            case 1 :
-            {
-                Toast.makeText(parent.getContext(),
-                        R.string.toast_settings_spinner_english, Toast.LENGTH_SHORT)
-                        .show();
+        switch(pos){
+            case 1 :{
+                Toast.makeText(parent.getContext(),R.string.toast_settings_spinner_english, Toast.LENGTH_SHORT).show();
                 setLocale("en");
                 break;
             }
-            case 2 :
-            {
-                Toast.makeText(parent.getContext(),
-                        R.string.toast_settings_spinner_french, Toast.LENGTH_SHORT)
-                        .show();
+            case 2 :{
+                Toast.makeText(parent.getContext(),R.string.toast_settings_spinner_french, Toast.LENGTH_SHORT).show();
                 setLocale("fr");
                 break;
             }
@@ -108,22 +97,17 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         WifiSwitch = (Switch)  findViewById(R.id.state_wifi);
         WifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
                 GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-                if(isChecked)
-                {
+                if(isChecked){
                     appState.setWifi(true);
                     toggleWiFi(true);
                     Toast.makeText(getApplicationContext(),R.string.toast_settings_wifi_enabled, Toast.LENGTH_SHORT).show();
                 }
-                else
-                {
+                else{
                     appState.setWifi(false);
                     toggleWiFi(false);
                     Toast.makeText(getApplicationContext(), R.string.toast_settings_wifi_disabled, Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
     }
@@ -140,7 +124,6 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
      * @param lang
      */
     public void setLocale(String lang) {
-
         //Set the application's language
         Locale myLocale;
         myLocale = new Locale(lang);
@@ -152,7 +135,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         getBaseContext().getResources().updateConfiguration(conf,
         getBaseContext().getResources().getDisplayMetrics());
 
-        //
+        //Close all activities to reset them to the right language
         onConfigurationChanged(conf);
 
         //Register the default language of the application
@@ -162,8 +145,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         editor.commit();
     }
 
-    public void start_user_agreement_activity(View view)
-    {
+    public void start_user_agreement_activity(View view){
         Intent intent = new Intent(this, UserAgreementActivity.class);
         startActivity(intent);
     }
@@ -188,20 +170,18 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
      */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-       if(MyActivity.MyActivity!=null)
-       {
+       if(MyActivity.MyActivity!=null){
            MyActivity.MyActivity.finish();
        }
 
-       if(UserAgreementActivity.UserAgreementActivity!=null)
-       {
+       if(UserAgreementActivity.UserAgreementActivity!=null){
            UserAgreementActivity.UserAgreementActivity.finish();
        }
+
        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
        finish();
        startActivity(intent);
        super.onConfigurationChanged(newConfig);
     }
-
 
 }

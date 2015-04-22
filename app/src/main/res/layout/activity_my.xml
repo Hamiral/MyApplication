@@ -137,7 +137,7 @@
                 android:id="@+id/buttonLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="login"
+                android:onClick="onClickLogin"
                 android:gravity="center"
                 android:text="@string/button_main_login"
                 />
@@ -167,12 +167,6 @@
             android:layout_gravity="center_vertical"
             android:visibility="gone"
              />
-        <TextView
-            android:id="@+id/textview_debug"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
 
     </LinearLayout>
     </ScrollView>
