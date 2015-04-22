@@ -14,7 +14,7 @@
     <!-- Page My Activity-->
     <string name="button_main_disconnect">Se Déconnecter</string>
     <string name="textview_main_HotSpotFound">Bienvenue! \nVous êtes dans une zone Wi-Fi</string>
-    <string name="textview_main_NotSignedIn">Bienvenue! \nVeuillez rentrer vos identifiants, afin de vous connecter à votre compte Nomosphère.</string>
+    <string name="textview_main_NotSignedIn">Bienvenue! \nVeuillez rentrer vos identifiants, afin de vous connecter à votre compte Nomosphere.</string>
     <string name="textview_main_NoHotSpotFound">Bienvenue! \nVeuillez vous rendre dans une zone de couverture Wi-Fi pour bénéficier d\&apos;un accès internet gratuit</string>
     <string name="switch_main_Wifi">Wifi</string>
     <string name="button_main_dynamic_startBrowsing">Commencer la navigation</string>
@@ -23,7 +23,7 @@
     <string name="textview_main_password">Mot de passe :</string>
     <string name="checkbox_main_Remember_Me">Se souvenir de moi</string>
     <string name="button_main_login">Se connecter</string>
-    <string name="checkbox_main_automatic_connection">Automatic Connection</string>
+    <string name="checkbox_main_automatic_connection">Connexion Automatique</string>
 
     <!-- Page Settings-->
 
