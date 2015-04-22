@@ -61,7 +61,6 @@ public class MyActivity extends BaseActivity {
     public static String URL_link;
     public JSONObject JSONContent;
     public static String URL_cmd;
-    public static String RequestResult;
     public TextView text_debug;
     Timer myTimer;
     final Handler myHandler = new Handler();
@@ -115,9 +114,11 @@ public class MyActivity extends BaseActivity {
 
 final Runnable myRunnable = new Runnable() {
     public void run() {
+        GlobalVariable appState = ((GlobalVariable) getApplicationContext());
         if(JSONContent==null)
         {return;}
-        if(URL_cmd!="/status")
+
+        if(URL_cmd!="/status" || appState.getLogged())
         updateAll();
     }
 };
@@ -233,13 +234,11 @@ final Runnable myRunnable = new Runnable() {
             else if(JSONContent.getString("authentified").equals("false"))
             {
                 appState.setLogged(false);
-                updateAll();
             }
 
             else if(JSONContent.getString("authentified").equals("true"))
             {
                 appState.setLogged(true);
-                updateAll();
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -256,31 +255,28 @@ final Runnable myRunnable = new Runnable() {
         new LoadViewTask(URL_cmd).execute();
     }
 
-    public void onLoginRequested()
-    {
+    public void onLoginRequested() throws JSONException {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        if (RequestResult.equals("error")) {
+        rememberMe();
+        if (JSONContent.getString("process").equals("error")) {
             //wrong password
             appState.setLogged(false);
             appState.setHotspot(false);
             Toast.makeText(getApplicationContext(),getString(R.string.toast_main_wrongpassword), Toast.LENGTH_SHORT).show();
         }
-        else if(RequestResult.equals("success")) {
+        else if(JSONContent.getString("process").equals("success")) {
             //correct password
             appState.setLogged(true);
             appState.setHotspot(true);
             AutomaticConnectionChecked=true;
             Intent intent = new Intent(this, MyActivity.class);
-            rememberMe();
             startActivity(intent);
-
         }
         else
         {
             Toast.makeText(getApplicationContext(),getString(R.string.toast_main_error), Toast.LENGTH_SHORT).show();
         }
 
-        updateAll();
     }
 
     /**
@@ -426,16 +422,14 @@ final Runnable myRunnable = new Runnable() {
     public void affichageAutomaticConnection()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        AutomaticConnectionChecked = appState.getPrefBool(PREF_AUTOMATIC, getApplicationContext());
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_automatic_connection);
-        checkBox.setChecked(AutomaticConnectionChecked);
+        checkBox.setChecked(appState.getPrefBool(PREF_AUTOMATIC, getApplicationContext()));
     }
 
     public void onClickAutomaticConnection(View view)
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        this.AutomaticConnectionChecked = ((CheckBox) view).isChecked();
-        appState.putPrefBool(PREF_AUTOMATIC,AutomaticConnectionChecked,getApplicationContext());
+        appState.putPrefBool(PREF_AUTOMATIC,((CheckBox) view).isChecked(),getApplicationContext());
     }
 
 
@@ -468,11 +462,11 @@ final Runnable myRunnable = new Runnable() {
             if (JSONContent==null && (AutomaticConnectionChecked ||cmd=="/login") )
             {
 
-                if(URL_cmd=="/login")
+                if(cmd=="/login")
                 Toast.makeText(getApplicationContext(),getString(R.string.toast_main_impossibletoconnect), Toast.LENGTH_SHORT).show();
                 appState.setLogged(false);
                 appState.setHotspot(false);
-                updateAll();
+                //updateAll();
                 return;
             }
             else if(JSONContent==null)
@@ -481,15 +475,12 @@ final Runnable myRunnable = new Runnable() {
             }
             try {
                 if (cmd=="/login") {
-                    RequestResult = JSONContent.getString("process");
                     onLoginRequested();
                 }
                 else if(cmd=="/logout") {
-                    RequestResult = JSONContent.getString("process");
                     onDisconnectRequested();
                 }
                 else if(cmd=="/status"){
-                    RequestResult = JSONContent.getString("authentified");
                     onStatusRequested();
                 }
             } catch (JSONException e) {
