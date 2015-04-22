@@ -13,15 +13,7 @@ public class  BaseActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        if(appState.getLogged())
-        {
-            inflater.inflate(R.menu.main_activity_actions_logged, menu);
-        }
-        else
-        {
-            inflater.inflate(R.menu.main_activity_actions_unlogged, menu);
-        }
+        inflater.inflate(R.menu.main_activity_actions_logged, menu);
         return true;
 
     }
