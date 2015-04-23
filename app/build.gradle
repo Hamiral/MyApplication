@@ -19,11 +19,6 @@ android {
     }
 
 }
-
-dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:20.0.0'
-}
 android.applicationVariants.all { variant ->
 
     task("generate${variant.name.capitalize()}Javadoc", type: Javadoc) {
@@ -42,4 +37,9 @@ android.applicationVariants.all { variant ->
         exclude '**/BuildConfig.java'
         exclude '**/R.java'
     }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:20.0.0'
 }
