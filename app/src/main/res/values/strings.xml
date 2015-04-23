@@ -6,7 +6,7 @@
     <string name="title_activity_base">BaseActivity</string>
 
     <!-- Actionbar-->
-    <string name="actionbar_Navigate">Navigate</string>
+    <string name="actionbar_Navigate">Navigate</string> <!--à enlever-->
     <string name="actionbar_Settings">Settings</string>
 
     <!-- Page Launch-->
@@ -17,7 +17,6 @@
 
     <string name="textview_main_HotSpotFound">Welcome! \nYou have found a Hotspot.</string>
     <string name="textview_main_NotSignedIn">Welcome! \nPlease, enter your username and password to access your Nomosphere account.</string>
-    <string name="textview_main_NoHotSpotFound">Welcome! \nPlease go to a Hotspot in order to benefit from a free Wi-Fi.</string>
     <string name="textview_main_login">E-mail address :</string>
     <string name="textview_main_password">Password :</string>
     <string name="switch_main_Wifi">Wi-Fi</string>
@@ -30,6 +29,7 @@
     <string name="toast_main_wrongpassword">Wrong Password or Username</string>
     <string name="toast_main_error">Error</string>
     <string name="toast_main_impossibletoconnect">Cannot connect, please check your Wi-Fi parameters</string>
+    <string name="toast_main_wronghotspot">Connection failed, you may not be on the right Wi-Fi</string>
 
     <!-- Page Settings-->
 
@@ -46,17 +46,13 @@
 
     <string name="toast_settings_wifi_enabled">You have enabled the Wi-Fi</string>
     <string name="toast_settings_wifi_disabled">You have disable the Wi-Fi</string>
-    <string name="toast_settings_notification_enabled"></string>
-    <string name="toast_settings_notification_disabled"></string>
-    <string name="toast_settings_hotspot_enabled">You have found a HotSpot</string>
-    <string name="toast_settings_hotspot_disabled">You have not found a HotSpot :(</string>
     <string name="toast_settings_spinner_french">Vous avez choisi le français</string>
     <string name="toast_settings_spinner_english">You have selected English</string>
 
     <!-- Page User Agreement-->
     <string name="title_activity_user_agreement">User Agreement</string>
     <string name="textview_user_agreement">User Agreement</string>
-    <string name="toast_main_wronghotspot">Connection failed, you may not be on the right Wi-Fi</string>
+
 
 
 </resources>
