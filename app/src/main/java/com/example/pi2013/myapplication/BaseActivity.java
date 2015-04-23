@@ -38,10 +38,10 @@ public class  BaseActivity extends ActionBarActivity {
         }
     }
 
-    private void openNavigate() {
+    /*private void openNavigate() {
         Intent intent = new Intent(this, MyActivity.class);
         startActivity(intent);
-    }
+    }*/
 
     private void openSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);

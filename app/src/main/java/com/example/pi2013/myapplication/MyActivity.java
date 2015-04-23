@@ -201,6 +201,11 @@ public class MyActivity extends BaseActivity {
         appState.putPrefBool(PREF_REMEMBER,RememberMeChecked,getApplicationContext());
     }
 
+    /**
+     * Listener AutomaticConnection button
+     * Save the boolean value in the application
+     * @param view
+     */
     public void onClickAutomaticConnection(View view){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         appState.putPrefBool(PREF_AUTOMATIC,((CheckBox) view).isChecked(),getApplicationContext());
@@ -227,8 +232,7 @@ public class MyActivity extends BaseActivity {
     /**
      * Called after the request to check the status has been made
      */
-    public void onStatusRequested()
-    {
+    public void onStatusRequested(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
 
         // The variable used to store the username or password may not be initialized (first use of the application for example)
@@ -286,7 +290,10 @@ public class MyActivity extends BaseActivity {
         mLoginButton=false;
     }
 
-
+    /**
+     * Save the username and the password of the user if the RememberMe checkbox is checked
+     * If
+     */
     public void rememberMe(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
 

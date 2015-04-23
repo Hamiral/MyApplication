@@ -101,12 +101,10 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
                 if(isChecked){
                     appState.setWifi(true);
                     toggleWiFi(true);
-                    Toast.makeText(getApplicationContext(),R.string.toast_settings_wifi_enabled, Toast.LENGTH_SHORT).show();
                 }
                 else{
                     appState.setWifi(false);
                     toggleWiFi(false);
-                    Toast.makeText(getApplicationContext(), R.string.toast_settings_wifi_disabled, Toast.LENGTH_SHORT).show();
                 }
             }
         });
