@@ -4,15 +4,15 @@
 
 
 
-    <item android:id="@+id/action_navigate"
+    <!--item android:id="@+id/action_navigate"
         android:icon="@drawable/ic_action_navigate"
         android:title="@string/actionbar_Navigate"
-        yourapp:showAsAction="always" />
+        yourapp:showAsAction="always" /-->
 
     <item android:id="@+id/action_settings"
         android:icon="@drawable/ic_action_settings"
         android:title="@string/actionbar_Settings"
-        yourapp:showAsAction="always" />
+        yourapp:showAsAction="ifRoom" />
 
 
 </menu>

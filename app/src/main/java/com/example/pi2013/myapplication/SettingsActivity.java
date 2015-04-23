@@ -172,6 +172,8 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
     public void onConfigurationChanged(Configuration newConfig) {
        if(MyActivity.MyActivity!=null){
            MyActivity.MyActivity.finish();
+           Intent intent = new Intent(getApplicationContext(), MyActivity.class);
+           startActivity(intent);
        }
 
        if(UserAgreementActivity.UserAgreementActivity!=null){

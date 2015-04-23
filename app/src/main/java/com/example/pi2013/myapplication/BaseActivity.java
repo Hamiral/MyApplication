@@ -27,9 +27,9 @@ public class  BaseActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         switch (id) {
-            case R.id.action_navigate:
+            /*case R.id.action_navigate:
                 openNavigate();
-                return true;
+                return true;*/
             case R.id.action_settings:
                 openSettings();
                 return true;
