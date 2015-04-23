@@ -15,18 +15,19 @@
 
     <!-- Page My Activity-->
 
-    <string name="button_main_disconnect">Disconnect</string>
     <string name="textview_main_HotSpotFound">Welcome! \nYou have found a Hotspot.</string>
     <string name="textview_main_NotSignedIn">Welcome! \nPlease, enter your username and password to access your Nomosphere account.</string>
     <string name="textview_main_NoHotSpotFound">Welcome! \nPlease go to a Hotspot in order to benefit from a free Wi-Fi.</string>
-    <string name="switch_main_Wifi">Wifi</string>
-    <string name="button_main_dynamic_startBrowsing">StartBrowsing</string>
-    <string name="button_main_dynamic_Signin">Sign In</string>
     <string name="textview_main_login">E-mail address :</string>
     <string name="textview_main_password">Password :</string>
-    <string name="checkbox_main_Remember_Me">Remember Me</string>
+    <string name="switch_main_Wifi">Wi-Fi</string>
+    <string name="button_main_dynamic_startBrowsing">Start Browsing</string>
+    <string name="button_main_dynamic_Signin">Sign In</string>
+    <string name="button_main_disconnect">Disconnect</string>
     <string name="button_main_login">Log In</string>
-    <string name="toast_main_wrongpassword">WrongPassword or Username</string>
+    <string name="checkbox_main_Remember_Me">Remember Me</string>
+    <string name="checkbox_main_automatic_connection">Automatic Connection</string>
+    <string name="toast_main_wrongpassword">Wrong Password or Username</string>
     <string name="toast_main_error">Error</string>
     <string name="toast_main_impossibletoconnect">Cannot connect, please check your Wi-Fi parameters</string>
 
@@ -41,10 +42,10 @@
     </string-array>
 
     <string name="button_settings_user_agreement">User Agreement</string>
-    <string name="switch_settings_wifi">Wifi</string>
+    <string name="switch_settings_wifi">Wi-Fi</string>
 
-    <string name="toast_settings_wifi_enabled">You have enabled the Wifi</string>
-    <string name="toast_settings_wifi_disabled">You have disable the Wifi</string>
+    <string name="toast_settings_wifi_enabled">You have enabled the Wi-Fi</string>
+    <string name="toast_settings_wifi_disabled">You have disable the Wi-Fi</string>
     <string name="toast_settings_notification_enabled"></string>
     <string name="toast_settings_notification_disabled"></string>
     <string name="toast_settings_hotspot_enabled">You have found a HotSpot</string>
@@ -53,10 +54,9 @@
     <string name="toast_settings_spinner_english">You have selected English</string>
 
     <!-- Page User Agreement-->
-    <string name="title_activity_user_agreement">UserAgreement</string>
+    <string name="title_activity_user_agreement">User Agreement</string>
     <string name="textview_user_agreement">User Agreement</string>
-    <string name="checkbox_main_automatic_connection">Automatic Connection</string>
-
+    <string name="toast_main_wronghotspot">Connection failed, you may not be on the right Wi-Fi</string>
 
 
 </resources>

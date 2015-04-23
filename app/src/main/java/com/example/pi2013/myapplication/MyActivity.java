@@ -100,10 +100,10 @@ public class MyActivity extends BaseActivity {
     final Runnable myRunnable = new Runnable() {
         public void run() {
             GlobalVariable appState = ((GlobalVariable) getApplicationContext());
-            if(JSONContent==null){
+            /*if(JSONContent==null){
                 updateAll();
                 return;
-            }
+            }*/
 
             if(URL_cmd!="/status" || appState.getLogged())
                 updateAll();
@@ -131,11 +131,9 @@ public class MyActivity extends BaseActivity {
                 if (isChecked) {
                     appState.setWifi(true);
                     toggleWiFi(true);
-                    updateAll();
                 } else {
                     appState.setWifi(false);
                     toggleWiFi(false);
-                    updateAll();
                 }
             }
         }
@@ -186,6 +184,7 @@ public class MyActivity extends BaseActivity {
             return;
         }
 
+        rememberMe();
         URL_cmd="/login";
         mLoginButton=true;
         new RequestContentTask(URL_cmd).execute();
@@ -262,7 +261,6 @@ public class MyActivity extends BaseActivity {
      */
     public void onLoginRequested() {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        rememberMe();
         try {
             if (JSONContent.getString("process").equals("error")) {
                 appState.setLogged(false);
@@ -386,9 +384,9 @@ public class MyActivity extends BaseActivity {
 
     public void updateAutomaticConnection(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-
+        AutomaticConnectionChecked = appState.getPrefBool(PREF_AUTOMATIC, getApplicationContext());
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_automatic_connection);
-        checkBox.setChecked( appState.getPrefBool(PREF_AUTOMATIC, getApplicationContext()));
+        checkBox.setChecked(AutomaticConnectionChecked);
     }
 
     /**
@@ -435,7 +433,7 @@ public class MyActivity extends BaseActivity {
             GlobalVariable appState = (GlobalVariable) getApplicationContext();
             if (JSONContent==null && (AutomaticConnectionChecked ||cmd=="/login") ){
                 if(cmd=="/login")
-                Toast.makeText(getApplicationContext(),getString(R.string.toast_main_impossibletoconnect), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),getString(R.string.toast_main_wronghotspot), Toast.LENGTH_SHORT).show();
 
                 appState.setLogged(false);
                 updateAll();

@@ -140,12 +140,6 @@
                 android:text="@string/button_main_login"
                 />
 
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/Romane-Mercredi-22
         </LinearLayout>
 
         <Button
