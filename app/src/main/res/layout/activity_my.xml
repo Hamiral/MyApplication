@@ -25,7 +25,7 @@
         android:layout_alignParentStart="true">
 
 
-    <LinearLayout
+      <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
@@ -36,7 +36,7 @@
 
 
 
-        <LinearLayout
+          <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -59,70 +59,72 @@
                 />
 
             <Switch
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/switch_main_Wifi"
                 android:id="@+id/switchWiFi"
                 android:checked="false"
                 android:layout_above="@+id/linearLayout"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
+                android:layout_margin="20dp"
                 android:paddingTop="20dp"
                 />
 
         </LinearLayout>
+
         <LinearLayout android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/Login_Layout"
             android:gravity="bottom"
             android:backgroundTintMode="multiply">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/textview_main_login"
-            android:id="@+id/Textview_login" />
 
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textview_main_login"
+                android:id="@+id/Textview_login" />
 
-        <TextView
-            android:id="@+id/textview_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/textview_main_password"
-            />
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            />
-         <LinearLayout
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textview_password"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:id="@+id/LinearLayoutCheckbox">
-            <CheckBox
-                android:id="@+id/checkbox_Remember_Me"
-                android:layout_width="wrap_content"
+                android:text="@string/textview_main_password"
+                />
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/checkbox_main_Remember_Me"
-                android:onClick="onClickRememberMe"
-                android:layout_gravity="center_horizontal" />
-            <CheckBox
-                android:id="@+id/checkbox_automatic_connection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/checkbox_main_automatic_connection"
-                android:onClick="onClickAutomaticConnection"
-                android:layout_gravity="center_horizontal" />
-         </LinearLayout>
+                android:inputType="textPassword"
+                />
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:id="@+id/LinearLayoutCheckbox">
+                <CheckBox
+                    android:id="@+id/checkbox_Remember_Me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkbox_main_Remember_Me"
+                    android:onClick="onClickRememberMe"
+                    android:layout_gravity="center_horizontal" />
+                <CheckBox
+                    android:id="@+id/checkbox_automatic_connection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkbox_main_automatic_connection"
+                    android:onClick="onClickAutomaticConnection"
+                    android:layout_gravity="center_horizontal" />
+             </LinearLayout>
 
 
             <Button
@@ -139,29 +141,33 @@
                 />
 
 
-
-
-
         </LinearLayout>
 
         <Button
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button_dynamic"
-            android:layout_weight="0.85"
             android:onClick="onClickButtonDynamic"
             android:layout_gravity="center_vertical"
             android:visibility="gone"
-             />
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:padding="10dp"
+            />
+
         <Button
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button_disconnect"
-            android:layout_weight="0.85"
             android:text="@string/button_main_disconnect"
             android:onClick="onClickButtonDisconnect"
             android:layout_gravity="center_vertical"
             android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:padding="10dp"
              />
         <TextView
             android:id="@+id/textview_debug"
