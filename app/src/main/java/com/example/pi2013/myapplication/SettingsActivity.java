@@ -119,7 +119,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
     /**
      * Change the language of the application and register it in the SharedPreferences for the future
      * uses of the application
-     * @param lang
+     * @param lang language
      */
     public void setLocale(String lang) {
         //Set the application's language
@@ -143,6 +143,10 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         editor.commit();
     }
 
+    /**
+     * Starts the user agreement activity
+     * @param view
+     */
     public void start_user_agreement_activity(View view){
         Intent intent = new Intent(this, UserAgreementActivity.class);
         startActivity(intent);

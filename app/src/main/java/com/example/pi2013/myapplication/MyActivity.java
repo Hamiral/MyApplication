@@ -65,6 +65,10 @@ public class MyActivity extends BaseActivity {
     Timer myTimer;
     final Handler myHandler = new Handler();
 
+    /**
+     * Called when the activity is first created. This is where you should do all of your normal static set up: create views, bind data to lists, etc. This method also provides you with a Bundle containing the activity's previously frozen state, if there was one. Always followed by onStart().
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle). Otherwise it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,17 +89,23 @@ public class MyActivity extends BaseActivity {
         updateAll();
     }
 
+    /**
+     * Called after your activity has been stopped, prior to it being started again. Always followed by onStart()
+     */
     @Override
     public void onRestart() {
         super.onRestart();
         updateAll();
     }
 
+
     @Override
     public void finish() {
         super.finish();
         MyActivity = null;
     }
+
+
 
     final Runnable myRunnable = new Runnable() {
         public void run() {
@@ -142,7 +152,7 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Change the Wifi state of the device
-     * @param status
+     * @param status status of the Wi-Fi
      */
     public void toggleWiFi(boolean status) {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
@@ -379,6 +389,9 @@ public class MyActivity extends BaseActivity {
 
     }
 
+    /**
+     * Updates the Textviews using the values stored in preferences PREFS_NAME
+     */
     public void updateRememberMe(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         RememberMeChecked = appState.getPrefBool(PREF_REMEMBER, getApplicationContext());
@@ -397,7 +410,7 @@ public class MyActivity extends BaseActivity {
     }
 
     /**
-     * Update everything
+     * Updates everything
      */
     public void updateAll() {
         updateTexts();
@@ -465,8 +478,8 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Request to the Login API
-     * @param serviceUrl
-     * @param cmdUrl
+     * @param serviceUrl default gateway
+     * @param cmdUrl command
      * @return
      * @throws IOException
      */
@@ -573,7 +586,7 @@ public class MyActivity extends BaseActivity {
     /**
      * Convert the gateway value into an usable address
      * For more information to understand the convertion : http://stackoverflow.com/questions/5387036/programmatically-getting-the-gateway-and-subnet-mask-details
-     * @param i
+     * @param i integer to convert
      * @return
      */
     public String intToIp(int i) {

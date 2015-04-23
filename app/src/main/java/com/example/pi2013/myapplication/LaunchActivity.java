@@ -33,7 +33,9 @@ public class LaunchActivity extends Activity {
             language_select();
         }
 
-        // Charge default language of the application (previously chosen by the user in the Settings)
+        /**
+         * Gets default language of the application (previously chosen by the user in the Settings)
+         */
         private void language_select()
         {
             SharedPreferences settings = getSharedPreferences(SettingsActivity.PREFS_NAME, 0);
@@ -48,7 +50,13 @@ public class LaunchActivity extends Activity {
             getBaseContext().getResources().updateConfiguration(conf,
                     getBaseContext().getResources().getDisplayMetrics());
         }
-        //The code to be executed in a background thread.
+
+        /**
+         * The code to be executed in a background thread.
+         * @param params
+         * @return
+         */
+
         @Override
         protected Void doInBackground(Void... params) {
 
