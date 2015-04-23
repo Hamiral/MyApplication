@@ -54,7 +54,7 @@ public class MyActivity extends BaseActivity {
 
     private boolean AutomaticConnectionChecked=false;
     private boolean RememberMeChecked=false;
-    private boolean mLogin;
+    private boolean mLoginButton;
     private Switch WifiSwitch;
     //Keys to register in the application
     private String PREF_USERNAME = "username";
@@ -100,14 +100,21 @@ public class MyActivity extends BaseActivity {
     final Runnable myRunnable = new Runnable() {
         public void run() {
             GlobalVariable appState = ((GlobalVariable) getApplicationContext());
-            if(JSONContent==null)
+            if(JSONContent==null){
+                updateAll();
                 return;
+            }
 
             if(URL_cmd!="/status" || appState.getLogged())
                 updateAll();
         }
     };
 
+    private void CheckStatus() {
+        URL_cmd="/status";
+        new RequestContentTask(URL_cmd).execute();
+        myHandler.post(myRunnable);
+    }
 
     public void createListenerforWifiSwitch() {
 
@@ -150,7 +157,7 @@ public class MyActivity extends BaseActivity {
     }
 
     /**
-     * The button will either open the default browser of the device or call MapActivity to find a Hotspot
+     * The button will open the default browser of the device
      * @param view
      */
     public void onClickButtonDynamic(View view){
@@ -158,28 +165,52 @@ public class MyActivity extends BaseActivity {
         startActivity(browserIntent);
     }
 
+    /**
+     * Listener Disconnect button
+     * Call RequestContentTask to request the disconnection
+     * @param view
+     */
     public void onClickButtonDisconnect(View view){
         URL_cmd="/logout";
-        new LoadViewTask(URL_cmd).execute();
+        new RequestContentTask(URL_cmd).execute();
     }
 
     /**
-     * Login function
+     * Listener Login button
      * @param view
      */
     public void onClickLogin(View view){
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        if(!appState.getWifi()){
+            Toast.makeText(getApplicationContext(),getString(R.string.toast_main_impossibletoconnect), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         URL_cmd="/login";
-        mLogin=true;
-        new LoadViewTask(URL_cmd).execute();
+        mLoginButton=true;
+        new RequestContentTask(URL_cmd).execute();
     }
 
-    //REMEMBER ME
+    /**
+     * Listener RememberMe button
+     * Save the boolean RememberMe value in the application
+     * @param view
+     */
     public void onClickRememberMe(View view){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         this.RememberMeChecked = ((CheckBox) view).isChecked();
         appState.putPrefBool(PREF_REMEMBER,RememberMeChecked,getApplicationContext());
     }
 
+    public void onClickAutomaticConnection(View view){
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        appState.putPrefBool(PREF_AUTOMATIC,((CheckBox) view).isChecked(),getApplicationContext());
+    }
+
+    /**
+     * Called after the request to disconnect has been made
+     * Check the result of the request
+     */
     public void onDisconnectRequested(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         try {
@@ -194,6 +225,9 @@ public class MyActivity extends BaseActivity {
         updateAll();
     }
 
+    /**
+     * Called after the request to check the status has been made
+     */
     public void onStatusRequested()
     {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
@@ -205,33 +239,41 @@ public class MyActivity extends BaseActivity {
         }
 
         try {
+            //Tries to reconnect if the user had been connected but for some reason has been deconnected
              if(JSONContent.getString("authentified").equals("false")    &&   !appState.getPref(PREF_USERNAME, getApplicationContext()).isEmpty() && AutomaticConnectionChecked ) {
                 URL_cmd="/login";
-                new LoadViewTask(URL_cmd).execute();
+                new RequestContentTask(URL_cmd).execute();
             }
             else if(JSONContent.getString("authentified").equals("false")){
                 appState.setLogged(false);
+                 AutomaticConnectionChecked=false;
             }
             else if(JSONContent.getString("authentified").equals("true")){
                 appState.setLogged(true);
+                 AutomaticConnectionChecked=true;
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Called after the request to login has been made (after a check status or a click on the login)
+     */
     public void onLoginRequested() {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         rememberMe();
         try {
             if (JSONContent.getString("process").equals("error")) {
-                //wrong password
                 appState.setLogged(false);
-                if(mLogin)
+
+                /*The Toast is only visible when the button Log In has been clicked
+                The status request may have called the login request and thus, would "spam" the user with the toast without this condition
+                */
+                if(mLoginButton)
                 Toast.makeText(getApplicationContext(),getString(R.string.toast_main_wrongpassword), Toast.LENGTH_SHORT).show();
             }
             else if(JSONContent.getString("process").equals("success")) {
-                //correct password
                 appState.setLogged(true);
                 AutomaticConnectionChecked=true;
                 Intent intent = new Intent(this, MyActivity.class);
@@ -243,7 +285,27 @@ public class MyActivity extends BaseActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mLogin=false;
+        mLoginButton=false;
+    }
+
+
+    public void rememberMe(){
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+
+        if (RememberMeChecked && !username.getText().toString().isEmpty() && !password.getText().toString().isEmpty()){
+            //Remember the username
+            appState.putPref(PREF_USERNAME, username.getText().toString(), getApplicationContext());
+            //Remember the password
+            appState.putPref(PREF_PASSWORD, password.getText().toString(), getApplicationContext());
+        }
+        else{
+            //remove the username that was memorized
+            appState.removePref(PREF_USERNAME, getApplicationContext());
+            //remove the password that was memorized
+            appState.removePref(PREF_PASSWORD,getApplicationContext());
+            //remove the value of remember me memorized
+            appState.removePref(PREF_REMEMBER, getApplicationContext());
+        }
     }
 
     /**
@@ -267,7 +329,7 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Update the layout
-     * What is updated is the layout for the login and the dynamic button
+     * What is updated is the layout for the login, the dynamic button and the disconnect button
      */
     public void updateLayoutVisibility(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
@@ -312,38 +374,6 @@ public class MyActivity extends BaseActivity {
 
     }
 
-    /**
-     * Update everything
-     */
-    public void updateAll() {
-        updateTexts();
-        updateWifiState();
-        updateLayoutVisibility();
-        invalidateOptionsMenu();
-        updateAutomaticConnection();
-        updateRememberMe();
-    }
-
-
-    public void rememberMe(){
-        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-
-        if (RememberMeChecked && !username.getText().toString().isEmpty() && !password.getText().toString().isEmpty()){
-            //Remember the username
-            appState.putPref(PREF_USERNAME, username.getText().toString(), getApplicationContext());
-            //Remember the password
-            appState.putPref(PREF_PASSWORD, password.getText().toString(), getApplicationContext());
-        }
-        else{
-            //remove the username that was memorized
-            appState.removePref(PREF_USERNAME, getApplicationContext());
-            //remove the password that was memorized
-            appState.removePref(PREF_PASSWORD,getApplicationContext());
-            //remove the value of remember me memorized
-            appState.removePref(PREF_REMEMBER, getApplicationContext());
-        }
-    }
-
     public void updateRememberMe(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         RememberMeChecked = appState.getPrefBool(PREF_REMEMBER, getApplicationContext());
@@ -356,33 +386,36 @@ public class MyActivity extends BaseActivity {
 
     public void updateAutomaticConnection(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        AutomaticConnectionChecked = appState.getPrefBool(PREF_AUTOMATIC, getApplicationContext());
+
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_automatic_connection);
-        checkBox.setChecked(AutomaticConnectionChecked);
+        checkBox.setChecked( appState.getPrefBool(PREF_AUTOMATIC, getApplicationContext()));
     }
 
-    public void onClickAutomaticConnection(View view){
-        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        appState.putPrefBool(PREF_AUTOMATIC,((CheckBox) view).isChecked(),getApplicationContext());
+    /**
+     * Update everything
+     */
+    public void updateAll() {
+        updateTexts();
+        updateWifiState();
+        updateLayoutVisibility();
+        invalidateOptionsMenu();
+        updateAutomaticConnection();
+        updateRememberMe();
     }
 
-    private void CheckStatus() {
-        URL_cmd="/status";
-        new LoadViewTask(URL_cmd).execute();
-        myHandler.post(myRunnable);
-    }
-
-
-
-    public class LoadViewTask extends AsyncTask<Void, Integer, Void> {
+    /**
+     * Asynchrone thread to request a status/login/logout
+     */
+    public class RequestContentTask extends AsyncTask<Void, Integer, Void> {
         String cmd;
-        public LoadViewTask(String URL_cmd){
+        public RequestContentTask(String URL_cmd){
             cmd=URL_cmd;
         }
         //Before running code in separate thread
         @Override
         protected void onPreExecute() {
             getDefaultGateway();
+            JSONContent = null;
         }
 
         //The code to be executed in a background thread.
@@ -405,6 +438,7 @@ public class MyActivity extends BaseActivity {
                 Toast.makeText(getApplicationContext(),getString(R.string.toast_main_impossibletoconnect), Toast.LENGTH_SHORT).show();
 
                 appState.setLogged(false);
+                updateAll();
                 return;
             }
             else if(JSONContent==null){
@@ -424,6 +458,13 @@ public class MyActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Request to the Login API
+     * @param serviceUrl
+     * @param cmdUrl
+     * @return
+     * @throws IOException
+     */
     public static JSONObject requestWebService(String serviceUrl, String cmdUrl) throws IOException{
         InputStream in = null;
         OutputStream out = null;
@@ -481,7 +522,6 @@ public class MyActivity extends BaseActivity {
                     System.out.println(urlConnection.getResponseMessage());
                 }
             }
-            //return jsonObject.getString("authentified");
 
 
         } catch (MalformedURLException e) {
@@ -489,8 +529,6 @@ public class MyActivity extends BaseActivity {
         } catch (SocketTimeoutException e) {
             // data retrieval or connection timed out
         } catch (IOException e) {
-            String blabla = e.getMessage();
-
 
         } catch (JSONException e) {
         } finally {
@@ -501,7 +539,13 @@ public class MyActivity extends BaseActivity {
         return null;
     }
 
-
+    /**
+     * Read the InputStream and convert it to a String
+     * @param stream
+     * @param len
+     * @return
+     * @throws IOException
+     */
     public static String readIt(InputStream stream, int len) throws IOException {
         Reader reader = null;
         reader = new InputStreamReader(stream, "UTF-8");
@@ -509,12 +553,24 @@ public class MyActivity extends BaseActivity {
         reader.read(buffer);
         return new String(buffer);
     }
+
+    /**
+     * Get the DefaultGateway
+     * The defaultGateway is used to get the http address to communicate with the Login API
+     */
     public void getDefaultGateway(){
         WifiManager networkd = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         DhcpInfo details = networkd.getDhcpInfo();
         String gateway =intToIp(details.gateway);
         URL_link="http://"+gateway;
     }
+
+    /**
+     * Convert the gateway value into an usable address
+     * For more information to understand the convertion : http://stackoverflow.com/questions/5387036/programmatically-getting-the-gateway-and-subnet-mask-details
+     * @param i
+     * @return
+     */
     public String intToIp(int i) {
         return (( i & 0xFF) + "." +
                 ((i >> 8 ) & 0xFF) +  "." +
