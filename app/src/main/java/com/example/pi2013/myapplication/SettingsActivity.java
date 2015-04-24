@@ -18,6 +18,12 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+/**
+ * Settings Activity
+ * <br> Change Languages
+ * <br> Change Wi-Fi State
+ * <br> Access to the User Agreement
+ */
 public class SettingsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
     private Switch WifiSwitch;
     public static final String PREFS_NAME = "com.example.pi2013.myapplication.PREFERENCE_FILE_KEY";
@@ -76,10 +82,10 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
     /**
      * Listener to the language change spinner
-     * @param parent
-     * @param view
-     * @param pos
-     * @param id
+     * @param parent  The AdapterView where the selection happened
+     * @param view  The view within the AdapterView that was clicked
+     * @param pos The position of the view in the adapter
+     * @param id The row id of the item that is selected
      */
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         switch(pos){
@@ -127,7 +133,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
     /**
      * Change the language of the application and register it in the SharedPreferences for the future
      * uses of the application
-     * @param lang language
+     * @param lang Language
      */
     public void setLocale(String lang) {
         //Set the application's language
@@ -153,16 +159,16 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
     /**
      * Starts the user agreement activity
-     * @param view
+     * @param view The view that was clicked
      */
-    public void start_user_agreement_activity(View view){
+    public void onClickUserAgreementButton(View view){
         Intent intent = new Intent(this, UserAgreementActivity.class);
         startActivity(intent);
     }
 
     /**
      * Enable or Disable the wifi state of the device
-     * @param status status of the Wi-Fi switch
+     * @param status Status of the Wi-Fi switch
      */
     public void toggleWiFi(boolean status) {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
@@ -176,7 +182,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
     /**
      * End all activities if the language has changed
-     * @param newConfig new configuration
+     * @param newConfig New configuration
      */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {

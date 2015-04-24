@@ -3,7 +3,9 @@ package com.example.pi2013.myapplication;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
-
+/**
+ * User Agreement Activity
+ */
 public class UserAgreementActivity extends ActionBarActivity {
     public static UserAgreementActivity UserAgreementActivity=null;
 

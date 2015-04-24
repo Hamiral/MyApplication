@@ -12,8 +12,7 @@ import android.util.DisplayMetrics;
 import java.util.Locale;
 
 /**
- *
- *
+ * Launch Activity
  */
 public class LaunchActivity extends Activity {
 
@@ -29,7 +28,9 @@ public class LaunchActivity extends Activity {
     }
 
 
-
+    /**
+     * Asynchronous thread to request the default language of the application
+     */
     private class LoadViewTask extends AsyncTask<Void, Integer, Void> {
         //Before running code in separate thread
         @Override
@@ -61,7 +62,6 @@ public class LaunchActivity extends Activity {
          * @param params
          * @return
          */
-
         @Override
         protected Void doInBackground(Void... params) {
 

@@ -39,8 +39,8 @@ import java.util.TimerTask;
 
 /**
  * Main activity
- * The layout is changed dynamically according to the different states possible of the application
- * To get more information about the layout display, please check the updatelayout() function or the document
+ * <br>The layout is changed dynamically according to the different states possible of the application
+ * <br>To get more information about the layout display, please check the updatelayout() function or the document
  */
 public class MyActivity extends BaseActivity {
     public static Activity MyActivity = null;
@@ -56,6 +56,7 @@ public class MyActivity extends BaseActivity {
     private boolean RememberMeChecked=false;
     private boolean mLoginButton;
     private Switch WifiSwitch;
+
     //Keys to register in the application
     private String PREF_USERNAME = "username";
     private String PREF_PASSWORD = "password";
@@ -123,9 +124,8 @@ public class MyActivity extends BaseActivity {
     };
 
     /**
-     * creates a thread that checks the status of the Wi-Fi connection
+     * Creates a thread that checks the status of the Wi-Fi connection
      */
-
     private void CheckStatus() {
         URL_cmd="/status";
         new RequestContentTask(URL_cmd).execute();
@@ -135,7 +135,6 @@ public class MyActivity extends BaseActivity {
     /**
      * Listener Wi-Fi Switch
      */
-
     public void createListenerforWifiSwitch() {
 
         WifiSwitch=(Switch) findViewById(R.id.switchWiFi);
@@ -162,7 +161,7 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Change the Wifi state of the device
-     * @param status status of the Wi-Fi
+     * @param status Status of the Wi-Fi
      */
     public void toggleWiFi(boolean status) {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
@@ -176,7 +175,7 @@ public class MyActivity extends BaseActivity {
 
     /**
      * The button will open the default browser of the device
-     * @param view
+     * @param view The view that was clicked.
      */
     public void onClickButtonDynamic(View view){
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
@@ -185,8 +184,8 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Listener Disconnect button
-     * Call RequestContentTask to request the disconnection
-     * @param view
+     * <br>Call RequestContentTask to request the disconnection
+     * @param view The view that was clicked.
      */
     public void onClickButtonDisconnect(View view){
         URL_cmd="/logout";
@@ -195,7 +194,8 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Listener Login button
-     * @param view
+     * <br> Call RequestContentTask to request a login
+     * @param view The view that was clicked.
      */
     public void onClickLogin(View view){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
@@ -212,8 +212,8 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Listener RememberMe button
-     * Save the boolean RememberMe value in the application
-     * @param view
+     * <br>Save the boolean RememberMeChecked value in the application
+     * @param view The view that was clicked.
      */
     public void onClickRememberMe(View view){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
@@ -223,8 +223,8 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Listener AutomaticConnection button
-     * Save the boolean value in the application
-     * @param view
+     * <br>Save the boolean value in the application
+     * @param view The view that was clicked.
      */
     public void onClickAutomaticConnection(View view){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
@@ -233,7 +233,7 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Called after the request to disconnect has been made
-     * Check the result of the request
+     * <br>Check the result of the request
      */
     public void onDisconnectRequested(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
@@ -312,7 +312,6 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Save the username and the password of the user if the RememberMe checkbox is checked
-     * If
      */
     public void rememberMe(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
@@ -334,9 +333,8 @@ public class MyActivity extends BaseActivity {
     }
 
     /**
-     * update the WifiSwitch state if changes has been made outside of the activity
+     * Update the WifiSwitch state if changes has been made outside of the activity
      */
-    // UPDATE
     public void updateWifiState(){
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
         WifiSwitch = (Switch)  findViewById(R.id.switchWiFi);
@@ -354,7 +352,7 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Update the layout
-     * What is updated is the layout for the login, the dynamic button and the disconnect button
+     * <br>What is updated is the layout for the login, the dynamic button and the disconnect button
      */
     public void updateLayoutVisibility(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
@@ -400,7 +398,7 @@ public class MyActivity extends BaseActivity {
     }
 
     /**
-     * Updates the Textviews using the values stored in preferences PREFS_NAME
+     * Updates the Textviews(login and password) using the values stored in preferences PREFS_NAME
      */
     public void updateRememberMe(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
@@ -412,6 +410,9 @@ public class MyActivity extends BaseActivity {
         password.setText(appState.getPref(PREF_PASSWORD, getApplicationContext()));
     }
 
+    /**
+     * Update the AutomaticConnection checkbox using the value stored in preferences PREFS_NAME
+     */
     public void updateAutomaticConnection(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         AutomaticConnectionChecked = appState.getPrefBool(PREF_AUTOMATIC, getApplicationContext());
@@ -449,7 +450,6 @@ public class MyActivity extends BaseActivity {
         /**
          * The code to be executed in a background thread.
          */
-
         @Override
         protected Void doInBackground(Void... params) {
             try {
@@ -461,10 +461,9 @@ public class MyActivity extends BaseActivity {
         }
 
         /**
-         * after executing the code in the thread
+         * After executing the code in the thread
          * @param result Void
          */
-
         @Override
         protected void onPostExecute(Void result) {
             GlobalVariable appState = (GlobalVariable) getApplicationContext();
@@ -495,8 +494,8 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Request to the Login API
-     * @param serviceUrl default gateway
-     * @param cmdUrl command
+     * @param serviceUrl Default gateway
+     * @param cmdUrl Command : login/status/logout
      * @return JSON returned by the request or null
      * @throws IOException
      */
@@ -576,9 +575,9 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Read the InputStream and convert it to a String
-     * @param stream stream received from the API
-     * @param len length
-     * @return stream, converted into a String of length len
+     * @param stream Stream received from the API
+     * @param len Length, maximum stream length to be read
+     * @return String - InputStream converted into a String of length len
      * @throws IOException
      */
     public static String readIt(InputStream stream, int len) throws IOException {
@@ -603,8 +602,8 @@ public class MyActivity extends BaseActivity {
     /**
      * Convert the gateway value into an usable address
      * For more information to understand the convertion : http://stackoverflow.com/questions/5387036/programmatically-getting-the-gateway-and-subnet-mask-details
-     * @param i integer to convert into an ip
-     * @return ip address (String)
+     * @param i Integer to convert into an ip
+     * @return String - Ip address converted :x.x.x.x
      */
     public String intToIp(int i) {
         return (( i & 0xFF) + "." +
