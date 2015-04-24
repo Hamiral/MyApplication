@@ -65,6 +65,10 @@ public class MyActivity extends BaseActivity {
     Timer myTimer;
     final Handler myHandler = new Handler();
 
+    /**
+     * Called when the activity is first created. This is where you should do all of your normal static set up: create views, bind data to lists, etc. This method also provides you with a Bundle containing the activity's previously frozen state, if there was one. Always followed by onStart().
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle). Otherwise it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,17 +89,25 @@ public class MyActivity extends BaseActivity {
         updateAll();
     }
 
+    /**
+     * Called after your activity has been stopped, prior to it being started again. Always followed by onStart()
+     */
     @Override
     public void onRestart() {
         super.onRestart();
         updateAll();
     }
 
+    /**
+     * Called when your activity is done and should be closed
+     */
+
     @Override
     public void finish() {
         super.finish();
         MyActivity = null;
     }
+
 
     final Runnable myRunnable = new Runnable() {
         public void run() {
@@ -110,11 +122,19 @@ public class MyActivity extends BaseActivity {
         }
     };
 
+    /**
+     * creates a thread that checks the status of the Wi-Fi connection
+     */
+
     private void CheckStatus() {
         URL_cmd="/status";
         new RequestContentTask(URL_cmd).execute();
         myHandler.post(myRunnable);
     }
+
+    /**
+     * Listener Wi-Fi Switch
+     */
 
     public void createListenerforWifiSwitch() {
 
@@ -142,7 +162,7 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Change the Wifi state of the device
-     * @param status
+     * @param status status of the Wi-Fi
      */
     public void toggleWiFi(boolean status) {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
@@ -379,6 +399,9 @@ public class MyActivity extends BaseActivity {
 
     }
 
+    /**
+     * Updates the Textviews using the values stored in preferences PREFS_NAME
+     */
     public void updateRememberMe(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         RememberMeChecked = appState.getPrefBool(PREF_REMEMBER, getApplicationContext());
@@ -397,7 +420,7 @@ public class MyActivity extends BaseActivity {
     }
 
     /**
-     * Update everything
+     * Updates everything
      */
     public void updateAll() {
         updateTexts();
@@ -409,7 +432,7 @@ public class MyActivity extends BaseActivity {
     }
 
     /**
-     * Asynchrone thread to request a status/login/logout
+     * Asynchronous thread to request a status/login/logout
      */
     public class RequestContentTask extends AsyncTask<Void, Integer, Void> {
         String cmd;
@@ -423,7 +446,10 @@ public class MyActivity extends BaseActivity {
             JSONContent = null;
         }
 
-        //The code to be executed in a background thread.
+        /**
+         * The code to be executed in a background thread.
+         */
+
         @Override
         protected Void doInBackground(Void... params) {
             try {
@@ -434,7 +460,11 @@ public class MyActivity extends BaseActivity {
             return null;
         }
 
-        //after executing the code in the thread
+        /**
+         * after executing the code in the thread
+         * @param result Void
+         */
+
         @Override
         protected void onPostExecute(Void result) {
             GlobalVariable appState = (GlobalVariable) getApplicationContext();
@@ -465,9 +495,9 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Request to the Login API
-     * @param serviceUrl
-     * @param cmdUrl
-     * @return
+     * @param serviceUrl default gateway
+     * @param cmdUrl command
+     * @return JSON returned by the request or null
      * @throws IOException
      */
     public static JSONObject requestWebService(String serviceUrl, String cmdUrl) throws IOException{
@@ -546,9 +576,9 @@ public class MyActivity extends BaseActivity {
 
     /**
      * Read the InputStream and convert it to a String
-     * @param stream
-     * @param len
-     * @return
+     * @param stream stream received from the API
+     * @param len length
+     * @return stream, converted into a String of length len
      * @throws IOException
      */
     public static String readIt(InputStream stream, int len) throws IOException {
@@ -573,8 +603,8 @@ public class MyActivity extends BaseActivity {
     /**
      * Convert the gateway value into an usable address
      * For more information to understand the convertion : http://stackoverflow.com/questions/5387036/programmatically-getting-the-gateway-and-subnet-mask-details
-     * @param i
-     * @return
+     * @param i integer to convert into an ip
+     * @return ip address (String)
      */
     public String intToIp(int i) {
         return (( i & 0xFF) + "." +

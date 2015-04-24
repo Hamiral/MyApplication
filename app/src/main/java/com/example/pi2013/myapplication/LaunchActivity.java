@@ -17,12 +17,17 @@ import java.util.Locale;
  */
 public class LaunchActivity extends Activity {
 
+    /**
+     * Called when the activity is first created. This is where you should do all of your normal static set up: create views, bind data to lists, etc. This method also provides you with a Bundle containing the activity's previously frozen state, if there was one.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle). Otherwise it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         new LoadViewTask().execute();
     }
+
 
 
     private class LoadViewTask extends AsyncTask<Void, Integer, Void> {
@@ -33,7 +38,9 @@ public class LaunchActivity extends Activity {
             language_select();
         }
 
-        // Charge default language of the application (previously chosen by the user in the Settings)
+        /**
+         * Gets default language of the application (previously chosen by the user in the Settings)
+         */
         private void language_select()
         {
             SharedPreferences settings = getSharedPreferences(SettingsActivity.PREFS_NAME, 0);
@@ -48,7 +55,13 @@ public class LaunchActivity extends Activity {
             getBaseContext().getResources().updateConfiguration(conf,
                     getBaseContext().getResources().getDisplayMetrics());
         }
-        //The code to be executed in a background thread.
+
+        /**
+         * The code to be executed in a background thread.
+         * @param params
+         * @return
+         */
+
         @Override
         protected Void doInBackground(Void... params) {
 

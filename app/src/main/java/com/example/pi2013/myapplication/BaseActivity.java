@@ -43,12 +43,18 @@ public class  BaseActivity extends ActionBarActivity {
         startActivity(intent);
     }*/
 
+    /**
+     *
+     * Opens the Settings View
+     */
     private void openSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
-
+    /**
+     * Called after your activity has been stopped, prior to it being started again.
+     */
     public void onRestart()
     {
         super.onRestart();
