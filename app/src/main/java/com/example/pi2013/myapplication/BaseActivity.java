@@ -9,7 +9,6 @@ import android.view.MenuItem;
 
 public class  BaseActivity extends ActionBarActivity {
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
