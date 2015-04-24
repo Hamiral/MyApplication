@@ -14,7 +14,7 @@ public class GlobalVariable extends Application {
 
     /**
      * Gets the value of the global variable wifi
-     * @return
+     * @return the value of wifi
      */
     public boolean getWifi() {
         return wifi;
@@ -30,7 +30,7 @@ public class GlobalVariable extends Application {
 
     /**
      * Returns the value of Logged global variable
-     * @return
+     * @return the value of Logged
      */
     public boolean getLogged() {
         return Logged;
@@ -77,7 +77,7 @@ public class GlobalVariable extends Application {
      * Gets the String stored in preferences PREFS_NAME under the key Key
      * @param Key name of the key under which is stored the string we want to get
      * @param context the context of the application
-     * @return
+     * @return the String stored in preferences PREFS_NAME under the key Key
      */
 
     public String getPref(String Key, Context context)
@@ -90,7 +90,7 @@ public class GlobalVariable extends Application {
      * Gets the Boolean stored in preferences PREFS_NAME under the key Key
      * @param Key name of the key under which is stored the boolean we want to get
      * @param context the context of the application
-     * @return
+     * @return the boolean stored in preferences PREFS_NAME under the key Key
      */
     public boolean getPrefBool(String Key, Context context)
     {

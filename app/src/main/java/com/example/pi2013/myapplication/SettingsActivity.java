@@ -23,6 +23,10 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
     public static final String PREFS_NAME = "com.example.pi2013.myapplication.PREFERENCE_FILE_KEY";
 
 
+    /**
+     * Called when the activity is first created. This is where you should do all of your normal static set up: create views, bind data to lists, etc. This method also provides you with a Bundle containing the activity's previously frozen state, if there was one.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle). Otherwise it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,6 +41,10 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         WifiSwitch.setChecked(appState.getWifi());
 
     }
+
+    /**
+     * Called after your activity has been stopped, prior to it being started again.
+     */
     @Override
     public void onRestart(){
         super.onRestart();
@@ -154,7 +162,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
     /**
      * Enable or Disable the wifi state of the device
-     * @param status
+     * @param status status of the Wi-Fi switch
      */
     public void toggleWiFi(boolean status) {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
@@ -168,7 +176,7 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
     /**
      * End all activities if the language has changed
-     * @param newConfig
+     * @param newConfig new configuration
      */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
