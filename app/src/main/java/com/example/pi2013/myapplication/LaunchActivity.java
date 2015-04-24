@@ -59,8 +59,6 @@ public class LaunchActivity extends Activity {
 
         /**
          * The code to be executed in a background thread.
-         * @param params
-         * @return
          */
         @Override
         protected Void doInBackground(Void... params) {

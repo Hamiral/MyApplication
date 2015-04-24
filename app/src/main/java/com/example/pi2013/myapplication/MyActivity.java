@@ -118,7 +118,7 @@ public class MyActivity extends BaseActivity {
                 return;
             }*/
 
-            if(URL_cmd!="/status" || appState.getLogged())
+            if(!URL_cmd.equals("/status") || appState.getLogged())
                 updateAll();
         }
     };
@@ -142,8 +142,8 @@ public class MyActivity extends BaseActivity {
            /**
            * if the state of the switch change, toggleWifi will be called to change the wifi of the device
             * and update the layout activity according to the changes
-           * @param buttonView
-           * @param isChecked
+           * @param buttonView The compound button view whose state has changed.
+           * @param isChecked The new checked state of buttonView.
            */
             public void onCheckedChanged (CompoundButton buttonView,boolean isChecked){
                 GlobalVariable appState = ((GlobalVariable) getApplicationContext());
@@ -365,15 +365,10 @@ public class MyActivity extends BaseActivity {
             button_dynamic.setVisibility(View.GONE);
             button_disconnect.setVisibility(View.GONE);
         }
-        else if (appState.getWifi() || appState.getLogged()){
+        else {
             login_layout.setVisibility(View.GONE);
             button_dynamic.setVisibility(View.VISIBLE);
             button_disconnect.setVisibility(View.VISIBLE);
-        }
-        else{
-            login_layout.setVisibility(View.GONE);
-            button_dynamic.setVisibility(View.GONE);
-            button_disconnect.setVisibility(View.GONE);
         }
 
     }
@@ -467,8 +462,8 @@ public class MyActivity extends BaseActivity {
         @Override
         protected void onPostExecute(Void result) {
             GlobalVariable appState = (GlobalVariable) getApplicationContext();
-            if (JSONContent==null && (AutomaticConnectionChecked ||cmd=="/login") ){
-                if(cmd=="/login")
+            if (JSONContent==null && (AutomaticConnectionChecked ||cmd.equals("/login")) ){
+                if(cmd.equals("/login"))
                 Toast.makeText(getApplicationContext(),getString(R.string.toast_main_wronghotspot), Toast.LENGTH_SHORT).show();
 
                 appState.setLogged(false);
@@ -478,16 +473,18 @@ public class MyActivity extends BaseActivity {
             else if(JSONContent==null){
                 return;
             }
-            if (cmd=="/login") {
-                onLoginRequested();
+            switch(cmd)
+            {
+                case "/login" :
+                    onLoginRequested();
+                    break;
+                case"/logout" :
+                    onDisconnectRequested();
+                    break;
+                case"/status" :
+                    onStatusRequested();
             }
-            else if(cmd=="/logout") {
-                onDisconnectRequested();
-            }
-            else if(cmd=="/status"){
-                onStatusRequested();
-            }
-            if(cmd!="/status")
+            if(!cmd.equals("/status"))
             updateAll();
         }
     }
@@ -497,11 +494,11 @@ public class MyActivity extends BaseActivity {
      * @param serviceUrl Default gateway
      * @param cmdUrl Command : login/status/logout
      * @return JSON returned by the request or null
-     * @throws IOException
+     * @throws IOException Signals a general, I/O-related error.
      */
     public static JSONObject requestWebService(String serviceUrl, String cmdUrl) throws IOException{
-        InputStream in = null;
-        OutputStream out = null;
+        InputStream in;
+        OutputStream out;
         HttpURLConnection urlConnection = null;
         try {
             // create connection
@@ -509,7 +506,7 @@ public class MyActivity extends BaseActivity {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setConnectTimeout(15000);
             urlConnection.setReadTimeout(10000);
-            if (cmdUrl=="/status" || cmdUrl=="/logout") {
+            if (cmdUrl.equals("/status") || cmdUrl.equals("/logout")) {
 
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setRequestProperty("Content-Type", "application/json");
@@ -524,10 +521,9 @@ public class MyActivity extends BaseActivity {
                 // create JSON object from content
                 in = urlConnection.getInputStream();
                 String input = readIt(in, 500);
-                JSONObject jsonObject = new JSONObject(input);
-                return jsonObject;
+                return new JSONObject(input);
             }
-            else if(cmdUrl=="/login"){
+            else if(cmdUrl.equals("/login")){
 
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setDoOutput(true);
@@ -549,8 +545,7 @@ public class MyActivity extends BaseActivity {
 
                     in = urlConnection.getInputStream();
                     String input = readIt(in, 500);
-                    JSONObject jsonObject = new JSONObject(input);
-                    return jsonObject;
+                    return new JSONObject(input);
 
                 }else{
                     System.out.println(urlConnection.getResponseMessage());
@@ -559,12 +554,13 @@ public class MyActivity extends BaseActivity {
 
 
         } catch (MalformedURLException e) {
-            // URL is invalid
+            Log.d(DEBUG_TAG, "MalformedURLExeception : " + e);
         } catch (SocketTimeoutException e) {
-            // data retrieval or connection timed out
+            Log.d(DEBUG_TAG, "SocketTimeoutException : " + e);
         } catch (IOException e) {
-
+            Log.d(DEBUG_TAG, "IOException : " + e);
         } catch (JSONException e) {
+            Log.d(DEBUG_TAG, "JSONException : " + e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -578,10 +574,10 @@ public class MyActivity extends BaseActivity {
      * @param stream Stream received from the API
      * @param len Length, maximum stream length to be read
      * @return String - InputStream converted into a String of length len
-     * @throws IOException
+     * @throws IOException Signals a general, I/O-related error.
      */
     public static String readIt(InputStream stream, int len) throws IOException {
-        Reader reader = null;
+        Reader reader;
         reader = new InputStreamReader(stream, "UTF-8");
         char[] buffer = new char[len];
         reader.read(buffer);
