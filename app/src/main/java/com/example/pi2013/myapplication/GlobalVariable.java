@@ -8,8 +8,18 @@ import android.content.SharedPreferences;
  * GlobalVariable
  */
 public class GlobalVariable extends Application {
+    /**
+     * Wifi State
+     */
     private boolean wifi=false;
+    /**
+     * Login State
+     */
     private boolean Logged=false;
+    /**
+     * Preferences of the application
+     * <br> Contains different keys : language,username,password,rememberMe,Automatic
+     */
     public static final String PREFS_NAME = "com.example.pi2013.myapplication.PREFERENCE_FILE_KEY";
 
     /**

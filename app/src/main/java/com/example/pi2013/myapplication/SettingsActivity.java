@@ -25,9 +25,10 @@ import java.util.Locale;
  * <br> Access to the User Agreement
  */
 public class SettingsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
+    /**
+     * Wifi Switch to enable and disable the wifi
+     */
     private Switch WifiSwitch;
-    public static final String PREFS_NAME = "com.example.pi2013.myapplication.PREFERENCE_FILE_KEY";
-
 
     /**
      * Called when the activity is first created. This is where you should do all of your normal static set up: create views, bind data to lists, etc. This method also provides you with a Bundle containing the activity's previously frozen state, if there was one.
@@ -124,8 +125,6 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         });
     }
 
-
-
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
@@ -151,10 +150,8 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         onConfigurationChanged(conf);
 
         //Register the default language of the application
-        SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("language", lang);
-        editor.commit();
+        GlobalVariable appState = ((GlobalVariable) getApplicationContext());
+        appState.putPref("language",lang,getApplication());
     }
 
     /**

@@ -44,25 +44,80 @@ import java.util.TimerTask;
  */
 public class MyActivity extends BaseActivity {
     public static Activity MyActivity = null;
+    /**
+     * Default Gateway URL
+     */
     public static String URL_link;
+
+    /**
+     * Command to the login API
+     */
     public static String URL_cmd;
+
+    /**
+     * Result of the request to the login API
+     */
     public JSONObject JSONContent;
 
     private static final String DEBUG_TAG = "Example";
+
+    /**
+     * Edit Text
+     * <br>Input Username - E-mail
+     */
     private static EditText username;
+
+    /**
+     * Edit Text
+     * <br>Input Password
+     */
     private static EditText password;
 
+
+    /**
+     * Boolean to check if the AutomaticConnection is enabled
+     */
     private boolean AutomaticConnectionChecked=false;
+
+    /**
+     * Boolean to check if the username and password has to be registered in the application
+     */
     private boolean RememberMeChecked=false;
+
+    /**
+     * Boolean to remember if the login button has been clicked
+     */
     private boolean mLoginButton;
+
+    /**
+     * Wifi Switch to enable and disable the wifi
+     */
     private Switch WifiSwitch;
 
-    //Keys to register in the application
+
+    /**
+     * Key to register into the SharedPreferences of the application
+     */
     private String PREF_USERNAME = "username";
+
+    /**
+     * Key to register into the SharedPreferences of the application
+     */
     private String PREF_PASSWORD = "password";
+
+    /**
+     * Key to register into the SharedPreferences of the application
+     */
     private String PREF_REMEMBER = "RememberMe";
+
+    /**
+     * Key to register into the SharedPreferences of the application
+     */
     private String PREF_AUTOMATIC = "Automatic";
 
+    /**
+     * Timer to regularly check the status of the connection with the login API
+     */
     Timer myTimer;
     final Handler myHandler = new Handler();
 
@@ -124,10 +179,10 @@ public class MyActivity extends BaseActivity {
     };
 
     /**
-     * Creates a thread that checks the status of the Wi-Fi connection
+     * Creates a thread that checks the status of the login API
      */
     private void CheckStatus() {
-        URL_cmd="/status";
+        URL_cmd="status";
         new RequestContentTask(URL_cmd).execute();
         myHandler.post(myRunnable);
     }
@@ -188,7 +243,7 @@ public class MyActivity extends BaseActivity {
      * @param view The view that was clicked.
      */
     public void onClickButtonDisconnect(View view){
-        URL_cmd="/logout";
+        URL_cmd="logout";
         new RequestContentTask(URL_cmd).execute();
     }
 
@@ -205,7 +260,7 @@ public class MyActivity extends BaseActivity {
         }
 
         rememberMe();
-        URL_cmd="/login";
+        URL_cmd="login";
         mLoginButton=true;
         new RequestContentTask(URL_cmd).execute();
     }
@@ -264,7 +319,7 @@ public class MyActivity extends BaseActivity {
         try {
             //Tries to reconnect if the user had been connected but for some reason has been deconnected
              if(JSONContent.getString("authentified").equals("false")    &&   !appState.getPref(PREF_USERNAME, getApplicationContext()).isEmpty() && AutomaticConnectionChecked ) {
-                URL_cmd="/login";
+                URL_cmd="login";
                 new RequestContentTask(URL_cmd).execute();
             }
             else if(JSONContent.getString("authentified").equals("false")){
@@ -462,29 +517,33 @@ public class MyActivity extends BaseActivity {
         @Override
         protected void onPostExecute(Void result) {
             GlobalVariable appState = (GlobalVariable) getApplicationContext();
-            if (JSONContent==null && (AutomaticConnectionChecked ||cmd.equals("/login")) ){
-                if(cmd.equals("/login"))
+            if (JSONContent==null && (AutomaticConnectionChecked ||cmd.equals("login")) ){
+                if(cmd.equals("login"))
                 Toast.makeText(getApplicationContext(),getString(R.string.toast_main_wronghotspot), Toast.LENGTH_SHORT).show();
 
                 appState.setLogged(false);
+                AutomaticConnectionChecked=false;
                 updateAll();
                 return;
             }
             else if(JSONContent==null){
+                appState.setLogged(false);
+                AutomaticConnectionChecked=false;
+                updateAll();
                 return;
             }
             switch(cmd)
             {
-                case "/login" :
+                case "login" :
                     onLoginRequested();
                     break;
-                case"/logout" :
+                case"logout" :
                     onDisconnectRequested();
                     break;
-                case"/status" :
+                case"status" :
                     onStatusRequested();
             }
-            if(!cmd.equals("/status"))
+            if(!cmd.equals("status"))
             updateAll();
         }
     }
@@ -506,7 +565,7 @@ public class MyActivity extends BaseActivity {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setConnectTimeout(15000);
             urlConnection.setReadTimeout(10000);
-            if (cmdUrl.equals("/status") || cmdUrl.equals("/logout")) {
+            if (cmdUrl.equals("status") || cmdUrl.equals("logout")) {
 
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setRequestProperty("Content-Type", "application/json");
@@ -523,7 +582,7 @@ public class MyActivity extends BaseActivity {
                 String input = readIt(in, 500);
                 return new JSONObject(input);
             }
-            else if(cmdUrl.equals("/login")){
+            else if(cmdUrl.equals("login")){
 
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setDoOutput(true);
@@ -592,12 +651,12 @@ public class MyActivity extends BaseActivity {
         WifiManager networkd = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         DhcpInfo details = networkd.getDhcpInfo();
         String gateway =intToIp(details.gateway);
-        URL_link="http://"+gateway;
+        URL_link="http://"+gateway+"/";
     }
 
     /**
      * Convert the gateway value into an usable address
-     * For more information to understand the convertion : http://stackoverflow.com/questions/5387036/programmatically-getting-the-gateway-and-subnet-mask-details
+     * <br>For more information to understand the convertion : http://stackoverflow.com/questions/5387036/programmatically-getting-the-gateway-and-subnet-mask-details
      * @param i Integer to convert into an ip
      * @return String - Ip address converted :x.x.x.x
      */
