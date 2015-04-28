@@ -1,12 +1,11 @@
 <resources>
 
-    <!--SharedPreferenced-->
+    <!--SharedPreferences-->
 
     <string name="app_name">Nomosphere</string>
     <string name="title_activity_base">BaseActivity</string>
 
     <!-- Actionbar-->
-    <string name="actionbar_Navigate">Navigate</string> <!--à enlever-->
     <string name="actionbar_Settings">Settings</string>
 
     <!-- Page Launch-->
