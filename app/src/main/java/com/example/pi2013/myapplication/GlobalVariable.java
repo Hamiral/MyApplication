@@ -4,10 +4,12 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.tapvalue.beacon.android.sdk.TapvalueSDKApp;
+
 /**
  * GlobalVariable
  */
-public class GlobalVariable extends Application {
+public class GlobalVariable extends TapvalueSDKApp {
     /**
      * Wifi State
      */
