@@ -23,7 +23,7 @@ android.applicationVariants.all { variant ->
 
     task("generate${variant.name.capitalize()}Javadoc", type: Javadoc) {
         title = "Documentation for Android $android.defaultConfig.versionName b$android.defaultConfig.versionCode"
-        destinationDir = new File("${project.getProjectDir()}/doc/compiled/", variant.baseName)
+        destinationDir = new File("C:/Javadoc/", variant.baseName)
         source = variant.javaCompile.source
 
         ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
