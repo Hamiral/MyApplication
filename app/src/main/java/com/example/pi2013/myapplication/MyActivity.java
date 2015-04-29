@@ -453,13 +453,10 @@ public class MyActivity extends BaseActivity {
         TextView state_textView=(TextView) findViewById(R.id.text_accueil);
 
         if(appState.getLogged()) {
-            button_dynamic.setText(R.string.button_main_dynamic_startBrowsing);
+            button_dynamic.setText(R.string.button_main_startBrowsing);
             state_textView.setText(R.string.textview_main_HotSpotFound);
         }
-        else{
-            button_dynamic.setText(R.string.button_main_dynamic_Signin);
-            state_textView.setText(R.string.textview_main_NotSignedIn);
-        }
+
 
     }
 

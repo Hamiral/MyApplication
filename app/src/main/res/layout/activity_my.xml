@@ -32,7 +32,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout1">
+        android:id="@+id/LinearLayout1">
 
 
 
@@ -42,7 +42,8 @@
             android:orientation="vertical"
             android:gravity="top"
             android:backgroundTintMode="add"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:id="@+id/LinearLayout2">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,7 +65,6 @@
                 android:text="@string/switch_main_Wifi"
                 android:id="@+id/switchWiFi"
                 android:checked="false"
-                android:layout_above="@+id/linearLayout"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="20dp"
                 android:paddingTop="20dp"
@@ -75,7 +75,7 @@
         <LinearLayout android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:id="@+id/Login_Layout"
+            android:id="@+id/LoginLayout"
             android:gravity="bottom"
             android:backgroundTintMode="multiply">
 
@@ -109,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_gravity="center"
-                    android:id="@+id/LinearLayoutCheckbox">
+                    android:id="@+id/LinearLayoutCheckboxes">
                 <CheckBox
                     android:id="@+id/checkbox_Remember_Me"
                     android:layout_width="wrap_content"
