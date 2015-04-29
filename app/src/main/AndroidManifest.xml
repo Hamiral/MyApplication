@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-library android:name="com.tapvalue.beacon.android.sdk" android:required="true" />
 
     <application
         android:name="com.example.pi2013.myapplication.GlobalVariable"
@@ -21,6 +22,7 @@
             android:name=".MyActivity"
             android:label="@string/app_name"
             android:launchMode="singleInstance" >
+
 
         </activity>
         <activity

@@ -3,6 +3,7 @@ package com.example.pi2013.myapplication;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 
 import com.tapvalue.beacon.android.sdk.TapvalueSDKApp;
 
@@ -28,6 +29,7 @@ public class GlobalVariable extends TapvalueSDKApp {
      * Gets the value of the global variable wifi
      * @return The value of wifi
      */
+
     public boolean getWifi() {
         return wifi;
     }

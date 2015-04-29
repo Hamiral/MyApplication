@@ -46,6 +46,6 @@ dependencies {
 }
 repositories {
     flatDir {
-        dirs 'libs'
+        dirs 'lib'
     }
 }

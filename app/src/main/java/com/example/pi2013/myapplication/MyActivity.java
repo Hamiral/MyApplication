@@ -1,6 +1,9 @@
 package com.example.pi2013.myapplication;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.le.BluetoothLeAdvertiser;
+import android.bluetooth.le.BluetoothLeScanner;
 import android.content.Context;
 import android.content.Intent;
 import android.net.DhcpInfo;
@@ -19,6 +22,16 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import android.bluetooth.BluetoothManager;
+
+import com.tapvalue.beacon.android.sdk.TapvalueSDK;
+import com.tapvalue.beacon.android.sdk.TapvalueSDKClient;
+import com.tapvalue.beacon.android.sdk.config.TapvalueSDKConfig;
+import com.tapvalue.beacon.android.sdk.exception.TapvalueSDKException;
+import com.tapvalue.beacon.android.sdk.exception.handler.SDKExceptionHandler;
+import com.tapvalue.beacon.android.sdk.model.TapCustomer;
+import com.tapvalue.beacon.android.altbeacon.beacon.BeaconManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,7 +72,7 @@ public class MyActivity extends BaseActivity {
      */
     public JSONObject JSONContent;
 
-    private static final String DEBUG_TAG = "Example";
+    private static final String DEBUG_TAG = "Debug";
 
     /**
      * Edit Text
@@ -142,6 +155,9 @@ public class MyActivity extends BaseActivity {
                 CheckStatus();
             }
         }, 0, 5000);
+
+        initTapValue();
+
         updateAll();
     }
 
@@ -173,7 +189,7 @@ public class MyActivity extends BaseActivity {
                 return;
             }*/
 
-            if(!URL_cmd.equals("/status") || appState.getLogged())
+            if(!URL_cmd.equals("status") || appState.getLogged())
                 updateAll();
         }
     };
@@ -667,4 +683,29 @@ public class MyActivity extends BaseActivity {
                 ((i >> 24 ) & 0xFF ));
     }
 
+    public void initTapValue()
+    {
+
+        Long AppID= Long.valueOf(100009);
+        Long UserID= Long.valueOf(100055);
+        String Token="29c89da7-bcce-40be-82f3-f0c63c838da5";
+        TapvalueSDKConfig config = TapvalueSDKConfig.create(this,Token,AppID,UserID);
+        TapvalueSDKClient sdkClient = null;
+        try {
+            sdkClient = TapvalueSDK.getClient(config);
+        } catch (TapvalueSDKException e) {
+        }
+        sdkClient.start();
+
+        sdkClient.updateCustomer(new TapCustomer.Builder()
+                .email("lor.alex.f@gmail.com")
+                .build());
+        sdkClient.setSDKExceptionHandler(new SDKExceptionHandler() {
+            @Override
+            public void onException(Exception e) {
+                Log.d(DEBUG_TAG, "The response is: " + e);
+            }
+        });
+
+    }
 }
