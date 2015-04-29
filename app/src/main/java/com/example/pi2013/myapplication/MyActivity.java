@@ -411,7 +411,7 @@ public class MyActivity extends BaseActivity {
      */
     public void updateLayoutVisibility(){
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
-        LinearLayout login_layout = (LinearLayout) findViewById(R.id.Login_Layout);
+        LinearLayout login_layout = (LinearLayout) findViewById(R.id.LoginLayout);
         Button button_dynamic = (Button) findViewById(R.id.button_dynamic);
         Button button_disconnect = (Button) findViewById(R.id.button_disconnect);
 
