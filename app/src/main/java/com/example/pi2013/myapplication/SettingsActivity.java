@@ -1,7 +1,9 @@
 package com.example.pi2013.myapplication;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -29,7 +31,46 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
      * Wifi Switch to enable and disable the wifi
      */
     private Switch WifiSwitch;
+    private BroadcastReceiver WifiStateChangedReceiver
+            = new BroadcastReceiver(){
 
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // TODO Auto-generated method stub
+            GlobalVariable appState =(GlobalVariable) getApplicationContext();
+            int extraWifiState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE ,
+                    WifiManager.WIFI_STATE_UNKNOWN);
+            switch(extraWifiState){
+                case WifiManager.WIFI_STATE_DISABLED:
+                    WifiSwitch.setTextColor(getResources().getColor(R.color.bleuNomosphere));
+                    WifiSwitch.setChecked(false);
+                    WifiSwitch.setClickable(true);
+                    appState.setWifi(false);
+                    break;
+                case WifiManager.WIFI_STATE_DISABLING:
+                    WifiSwitch.setChecked(false);
+                    WifiSwitch.setTextColor(getResources().getColor(R.color.grisPinchard));
+                    WifiSwitch.setClickable(false);
+                    appState.setWifi(false);
+                    break;
+                case WifiManager.WIFI_STATE_ENABLED:
+                    WifiSwitch.setChecked(true);
+                    WifiSwitch.setTextColor(getResources().getColor(R.color.bleuNomosphere));
+                    WifiSwitch.setClickable(true);
+                    appState.setWifi(true);
+                    break;
+                case WifiManager.WIFI_STATE_ENABLING:
+                    WifiSwitch.setChecked(true);
+                    WifiSwitch.setTextColor(getResources().getColor(R.color.grisPinchard));
+                    WifiSwitch.setClickable(false);
+                    appState.setWifi(true);
+                    break;
+                case WifiManager.WIFI_STATE_UNKNOWN:
+
+                    break;
+            }
+
+        }};
     /**
      * Called when the activity is first created. This is where you should do all of your normal static set up: create views, bind data to lists, etc. This method also provides you with a Bundle containing the activity's previously frozen state, if there was one.
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle). Otherwise it is null.
@@ -46,7 +87,8 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         WifiSwitch.setChecked(appState.getWifi());
-
+        this.registerReceiver(this.WifiStateChangedReceiver,
+                new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION));
     }
 
     /**

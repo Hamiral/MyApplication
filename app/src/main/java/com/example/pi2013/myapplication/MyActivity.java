@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.le.BluetoothLeAdvertiser;
 import android.bluetooth.le.BluetoothLeScanner;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.DhcpInfo;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -134,6 +136,48 @@ public class MyActivity extends BaseActivity {
     Timer myTimer;
     final Handler myHandler = new Handler();
 
+    TapvalueSDKClient sdkClient = null;
+
+    private BroadcastReceiver WifiStateChangedReceiver
+            = new BroadcastReceiver(){
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // TODO Auto-generated method stub
+            GlobalVariable appState =(GlobalVariable) getApplicationContext();
+            int extraWifiState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE ,
+                    WifiManager.WIFI_STATE_UNKNOWN);
+            switch(extraWifiState){
+                case WifiManager.WIFI_STATE_DISABLED:
+                    WifiSwitch.setTextColor(getResources().getColor(R.color.bleuNomosphere));
+                    WifiSwitch.setChecked(false);
+                    WifiSwitch.setClickable(true);
+                    appState.setWifi(false);
+                    break;
+                case WifiManager.WIFI_STATE_DISABLING:
+                    WifiSwitch.setChecked(false);
+                    WifiSwitch.setTextColor(getResources().getColor(R.color.grisPinchard));
+                    WifiSwitch.setClickable(false);
+                    appState.setWifi(false);
+                    break;
+                case WifiManager.WIFI_STATE_ENABLED:
+                    WifiSwitch.setChecked(true);
+                    WifiSwitch.setTextColor(getResources().getColor(R.color.bleuNomosphere));
+                    WifiSwitch.setClickable(true);
+                    appState.setWifi(true);
+                    break;
+                case WifiManager.WIFI_STATE_ENABLING:
+                    WifiSwitch.setChecked(true);
+                    WifiSwitch.setTextColor(getResources().getColor(R.color.grisPinchard));
+                    WifiSwitch.setClickable(false);
+                    appState.setWifi(true);
+                    break;
+                case WifiManager.WIFI_STATE_UNKNOWN:
+
+                    break;
+            }
+
+        }};
     /**
      * Called when the activity is first created. This is where you should do all of your normal static set up: create views, bind data to lists, etc. This method also provides you with a Bundle containing the activity's previously frozen state, if there was one. Always followed by onStart().
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle). Otherwise it is null.
@@ -156,8 +200,10 @@ public class MyActivity extends BaseActivity {
             }
         }, 0, 5000);
 
-        initTapValue();
+        this.registerReceiver(this.WifiStateChangedReceiver,
+                new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION));
 
+        initTapValue();
         updateAll();
     }
 
@@ -236,6 +282,7 @@ public class MyActivity extends BaseActivity {
      */
     public void toggleWiFi(boolean status) {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
+        int Wifi=wifiManager.WIFI_STATE_DISABLING;
         if (status && !wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(true);
         }
@@ -356,6 +403,7 @@ public class MyActivity extends BaseActivity {
      */
     public void onLoginRequested() {
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+
         try {
             if (JSONContent.getString("process").equals("error")) {
                 appState.setLogged(false);
@@ -369,6 +417,9 @@ public class MyActivity extends BaseActivity {
             else if(JSONContent.getString("process").equals("success")) {
                 appState.setLogged(true);
                 AutomaticConnectionChecked=true;
+                sdkClient.updateCustomer(new TapCustomer.Builder()
+                        .email(username.getText().toString())
+                        .build());
                 Intent intent = new Intent(this, MyActivity.class);
                 startActivity(intent);
             }
@@ -456,6 +507,9 @@ public class MyActivity extends BaseActivity {
             button_dynamic.setText(R.string.button_main_startBrowsing);
             state_textView.setText(R.string.textview_main_HotSpotFound);
         }
+        else{
+            state_textView.setText(R.string.textview_main_NotSignedIn);
+        }
 
 
     }
@@ -533,16 +587,20 @@ public class MyActivity extends BaseActivity {
             if (JSONContent==null && (AutomaticConnectionChecked ||cmd.equals("login")) ){
                 if(cmd.equals("login"))
                 Toast.makeText(getApplicationContext(),getString(R.string.toast_main_wronghotspot), Toast.LENGTH_SHORT).show();
+                AutomaticConnectionChecked = false;
+                if(appState.getLogged()) {
+                    appState.setLogged(false);
 
-                appState.setLogged(false);
-                AutomaticConnectionChecked=false;
-                updateAll();
+                    updateAll();
+                }
                 return;
             }
-            else if(JSONContent==null){
-                appState.setLogged(false);
+            else if(JSONContent==null ){
                 AutomaticConnectionChecked=false;
-                updateAll();
+                if(appState.getLogged()) {
+                    appState.setLogged(false);
+                    updateAll();
+                }
                 return;
             }
             switch(cmd)
@@ -588,7 +646,8 @@ public class MyActivity extends BaseActivity {
                 urlConnection.connect();
                 // handle issues
                 int statusCode = urlConnection.getResponseCode();
-                Log.d(DEBUG_TAG, "The response is: " + statusCode);
+                Log.d(DEBUG_TAG, "HTTP Status Code" +
+                        ": " + statusCode);
 
                 // create JSON object from content
                 in = urlConnection.getInputStream();
@@ -686,17 +745,13 @@ public class MyActivity extends BaseActivity {
         Long AppID= Long.valueOf(100009);
         Long UserID= Long.valueOf(100055);
         String Token="29c89da7-bcce-40be-82f3-f0c63c838da5";
-        TapvalueSDKConfig config = TapvalueSDKConfig.create(this,Token,AppID,UserID);
-        TapvalueSDKClient sdkClient = null;
+        TapvalueSDKConfig config = TapvalueSDKConfig.create(this,Token,UserID,AppID);
         try {
             sdkClient = TapvalueSDK.getClient(config);
         } catch (TapvalueSDKException e) {
         }
         sdkClient.start();
 
-        sdkClient.updateCustomer(new TapCustomer.Builder()
-                .email("lor.alex.f@gmail.com")
-                .build());
         sdkClient.setSDKExceptionHandler(new SDKExceptionHandler() {
             @Override
             public void onException(Exception e) {
