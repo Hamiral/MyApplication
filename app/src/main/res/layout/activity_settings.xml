@@ -39,6 +39,14 @@
             android:id="@+id/state_wifi"
             android:checked="false" />
 
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/switch_settings_notif"
+            android:id="@+id/state_notif"
+            android:checked="false" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
