@@ -47,7 +47,7 @@
     <!-- Page User Agreement-->
     <string name="title_activity_user_agreement">User Agreement</string>
     <string name="textview_user_agreement">User Agreement</string>
-
+    <string name="switch_settings_notif">Notifications</string>
 
 
 </resources>
