@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
+import android.bluetooth.BluetoothAdapter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.wifi.WifiManager;
@@ -72,6 +72,18 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
         }};
     /**
+     * Notifications Switch to enable and disable notifications
+     */
+    private Switch NotifSwitch;
+
+
+    /**
+     * Key to register into the SharedPreferences of the application
+     */
+    private String PREFS_NOTIF = "NotificationsEnabled";
+
+
+    /**
      * Called when the activity is first created. This is where you should do all of your normal static set up: create views, bind data to lists, etc. This method also provides you with a Bundle containing the activity's previously frozen state, if there was one.
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle). Otherwise it is null.
      */
@@ -84,11 +96,14 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
         initSpinner_ChoixLangue();
         initSwitch_WifiSwitch();
+        initNotifSwitch();
 
         GlobalVariable appState = ((GlobalVariable)getApplicationContext());
         WifiSwitch.setChecked(appState.getWifi());
+        NotifSwitch.setChecked(appState.getBT());
         this.registerReceiver(this.WifiStateChangedReceiver,
                 new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION));
+
     }
 
     /**
@@ -107,6 +122,8 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
         else {
             WifiSwitch.setChecked(false);
         }
+
+
     }
 
     /**
@@ -240,5 +257,43 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
        startActivity(intent);
        super.onConfigurationChanged(newConfig);
     }
+
+    public void initNotifSwitch(){
+        GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+        NotifSwitch = (Switch) findViewById(R.id.state_notif);
+        NotifSwitch.setChecked(appState.getPrefBool(PREFS_NOTIF, getApplicationContext()));
+        NotifSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                GlobalVariable appState = ((GlobalVariable)getApplicationContext());
+                appState.putPrefBool(PREFS_NOTIF, NotifSwitch.isChecked(), getApplicationContext());
+                if (isChecked) {
+                    appState.setBT(true);
+                    toggleBT(true);
+                } else {
+                    appState.setBT(false);
+                    toggleBT(false);
+                }
+            }
+        });
+    }
+
+
+    /**
+     * Enable or Disable the BT state of the device
+     * @param status Status of the BT switch
+     */
+    public void toggleBT(boolean status) {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        boolean isEnabled = bluetoothAdapter.isEnabled();
+        if (status && !isEnabled) {
+            bluetoothAdapter.enable();
+        }
+        else if(!status && isEnabled) {
+            bluetoothAdapter.disable();
+        }
+
+    }
+
+
 
 }

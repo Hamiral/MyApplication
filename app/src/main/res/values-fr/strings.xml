@@ -43,7 +43,7 @@
 
     <!-- Page User Agreement-->
     <string name="title_activity_user_agreement">Conditions d\&apos;Utilisation</string>
-    <string name="textview_user_agreement">Conditions générales d\&apos;utilisation du service Hotspot Wi-Fi
+    <string name="textview_user_agreement"><b>Conditions générales d\&apos;utilisation du service Hotspot Wi-Fi</b>
         \n\n\n
 En cochant la case "J\&apos;accepte les Conditions Générales d\&apos;Utilisation", vous acceptez d\&apos;utiliser le service
 du Hotspot Wi-Fi en respectant les règles édictées dans les conditions présentées ci-dessus et devenez
@@ -261,7 +261,6 @@ des présentes conditions d\&apos;utilisation, la seule juridiction reconnue et 
 celle du Tribunal de Commerce de Grasse. Cette disposition est applicable même en cas de demande
 incidente, d\&apos;appel en garantie ou en cas de pluralité de défendeurs.
     </string>
-
-
+    <string name="switch_settings_notif">Notifications (Bluetooth)</string>
 
 </resources>

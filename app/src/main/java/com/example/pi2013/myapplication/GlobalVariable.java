@@ -1,6 +1,5 @@
 package com.example.pi2013.myapplication;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,6 +14,11 @@ public class GlobalVariable extends TapvalueSDKApp {
      * Wifi State
      */
     private boolean wifi=false;
+
+    /**
+     * Bluetooth State
+     */
+    private boolean BT=false;
     /**
      * Login State
      */
@@ -35,11 +39,27 @@ public class GlobalVariable extends TapvalueSDKApp {
     }
 
     /**
+     * Gets the value of the global variable wifi
+     * @return The value of wifi
+     */
+    public boolean getBT() {
+        return BT;
+    }
+
+    /**
      * Sets the value of the global variable wifi
      * @param wifi The value of the Wifi State
      */
     public void setWifi(boolean wifi) {
         this.wifi = wifi;
+    }
+
+    /**
+     * Sets the value of the global variable wifi
+     * @param bluetooth The value of the bluetooth State
+     */
+    public void setBT(boolean bluetooth) {
+        this.BT = bluetooth;
     }
 
     /**
@@ -107,7 +127,7 @@ public class GlobalVariable extends TapvalueSDKApp {
     public boolean getPrefBool(String Key, Context context)
     {
         SharedPreferences sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        return sharedPref.getBoolean(Key, false);
+        return sharedPref.getBoolean(Key, true);
     }
 
     /**
