@@ -15,8 +15,14 @@
         android:label="@string/app_name"
         android:logo="@drawable/ic_logo_client"
         android:icon="@drawable/ic_icon_client"
-        android:theme="@style/StyleNomosphere"
-         >
+        android:theme="@style/StyleNomosphere" >
+
+        <receiver android:name="com.example.pi2013.myapplication.NetWatcherBroadcast">
+            <intent-filter>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+
 
         <activity
             android:name=".MyActivity"

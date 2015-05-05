@@ -4,7 +4,6 @@
     <string name="title_activity_base">BaseActivity</string>
 
     <!-- Actionbar-->
-    <string name="actionbar_Navigate">Naviguer</string>
     <string name="actionbar_Settings">Paramètres</string>
 
     <!-- Page Launch-->
@@ -17,8 +16,7 @@
     <string name="textview_main_login">Adresse e-mail :</string>
     <string name="textview_main_password">Mot de passe :</string>
     <string name="switch_main_Wifi">Wi-Fi</string>
-    <string name="button_main_dynamic_startBrowsing">Commencer la navigation</string>
-    <string name="button_main_dynamic_Signin">Se connecter</string>
+    <string name="button_main_startBrowsing">Commencer la navigation</string>
     <string name="button_main_login">Se connecter</string>
     <string name="button_main_disconnect">Se Déconnecter</string>
     <string name="checkbox_main_Remember_Me">Se souvenir de moi</string>
@@ -40,8 +38,6 @@
 
     <string name="button_settings_user_agreement">Conditions Générales d\&apos;Utilisation</string>
     <string name="switch_settings_wifi">Wi-Fi</string>
-    <string name="toast_settings_wifi_enabled">Vous avez activé le Wi-Fi</string>
-    <string name="toast_settings_wifi_disabled">Vous avez désactivé le Wi-Fi</string>
     <string name="toast_settings_spinner_french">Vous avez choisi le français</string>
     <string name="toast_settings_spinner_english">You have selected English</string>
 
