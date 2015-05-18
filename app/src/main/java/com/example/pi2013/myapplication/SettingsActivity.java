@@ -1,10 +1,10 @@
 package com.example.pi2013.myapplication;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.bluetooth.BluetoothAdapter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.wifi.WifiManager;
@@ -123,7 +123,14 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
             WifiSwitch.setChecked(false);
         }
 
+        this.registerReceiver(this.WifiStateChangedReceiver,
+                new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION));
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        unregisterReceiver(this.WifiStateChangedReceiver);
     }
 
     /**

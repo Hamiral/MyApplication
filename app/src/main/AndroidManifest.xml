@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pi2013.myapplication" >
 
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -19,12 +19,9 @@
         android:icon="@drawable/ic_icon_client"
         android:theme="@style/StyleNomosphere" >
 
-        <receiver android:name="com.example.pi2013.myapplication.NetWatcherBroadcast">
-            <intent-filter>
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
-            </intent-filter>
-        </receiver>
-
+        <service
+            android:name=".ConnectivityService"
+            android:enabled="true"/>
 
         <activity
             android:name=".MyActivity"

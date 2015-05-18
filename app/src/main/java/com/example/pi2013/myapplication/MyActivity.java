@@ -1,9 +1,6 @@
 package com.example.pi2013.myapplication;
 
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.le.BluetoothLeAdvertiser;
-import android.bluetooth.le.BluetoothLeScanner;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,11 +18,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import android.bluetooth.BluetoothManager;
 
 import com.tapvalue.beacon.android.sdk.TapvalueSDK;
 import com.tapvalue.beacon.android.sdk.TapvalueSDKClient;
@@ -33,7 +29,6 @@ import com.tapvalue.beacon.android.sdk.config.TapvalueSDKConfig;
 import com.tapvalue.beacon.android.sdk.exception.TapvalueSDKException;
 import com.tapvalue.beacon.android.sdk.exception.handler.SDKExceptionHandler;
 import com.tapvalue.beacon.android.sdk.model.TapCustomer;
-import com.tapvalue.beacon.android.altbeacon.beacon.BeaconManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -136,6 +131,9 @@ public class MyActivity extends BaseActivity {
     Timer myTimer;
     final Handler myHandler = new Handler();
 
+    public Intent ConnectivityServiceIntent;
+
+    private ProgressBar LoadingProgressBar;
     TapvalueSDKClient sdkClient = null;
 
     private BroadcastReceiver WifiStateChangedReceiver
@@ -202,7 +200,6 @@ public class MyActivity extends BaseActivity {
 
         this.registerReceiver(this.WifiStateChangedReceiver,
                 new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION));
-
         initTapValue();
         updateAll();
     }
@@ -213,8 +210,21 @@ public class MyActivity extends BaseActivity {
     @Override
     public void onRestart() {
         super.onRestart();
+        this.registerReceiver(this.WifiStateChangedReceiver,
+                new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION));
         updateAll();
     }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(ConnectivityServiceIntent!=null){
+
+            stopService(ConnectivityServiceIntent);
+        }
+
+    }
+
 
     /**
      * Called when your activity is done and should be closed
@@ -226,6 +236,13 @@ public class MyActivity extends BaseActivity {
         MyActivity = null;
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        unregisterReceiver(this.WifiStateChangedReceiver);
+        ConnectivityServiceIntent = new Intent(this, ConnectivityService.class);
+        this.startService(ConnectivityServiceIntent);
+    }
 
     final Runnable myRunnable = new Runnable() {
         public void run() {
@@ -282,7 +299,7 @@ public class MyActivity extends BaseActivity {
      */
     public void toggleWiFi(boolean status) {
         WifiManager wifiManager = (WifiManager) this .getSystemService(Context.WIFI_SERVICE);
-        int Wifi=wifiManager.WIFI_STATE_DISABLING;
+        //int Wifi=wifiManager.WIFI_STATE_DISABLING;
         if (status && !wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(true);
         }
@@ -385,16 +402,19 @@ public class MyActivity extends BaseActivity {
                 URL_cmd="login";
                 new RequestContentTask(URL_cmd).execute();
             }
-            else if(JSONContent.getString("authentified").equals("false")){
-                appState.setLogged(false);
-                 AutomaticConnectionChecked=false;
-            }
             else if(JSONContent.getString("authentified").equals("true")){
                 appState.setLogged(true);
                  AutomaticConnectionChecked=true;
             }
+            else{
+                 appState.setLogged(false);
+                 AutomaticConnectionChecked=false;
+             }
+
         } catch (JSONException e) {
             e.printStackTrace();
+            appState.setLogged(false);
+            AutomaticConnectionChecked=false;
         }
     }
 
@@ -420,8 +440,6 @@ public class MyActivity extends BaseActivity {
                 sdkClient.updateCustomer(new TapCustomer.Builder()
                         .email(username.getText().toString())
                         .build());
-                Intent intent = new Intent(this, MyActivity.class);
-                startActivity(intent);
             }
             else{
                 Toast.makeText(getApplicationContext(),getString(R.string.toast_main_error), Toast.LENGTH_SHORT).show();
@@ -562,6 +580,10 @@ public class MyActivity extends BaseActivity {
         protected void onPreExecute() {
             getDefaultGateway();
             JSONContent = null;
+            LoadingProgressBar = (ProgressBar) findViewById(R.id.loadingprogressBar);
+            if((cmd.equals("login")&&AutomaticConnectionChecked) || cmd.equals("logout")) {
+                LoadingProgressBar.setVisibility(View.VISIBLE);
+            }
         }
 
         /**
@@ -583,6 +605,9 @@ public class MyActivity extends BaseActivity {
          */
         @Override
         protected void onPostExecute(Void result) {
+            if(cmd.equals("login") || cmd.equals("logout")) {
+                LoadingProgressBar.setVisibility(View.GONE);
+            }
             GlobalVariable appState = (GlobalVariable) getApplicationContext();
             if (JSONContent==null && (AutomaticConnectionChecked ||cmd.equals("login")) ){
                 if(cmd.equals("login"))
@@ -590,7 +615,6 @@ public class MyActivity extends BaseActivity {
                 AutomaticConnectionChecked = false;
                 if(appState.getLogged()) {
                     appState.setLogged(false);
-
                     updateAll();
                 }
                 return;
@@ -614,7 +638,7 @@ public class MyActivity extends BaseActivity {
                 case"status" :
                     onStatusRequested();
             }
-            if(!cmd.equals("status"))
+            if(!cmd.equals("status") && !AutomaticConnectionChecked)
             updateAll();
         }
     }
@@ -634,8 +658,8 @@ public class MyActivity extends BaseActivity {
             // create connection
             URL url = new URL(serviceUrl + cmdUrl);
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setConnectTimeout(15000);
-            urlConnection.setReadTimeout(10000);
+            urlConnection.setConnectTimeout(5000);
+            urlConnection.setReadTimeout(2000);
             if (cmdUrl.equals("status") || cmdUrl.equals("logout")) {
 
                 urlConnection.setRequestMethod("GET");

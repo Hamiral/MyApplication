@@ -23,8 +23,12 @@ public class LaunchActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if(MyActivity.MyActivity==null)
         new LoadViewTask().execute();
+
+        Intent intent = new Intent(getApplicationContext(), MyActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 
@@ -62,7 +66,6 @@ public class LaunchActivity extends Activity {
          */
         @Override
         protected Void doInBackground(Void... params) {
-
             try {
                 //Get the current thread's token
                 synchronized (this) {
@@ -80,6 +83,8 @@ public class LaunchActivity extends Activity {
             Intent intent = new Intent(getApplicationContext(), MyActivity.class);
             startActivity(intent);
             finish();
+
+
         }
     }
 }

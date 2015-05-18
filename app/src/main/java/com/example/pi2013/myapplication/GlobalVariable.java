@@ -2,7 +2,6 @@ package com.example.pi2013.myapplication;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 
 import com.tapvalue.beacon.android.sdk.TapvalueSDKApp;
 

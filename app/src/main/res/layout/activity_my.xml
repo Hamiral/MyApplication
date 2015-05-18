@@ -140,6 +140,8 @@
                 android:text="@string/button_main_login"
                 />
 
+
+
         </LinearLayout>
 
         <Button
@@ -168,7 +170,16 @@
             android:layout_marginLeft="50dp"
             android:padding="10dp"
              />
-
+          <ProgressBar
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/loadingprogressBar"
+              android:layout_alignParentBottom="true"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentStart="true"
+              android:layout_gravity="center_horizontal"
+              android:visibility="gone"/>
     </LinearLayout>
     </ScrollView>
+
 </RelativeLayout>
