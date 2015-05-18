@@ -45,6 +45,10 @@
     <string name="toast_settings_spinner_french">Vous avez choisi le français</string>
     <string name="toast_settings_spinner_english">You have selected English</string>
 
+    <!-- Page Service-->
+    <string name="notification_service_title" />
+    <string name="notification_service_content" />
+
     <!-- Page User Agreement-->
     <string name="title_activity_user_agreement">User Agreement</string>
     <string name="textview_user_agreement"><b>Conditions générales d\&apos;utilisation du service Hotspot Wi-Fi</b>
@@ -265,8 +269,6 @@ des présentes conditions d\&apos;utilisation, la seule juridiction reconnue et 
 celle du Tribunal de Commerce de Grasse. Cette disposition est applicable même en cas de demande
 incidente, d\&apos;appel en garantie ou en cas de pluralité de défendeurs.
     </string>
-
-
 
 
 

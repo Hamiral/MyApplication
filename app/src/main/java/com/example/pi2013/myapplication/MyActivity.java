@@ -131,11 +131,24 @@ public class MyActivity extends BaseActivity {
     Timer myTimer;
     final Handler myHandler = new Handler();
 
+    /**
+     * Intent to the ConnectivityService
+     */
     public Intent ConnectivityServiceIntent;
 
+    /**
+     * ProgressBar during the login or logout
+     */
     private ProgressBar LoadingProgressBar;
+
+    /**
+     * TapvalueSDKClient
+     */
     TapvalueSDKClient sdkClient = null;
 
+    /**
+     * BroadcastReceiver
+     */
     private BroadcastReceiver WifiStateChangedReceiver
             = new BroadcastReceiver(){
 
@@ -766,13 +779,14 @@ public class MyActivity extends BaseActivity {
     public void initTapValue()
     {
 
-        Long AppID= Long.valueOf(100009);
-        Long UserID= Long.valueOf(100055);
+        Long AppID= (long) 100009;
+        Long UserID= (long) 100055;
         String Token="29c89da7-bcce-40be-82f3-f0c63c838da5";
         TapvalueSDKConfig config = TapvalueSDKConfig.create(this,Token,UserID,AppID);
         try {
             sdkClient = TapvalueSDK.getClient(config);
         } catch (TapvalueSDKException e) {
+            e.printStackTrace();
         }
         sdkClient.start();
 

@@ -48,10 +48,7 @@ public class ConnectivityService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        // Start up the thread running the service.  Note that we create a
-        // separate thread because the service normally runs in the process's
-        // main thread, which we don't want to block.  We also make it
-        // background priority so CPU-intensive work will not disrupt our UI.
+
         IntentFilter Filter = new IntentFilter();
         Filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
         Filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
@@ -88,8 +85,8 @@ public class ConnectivityService extends Service {
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_icon_client)
-                        .setContentTitle("Nomosphère")
-                        .setContentText("Hotspot Found ! Connect to our WiFi")
+                        .setContentTitle(getString(R.string.notification_service_title))
+                        .setContentText(getString(R.string.notification_service_content))
                         .setAutoCancel(true);
         int NOTIFICATION_ID = 12345;
 
