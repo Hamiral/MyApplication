@@ -1,4 +1,4 @@
-package com.example.pi2013.myapplication;
+package com.nomosphere.app.Nomosphere;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
@@ -36,7 +36,6 @@ public class SettingsActivity extends BaseActivity implements AdapterView.OnItem
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            // TODO Auto-generated method stub
             GlobalVariable appState =(GlobalVariable) getApplicationContext();
             int extraWifiState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE ,
                     WifiManager.WIFI_STATE_UNKNOWN);

@@ -1,4 +1,4 @@
-package com.example.pi2013.myapplication;
+package com.nomosphere.app.Nomosphere;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -25,6 +25,8 @@ import android.widget.Toast;
 
 import com.tapvalue.beacon.android.sdk.TapvalueSDK;
 import com.tapvalue.beacon.android.sdk.TapvalueSDKClient;
+import com.tapvalue.beacon.android.sdk.api.handler.GCMHandler;
+import com.tapvalue.beacon.android.sdk.config.TapvalueSDKAdvancedConfig;
 import com.tapvalue.beacon.android.sdk.config.TapvalueSDKConfig;
 import com.tapvalue.beacon.android.sdk.exception.TapvalueSDKException;
 import com.tapvalue.beacon.android.sdk.exception.handler.SDKExceptionHandler;
@@ -52,7 +54,7 @@ import java.util.TimerTask;
  * <br>The layout is changed dynamically according to the different states possible of the application
  * <br>To get more information about the layout display, please check the updatelayout() function or the document
  */
-public class MyActivity extends BaseActivity {
+public class MyActivity extends BaseActivity implements GCMHandler, SDKExceptionHandler {
     public static Activity MyActivity = null;
     /**
      * Default Gateway URL
@@ -147,7 +149,7 @@ public class MyActivity extends BaseActivity {
     TapvalueSDKClient sdkClient = null;
 
     /**
-     * BroadcastReceiver
+     * BroadcastReceiver for the Wifi State
      */
     private BroadcastReceiver WifiStateChangedReceiver
             = new BroadcastReceiver(){
@@ -580,6 +582,16 @@ public class MyActivity extends BaseActivity {
         updateRememberMe();
     }
 
+    @Override
+    public void onRegistrationIdUpdated(String s) {
+
+    }
+
+    @Override
+    public void onException(Exception e) {
+
+    }
+
     /**
      * Asynchronous thread to request a status/login/logout
      */
@@ -776,19 +788,29 @@ public class MyActivity extends BaseActivity {
                 ((i >> 24 ) & 0xFF ));
     }
 
+    /**
+     * Initialize TapValueSDK
+     */
     public void initTapValue()
     {
 
         Long AppID= (long) 100009;
         Long UserID= (long) 100055;
+        String SenderID= "587115618696";
         String Token="29c89da7-bcce-40be-82f3-f0c63c838da5";
-        TapvalueSDKConfig config = TapvalueSDKConfig.create(this,Token,UserID,AppID);
+
+        TapvalueSDKConfig config = new TapvalueSDKAdvancedConfig
+                .Builder(this, Token, UserID, AppID)
+                .senderID(SenderID).build();
         try {
-            sdkClient = TapvalueSDK.getClient(config);
+            sdkClient = TapvalueSDK.getClient(config, this, this);
         } catch (TapvalueSDKException e) {
             e.printStackTrace();
+            return;
         }
         sdkClient.start();
+
+
 
         sdkClient.setSDKExceptionHandler(new SDKExceptionHandler() {
             @Override

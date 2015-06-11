@@ -1,4 +1,4 @@
-package com.example.pi2013.myapplication;
+package com.nomosphere.app.Nomosphere;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -27,15 +27,26 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 
 /**
- * Created by pi2013 on 04/05/2015.
+ * Service that checks if the wifi we are connected to is Nomosphere's Wifi
  */
 public class ConnectivityService extends Service {
 
-
+    /**
+     * Debug tag for the service
+     */
     private static final String DEBUG_TAG ="ConnectivityService : " ;
+    /**
+     * Default Gateway URL
+     */
     private String URL_link;
+    /**
+     * Result of the request to the login API
+     */
     private JSONObject JSONContent;
 
+    /**
+     * On activation of the broadcast receiveer, starts a connectivity test.
+     */
     private BroadcastReceiver ConnectivityChangedReceiver
             = new BroadcastReceiver(){
 
@@ -79,6 +90,11 @@ public class ConnectivityService extends Service {
     }
 
 
+    /**
+     * Handle
+     *
+     * @throws JSONException
+     */
     public void HandleNotification() throws JSONException {
         if(JSONContent==null)
             return;

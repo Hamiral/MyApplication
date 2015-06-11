@@ -1,4 +1,4 @@
-package com.example.pi2013.myapplication;
+package com.nomosphere.app.Nomosphere;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,12 +23,13 @@ public class LaunchActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(MyActivity.MyActivity==null)
         new LoadViewTask().execute();
 
-        Intent intent = new Intent(getApplicationContext(), MyActivity.class);
-        startActivity(intent);
-        finish();
+        if(MyActivity.MyActivity!=null) {
+            Intent intent = new Intent(getApplicationContext(), MyActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 

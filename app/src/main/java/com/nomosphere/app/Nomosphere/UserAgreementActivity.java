@@ -1,4 +1,4 @@
-package com.example.pi2013.myapplication;
+package com.nomosphere.app.Nomosphere;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
