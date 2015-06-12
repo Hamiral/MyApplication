@@ -1,1 +1,1 @@
-include ':app', ':TapvalueSDK-1.3.0'
+include ':TapvalueSDK-1.3.0', ':app'
