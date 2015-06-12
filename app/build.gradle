@@ -40,9 +40,8 @@ android.applicationVariants.all { variant ->
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:20.0.0'
+    compile ('com.android.support:appcompat-v7:20.0.0')
     compile(name: 'TapvalueSDK-1.4.0', ext: 'aar')
-    compile "com.google.android.gms:play-services:7.5.+"
 }
 repositories {
     flatDir {
@@ -50,4 +49,3 @@ repositories {
     }
 }
 
-apply plugin: 'com.google.gms.google-services'
