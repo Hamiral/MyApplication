@@ -24,7 +24,7 @@ public class GlobalVariable extends TapvalueSDKApp {
     private boolean Logged=false;
     /**
      * Preferences of the application
-     * <br> Contains different keys : language,username,password,rememberMe,Automatic
+     * <br> Contains different keys : language,username,password,rememberMe,AutomaticConnection
      */
     public static final String PREFS_NAME = "com.nomosphere.app.nomosphere.PREFERENCE_FILE_KEY";
 

@@ -91,9 +91,8 @@ public class ConnectivityService extends Service {
 
 
     /**
-     * Handle
-     *
-     * @throws JSONException
+     * Handle Notification
+     * @throws JSONException Connectivity request may not return anything
      */
     public void HandleNotification() throws JSONException {
         if(JSONContent==null)
@@ -201,6 +200,13 @@ public class ConnectivityService extends Service {
         }
         return null;
     }
+    /**
+     * Read the InputStream and convert it to a String
+     * @param stream Stream received from the API
+     * @param len Length, maximum stream length to be read
+     * @return String - InputStream converted into a String of length len
+     * @throws IOException Signals a general, I/O-related error.
+     */
     public static String readIt(InputStream stream, int len) throws IOException {
         Reader reader;
         reader = new InputStreamReader(stream, "UTF-8");
@@ -208,6 +214,10 @@ public class ConnectivityService extends Service {
         reader.read(buffer);
         return new String(buffer);
     }
+    /**
+     * Get the DefaultGateway
+     * The defaultGateway is used to get the http address to communicate with the Login API
+     */
     public void getDefaultGateway(){
         WifiManager networkd = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         DhcpInfo details = networkd.getDhcpInfo();
