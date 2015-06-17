@@ -1,5 +1,5 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MyActivity">
-    tools:context="com.example.pi2013.myapplication.BaseActivity">
+    tools:context="com.nomosphere.app.Nomosphere.BaseActivity">
 
-    </menu>
+</menu>

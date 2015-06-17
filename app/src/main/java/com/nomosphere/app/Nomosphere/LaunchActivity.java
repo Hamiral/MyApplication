@@ -1,4 +1,4 @@
-package com.example.pi2013.myapplication;
+package com.nomosphere.app.Nomosphere;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,8 +23,13 @@ public class LaunchActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         new LoadViewTask().execute();
+
+        if(MyActivity.MyActivity!=null) {
+            Intent intent = new Intent(getApplicationContext(), MyActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 
@@ -62,7 +67,6 @@ public class LaunchActivity extends Activity {
          */
         @Override
         protected Void doInBackground(Void... params) {
-
             try {
                 //Get the current thread's token
                 synchronized (this) {
@@ -80,6 +84,8 @@ public class LaunchActivity extends Activity {
             Intent intent = new Intent(getApplicationContext(), MyActivity.class);
             startActivity(intent);
             finish();
+
+
         }
     }
 }

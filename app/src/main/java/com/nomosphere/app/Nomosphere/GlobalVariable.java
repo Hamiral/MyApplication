@@ -1,8 +1,7 @@
-package com.example.pi2013.myapplication;
+package com.nomosphere.app.Nomosphere;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 
 import com.tapvalue.beacon.android.sdk.TapvalueSDKApp;
 
@@ -25,9 +24,9 @@ public class GlobalVariable extends TapvalueSDKApp {
     private boolean Logged=false;
     /**
      * Preferences of the application
-     * <br> Contains different keys : language,username,password,rememberMe,Automatic
+     * <br> Contains different keys : language,username,password,rememberMe,AutomaticConnection
      */
-    public static final String PREFS_NAME = "com.example.pi2013.myapplication.PREFERENCE_FILE_KEY";
+    public static final String PREFS_NAME = "com.nomosphere.app.nomosphere.PREFERENCE_FILE_KEY";
 
     /**
      * Gets the value of the global variable wifi

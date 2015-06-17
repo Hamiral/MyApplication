@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pi2013.myapplication" >
+    package="com.nomosphere.app.Nomosphere" >
 
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-library android:name="com.tapvalue.beacon.android.sdk" android:required="true" />
+
+    <permission android:name="com.nomosphere.app.Nomosphere.gcm.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.nomosphere.app.Nomosphere..permission.C2D_MESSAGE" />
+
 
     <application
-        android:name="com.example.pi2013.myapplication.GlobalVariable"
+
+        android:name="com.nomosphere.app.Nomosphere.GlobalVariable"
         android:allowBackup="true"
         android:configChanges="locale"
         android:label="@string/app_name"
@@ -19,35 +24,41 @@
         android:icon="@drawable/ic_icon_client"
         android:theme="@style/StyleNomosphere" >
 
-        <receiver android:name="com.example.pi2013.myapplication.NetWatcherBroadcast">
-            <intent-filter>
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+
+        <receiver android:name="com.tapvalue.beacon.android.sdk.background.receiver.TpvGcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter android:priority="4">
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <category android:name="com.tapvalue.android.demotapvalue"/>
             </intent-filter>
         </receiver>
 
 
+        <service
+            android:name="com.nomosphere.app.Nomosphere.ConnectivityService"
+            android:enabled="true"/>
+
         <activity
-            android:name=".MyActivity"
+            android:name="com.nomosphere.app.Nomosphere.MyActivity"
             android:label="@string/app_name"
-            android:launchMode="singleInstance" >
+             android:launchMode="singleInstance" >
 
 
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.nomosphere.app.Nomosphere.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:launchMode="singleInstance" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.pi2013.myapplication.MyActivity" />
+                android:value="com.nomosphere.app.Nomosphere.MyActivity" />
         </activity>
         <activity
-            android:name=".BaseActivity"
+            android:name="com.nomosphere.app.Nomosphere.BaseActivity"
             android:label="@string/title_activity_base"
             android:launchMode="singleInstance" >
         </activity>
         <activity
-            android:name=".LaunchActivity"
+            android:name="com.nomosphere.app.Nomosphere.LaunchActivity"
             android:label="@string/title_activity_launch"
             android:theme="@style/NoActionBar">
             <intent-filter>
@@ -59,12 +70,12 @@
 
 
         <activity
-            android:name=".UserAgreementActivity"
+            android:name="com.nomosphere.app.Nomosphere.UserAgreementActivity"
             android:label="@string/title_activity_user_agreement"
             android:launchMode="singleInstance" >
             <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.pi2013.myapplication.SettingsActivity" />
+            android:value="com.nomosphere.app.Nomosphere.SettingsActivity" />
 
         </activity>
 
