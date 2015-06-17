@@ -54,7 +54,7 @@ import java.util.TimerTask;
  * <br>The layout is changed dynamically according to the different states possible of the application
  * <br>To get more information about the layout display, please check the updatelayout() function or the document
  */
-public class MyActivity extends BaseActivity implements  SDKExceptionHandler {
+public class MyActivity extends BaseActivity implements GCMHandler, SDKExceptionHandler {
     public static Activity MyActivity = null;
     /**
      * Default Gateway URL
@@ -582,7 +582,10 @@ public class MyActivity extends BaseActivity implements  SDKExceptionHandler {
         updateRememberMe();
     }
 
+    @Override
+    public void onRegistrationIdUpdated(String s) {
 
+    }
 
     @Override
     public void onException(Exception e) {
@@ -795,7 +798,7 @@ public class MyActivity extends BaseActivity implements  SDKExceptionHandler {
         Long UserID= (long) 100055;
         String SenderID= "587115618696";
         String Token="29c89da7-bcce-40be-82f3-f0c63c838da5";
-        /**
+
         TapvalueSDKConfig config = new TapvalueSDKAdvancedConfig
                 .Builder(this, Token, UserID, AppID)
                 .senderID(SenderID).build();
@@ -806,14 +809,8 @@ public class MyActivity extends BaseActivity implements  SDKExceptionHandler {
             return;
         }
         sdkClient.start();
-        **/
-        TapvalueSDKConfig config = TapvalueSDKConfig.create(this,Token,UserID,AppID);
-        try {
-            sdkClient = TapvalueSDK.getClient(config);
-        } catch (TapvalueSDKException e) {
-            e.printStackTrace();
-        }
-        sdkClient.start();
+
+
 
         sdkClient.setSDKExceptionHandler(new SDKExceptionHandler() {
             @Override

@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <permission android:name="com.nomosphere.app.Nomosphere.gcm.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.nomosphere.app.Nomosphere..permission.C2D_MESSAGE" />
 
 
     <application
@@ -21,6 +24,13 @@
         android:icon="@drawable/ic_icon_client"
         android:theme="@style/StyleNomosphere" >
 
+
+        <receiver android:name="com.tapvalue.beacon.android.sdk.background.receiver.TpvGcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter android:priority="4">
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <category android:name="com.tapvalue.android.demotapvalue"/>
+            </intent-filter>
+        </receiver>
 
 
         <service
